@@ -6,7 +6,8 @@ public class CameraController : MonoBehaviour
 {
 	public static CameraController Instance;
 
-    [SerializeField] Camera mainCamera;
+    public Camera mainCamera;
+
     [SerializeField] List<CinemachineCamera> virtualCameras = new List<CinemachineCamera>();
 
     [SerializeField] float movementSpeed = 1.0f;

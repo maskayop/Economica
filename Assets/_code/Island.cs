@@ -7,7 +7,11 @@ public class Island : MonoBehaviour
 	public Vector2Int populationGrowthRate;
 	public Vector2 popToProdMultiplier;
 
+	[Space(20)]
+	public Waypoint islandWaypoint;
+
     int currentDay = 0;
+	float welfareRatio;
 
     void Start()
 	{
@@ -18,8 +22,19 @@ public class Island : MonoBehaviour
 	{
         if (GlobalTimeController.Instance.currentDay != currentDay)
         {
-            AddPeople(); 
-			GoShoping();
+            AddPeople();
+
+			//идут закупаться все
+            GoShoping(population);
+
+			//идут закупаться ещё раз зажиточные
+            welfareRatio = resourcesController.totalAvailableResources / population;
+
+			if (welfareRatio >= population)
+				welfareRatio = population;
+
+            GoShoping(Mathf.FloorToInt(welfareRatio));
+
             currentDay = GlobalTimeController.Instance.currentDay;
         }
     }
@@ -34,13 +49,13 @@ public class Island : MonoBehaviour
 
 	void AddPeople()
 	{
-		population += Random.Range(populationGrowthRate.x, populationGrowthRate.y);
+		population += Random.Range(populationGrowthRate.x, populationGrowthRate.y + 1);
 		ResourcesManager.Instance.UpdatePopulation();
 	}
 
-	void GoShoping()
+	void GoShoping(int customers)
 	{
-		for (int i = 0; i < population; i++)
+		for (int i = 0; i < customers; i++)
 		{
 			int randomValue = Random.Range(0, resourcesController.availableResourcesInStorage.Count);
 
@@ -48,10 +63,11 @@ public class Island : MonoBehaviour
 				resourcesController.availableResourcesInStorage[randomValue].amountInStorage != 0)
 			{
 				resourcesController.availableResourcesInStorage[randomValue].amountInStorage--;
-                resourcesController.UpdateAvailableResourcesInStorage();
+                resourcesController.UpdateAvailableResourcesInStorage(false);
             }
         }
 
+        resourcesController.UpdateAvailableResourcesInStorage(true);
         ResourcesManager.Instance.UpdateStorage();
     }
 

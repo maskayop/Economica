@@ -27,4 +27,9 @@ public class UIMainCanvas : MonoBehaviour
 
         clockFill.fillAmount = globalTime.currentTime / globalTime.dayLenght;
     }
+
+    public void GoToCamera(bool isNext)
+    { 
+        CameraController.Instance.GoToCamera(isNext);
+    }
 }

@@ -1,30 +1,176 @@
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Character : MonoBehaviour
 {
 	CharacterMovement characterMovement;
 
-    [Range(0, 1)]
-    public float scaleSpread = 0;
+    [Range(0, 1)] public float scaleSpread = 0;
+    [Range(0, 1)] public float speedSpread = 0;
+    
+	public Vector2Int cargoHoldSpread;
 
-    [Range(0, 1)]
-    public float speedSpread = 0;
+	[Space(20)]
+    public int cargoHoldCapacity = 10;
+    public int cargoHold = 0;
+    public List<Resource> resourcesInCargoHold = new List<Resource>();
+
+    [Space(20)]
+    public Island startIsland;
+    public Island finishIsland;
+
+    public Resource resourceForBuying;
+
+    [Space(20)]
+    public ResourceWidgetsController resourceWidgetController;
+
+    Resource lastBoughtResource;
 
     void Start()
 	{
-		characterMovement = GetComponent<CharacterMovement>();
-		characterMovement.character = this;
-        CharactersManager.Instance.allCharacters.Add(this);
-
-		transform.localScale += transform.localScale * Random.Range(-scaleSpread, scaleSpread);
-        characterMovement.speed += characterMovement.speed * Random.Range(-speedSpread, speedSpread);
+		Init();
 	}
 
-	void Update() { }
+	public void Init()
+	{
+        characterMovement = GetComponent<CharacterMovement>();
+        characterMovement.character = this;
+        CharactersManager.Instance.allCharacters.Add(this);
+
+        transform.localScale += transform.localScale * Random.Range(-scaleSpread, scaleSpread);
+        characterMovement.speed += characterMovement.speed * Random.Range(-speedSpread, speedSpread);
+
+        cargoHoldCapacity = Random.Range(cargoHoldSpread.x, cargoHoldSpread.y);
+    }
+
+    public Island CalculateNextIsland()
+    {
+        if (ResourcesManager.Instance.allIslands.Count <= 1)
+        {
+            Kill();
+            return null;
+        }
+
+        Island island = null;
+
+        startIsland = finishIsland;
+
+        int randomValue = Random.Range(0, ResourcesManager.Instance.allIslands.Count);
+        island = ResourcesManager.Instance.allIslands[randomValue];
+
+        if (island == startIsland)
+        {
+            if (randomValue + 1 < ResourcesManager.Instance.allIslands.Count)
+                island = ResourcesManager.Instance.allIslands[randomValue + 1];
+            else
+                island = ResourcesManager.Instance.allIslands[0];
+        }
+
+        finishIsland = island;
+
+        GoTrading();
+
+        return island;
+    }
 
 	public void Kill()
 	{
         CharactersManager.Instance.allCharacters.Remove(this);
 		Destroy(gameObject);
 	}
+
+    void GoTrading()
+    {
+        Sell();
+        Buy();
+
+        startIsland.resourcesController.UpdateAvailableResourcesInStorage(true);
+
+        foreach (Transform t in resourceWidgetController.widgetsPanel.transform)
+            Destroy(t.gameObject);
+
+        resourceWidgetController.widgets.Clear();
+
+        if(lastBoughtResource != null)
+            resourceWidgetController.CreateWidget(lastBoughtResource);
+    }
+
+    void Sell()
+    {
+        for (int i = 0; i < resourcesInCargoHold.Count; i++)
+        {
+            for (int x = 0; x < startIsland.resourcesController.storage.Count; x++)
+            {
+                if (resourcesInCargoHold[i].name == startIsland.resourcesController.storage[x].name)
+                {
+                    startIsland.resourcesController.storage[x].amountInStorage += resourcesInCargoHold[i].amountInStorage;
+                    cargoHold -= resourcesInCargoHold[i].amountInStorage;
+                    resourcesInCargoHold[i].amountInStorage -= resourcesInCargoHold[i].amountInStorage;
+                }
+            }
+        }
+    }
+
+    void Buy()
+    {
+        if (startIsland.resourcesController.availableResourcesInStorage.Count == 0)
+            return;
+
+        int randomValue = Random.Range(0, startIsland.resourcesController.availableResourcesInStorage.Count);
+        resourceForBuying = startIsland.resourcesController.availableResourcesInStorage[randomValue];
+        
+        if (resourceForBuying == lastBoughtResource)
+        {
+            if (randomValue + 1 < startIsland.resourcesController.availableResourcesInStorage.Count)
+                resourceForBuying = startIsland.resourcesController.availableResourcesInStorage[randomValue + 1];
+            else
+                resourceForBuying = startIsland.resourcesController.availableResourcesInStorage[0];
+        }
+        
+        bool resourceIsExists = false;
+
+        for (int i = 0; i < resourcesInCargoHold.Count; i++)
+        {
+            if (resourcesInCargoHold[i].name == resourceForBuying.name)
+            {
+                resourceIsExists = true;
+                break;
+            }            
+        }
+
+        if (!resourceIsExists)
+        {
+            Resource newres = new Resource();
+            newres.name = resourceForBuying.name;
+            newres.sprite = resourceForBuying.sprite;
+            newres.amountInStorage = 0;
+            newres.price = resourceForBuying.price;
+
+            resourcesInCargoHold.Add(newres);
+        }
+
+        for (int i = 0; i < resourcesInCargoHold.Count; i++)
+        {
+            if (resourcesInCargoHold[i].name == resourceForBuying.name)
+            {
+                if (resourceForBuying.amountInStorage > cargoHoldCapacity)
+                {
+                    resourcesInCargoHold[i].amountInStorage += cargoHoldCapacity;
+                    cargoHold += cargoHoldCapacity;
+
+                    resourceForBuying.amountInStorage -= cargoHoldCapacity;
+                }
+                else
+                {
+                    resourcesInCargoHold[i].amountInStorage += resourceForBuying.amountInStorage;
+                    cargoHold += resourceForBuying.amountInStorage;
+
+                    resourceForBuying.amountInStorage -= resourceForBuying.amountInStorage;
+                }
+
+                lastBoughtResource = resourceForBuying;
+            }
+        }
+    }
 }

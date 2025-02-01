@@ -23,7 +23,7 @@ public class ResourcesManager : MonoBehaviour
     public List<Island> allIslands = new List<Island>();
 
     public int pricesMultiplier = 1000000;
-    public int totalProducedResources = 0;
+    public int totalAvailableResources = 0;
     public int totalPopulation = 0;
 
     int currentDay = 0;
@@ -102,18 +102,31 @@ public class ResourcesManager : MonoBehaviour
 
     void UpdatePrices()
     {
-        totalProducedResources = 0;
+        totalAvailableResources = 0;
 
         for (int i = 0; i < storage.Count; i++)
-            totalProducedResources += storage[i].amountInStorage;
+            totalAvailableResources += storage[i].amountInStorage;
 
         for (int i = 0; i < storage.Count; i++)
-            if (totalProducedResources != 0 && storage[i].amountInStorage != 0)
-                storage[i].price = pricesMultiplier / (totalProducedResources * storage[i].amountInStorage);
-            else if (totalProducedResources != 0 && storage[i].amountInStorage == 0)
-                storage[i].price = pricesMultiplier / totalProducedResources;
-            else if (totalProducedResources == 0)
+        {
+            if (totalAvailableResources != 0 && storage[i].amountInStorage != 0)
+                storage[i].price = Mathf.FloorToInt(pricesMultiplier / (totalAvailableResources * storage[i].amountInStorage));
+            else if (totalAvailableResources != 0 && storage[i].amountInStorage == 0)
+                storage[i].price = pricesMultiplier / totalAvailableResources;
+            else if (totalAvailableResources == 0)
                 storage[i].price = pricesMultiplier;
+
+            if (storage[i].price <= 1)
+                storage[i].price = 1;
+        }
+
+        for (int i = 0; i < allIslands.Count; i++)
+        {
+            for (int x = 0; x < storage.Count; x++)
+            {
+                allIslands[i].resourcesController.storage[x].price = storage[x].price;
+            }
+        }
     }
 
     public void UpdatePopulation()

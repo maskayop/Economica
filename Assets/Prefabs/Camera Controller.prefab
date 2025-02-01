@@ -611,9 +611,9 @@ MonoBehaviour:
   movementSpeed: 0.25
   positionLimits: {x: 400, y: 400}
   scrollSpeed: 0.1
-  maxTranslationY: 500
-  minTranslationY: 200
-  currentZoom: 0.5
+  maxTranslationY: 600
+  minTranslationY: 100
+  currentZoom: 0.25
 --- !u!1 &6508347908896022664
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,8 +8,12 @@ public class ResourcesController : MonoBehaviour
     public List<Resource> producingResources = new List<Resource>();
     public List<Resource> storage = new List<Resource>();
     public List<Resource> availableResourcesInStorage = new List<Resource>();
+    public int totalAvailableResources = 0;
 
     [HideInInspector] public Island island;
+
+    [Space(20)]
+    public ResourceWidgetsController resourceWidgetController;
 
     int currentDay = 0;
 
@@ -26,10 +30,10 @@ public class ResourcesController : MonoBehaviour
             currentDay = GlobalTimeController.Instance.currentDay;
         }
     }
-        void Init()
+    void Init()
     {
         CalculateIndustries();
-        UpdateAvailableResourcesInStorage();
+        UpdateAvailableResourcesInStorage(true);
         currentDay = GlobalTimeController.Instance.currentDay;
     }
 
@@ -77,6 +81,10 @@ public class ResourcesController : MonoBehaviour
                 {
                     float popToProdMult = island.GetPopToProdMultiplier();
                     int prodAmount = Mathf.FloorToInt(producingResources[i].productionAmount * popToProdMult);
+
+                    if (prodAmount <= 1)
+                        prodAmount = 1;
+
                     storage[x].productionRange = producingResources[i].productionRange;
                     storage[x].productionAmount = prodAmount;
                     storage[x].amountInStorage += prodAmount;
@@ -86,10 +94,10 @@ public class ResourcesController : MonoBehaviour
             }
         }
 
-        UpdateAvailableResourcesInStorage();        
+        UpdateAvailableResourcesInStorage(true);
     }
 
-    public void UpdateAvailableResourcesInStorage()
+    public void UpdateAvailableResourcesInStorage(bool updateWidgets)
     {
         availableResourcesInStorage.Clear();
 
@@ -97,6 +105,24 @@ public class ResourcesController : MonoBehaviour
         {
             if (storage[i].amountInStorage != 0)
                 availableResourcesInStorage.Add(storage[i]);
+        }
+
+        totalAvailableResources = 0;
+
+        for (int i = 0; i < storage.Count; i++)
+            totalAvailableResources += storage[i].amountInStorage;
+
+        if (!updateWidgets)
+            return;
+
+        foreach (Transform t in resourceWidgetController.widgetsPanel.transform)
+            Destroy(t.gameObject);
+
+        resourceWidgetController.widgets.Clear();
+
+        for (int i = 0; i < availableResourcesInStorage.Count; i++)
+        {
+            resourceWidgetController.CreateWidget(availableResourcesInStorage[i]);
         }
     }
 }
