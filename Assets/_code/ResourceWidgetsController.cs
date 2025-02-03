@@ -13,6 +13,9 @@ public class ResourceWidgetsController : MonoBehaviour
     void Start()
     {
         widgetsPanel.transform.localScale = new Vector3(1 / transform.localScale.x, 1 / transform.localScale.y, 1 / transform.localScale.z);
+
+        foreach (Transform t in widgetsPanel.transform)
+            Destroy(t.gameObject);
     }
 
     void Update()

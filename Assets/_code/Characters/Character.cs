@@ -9,7 +9,7 @@ public class Character : MonoBehaviour
     [Range(0, 1)] public float scaleSpread = 0;
     [Range(0, 1)] public float speedSpread = 0;
     
-	public Vector2Int cargoHoldSpread;
+	public Vector2Int cargoHoldCapacitySpread;
 
 	[Space(20)]
     public int cargoHoldCapacity = 10;
@@ -26,6 +26,7 @@ public class Character : MonoBehaviour
     public ResourceWidgetsController resourceWidgetController;
 
     Resource lastBoughtResource;
+    bool canBuy = true;
 
     void Start()
 	{
@@ -41,7 +42,7 @@ public class Character : MonoBehaviour
         transform.localScale += transform.localScale * Random.Range(-scaleSpread, scaleSpread);
         characterMovement.speed += characterMovement.speed * Random.Range(-speedSpread, speedSpread);
 
-        cargoHoldCapacity = Random.Range(cargoHoldSpread.x, cargoHoldSpread.y);
+        cargoHoldCapacity = Random.Range(cargoHoldCapacitySpread.x, cargoHoldCapacitySpread.y);
     }
 
     public Island CalculateNextIsland()
@@ -92,21 +93,37 @@ public class Character : MonoBehaviour
 
         resourceWidgetController.widgets.Clear();
 
-        if(lastBoughtResource != null)
+        if(lastBoughtResource != null && cargoHold != 0)
             resourceWidgetController.CreateWidget(lastBoughtResource);
     }
 
     void Sell()
     {
+        if (cargoHold == 0)
+        {
+            canBuy = true;            
+            return;
+        }
+
         for (int i = 0; i < resourcesInCargoHold.Count; i++)
         {
             for (int x = 0; x < startIsland.resourcesController.storage.Count; x++)
             {
                 if (resourcesInCargoHold[i].name == startIsland.resourcesController.storage[x].name)
                 {
+                    if (resourcesInCargoHold[i].price >= startIsland.resourcesController.storage[x].price)
+                    {
+                        canBuy = false;
+                        return;
+                    }
+
                     startIsland.resourcesController.storage[x].amountInStorage += resourcesInCargoHold[i].amountInStorage;
                     cargoHold -= resourcesInCargoHold[i].amountInStorage;
                     resourcesInCargoHold[i].amountInStorage -= resourcesInCargoHold[i].amountInStorage;
+
+                    startIsland.resourcesController.UpdateAvailableResourcesInStorage(false);
+
+                    canBuy = true;
                 }
             }
         }
@@ -114,20 +131,27 @@ public class Character : MonoBehaviour
 
     void Buy()
     {
+        if (!canBuy)
+            return;
+
         if (startIsland.resourcesController.availableResourcesInStorage.Count == 0)
             return;
 
         int randomValue = Random.Range(0, startIsland.resourcesController.availableResourcesInStorage.Count);
+        randomValue = 0;
         resourceForBuying = startIsland.resourcesController.availableResourcesInStorage[randomValue];
         
-        if (resourceForBuying == lastBoughtResource)
+        if (resourceForBuying.name == lastBoughtResource.name)
         {
             if (randomValue + 1 < startIsland.resourcesController.availableResourcesInStorage.Count)
                 resourceForBuying = startIsland.resourcesController.availableResourcesInStorage[randomValue + 1];
             else
                 resourceForBuying = startIsland.resourcesController.availableResourcesInStorage[0];
         }
-        
+
+        if (resourceForBuying.name == lastBoughtResource.name)
+            return;
+
         bool resourceIsExists = false;
 
         for (int i = 0; i < resourcesInCargoHold.Count; i++)
@@ -152,7 +176,7 @@ public class Character : MonoBehaviour
 
         for (int i = 0; i < resourcesInCargoHold.Count; i++)
         {
-            if (resourcesInCargoHold[i].name == resourceForBuying.name)
+            if (resourcesInCargoHold[i].name == resourceForBuying.name && resourcesInCargoHold[i].amountInStorage == 0)
             {
                 if (resourceForBuying.amountInStorage > cargoHoldCapacity)
                 {
@@ -172,5 +196,8 @@ public class Character : MonoBehaviour
                 lastBoughtResource = resourceForBuying;
             }
         }
+
+        startIsland.resourcesController.UpdateAvailableResourcesInStorage(true);
+        canBuy = true;
     }
 }

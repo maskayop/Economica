@@ -24,7 +24,10 @@ public class ResourcesManager : MonoBehaviour
 
     public int pricesMultiplier = 1000000;
     public int totalAvailableResources = 0;
+    public int totalIndustries = 0;
     public int totalPopulation = 0;
+    public int totalRichPopulation = 0;
+    public int totalElitePopulation = 0;
 
     int currentDay = 0;
 
@@ -41,11 +44,6 @@ public class ResourcesManager : MonoBehaviour
 
         allResources.Sort( (x, y) => { return x.name.CompareTo(y.name); } );
         CreateStorageList();
-    }
-
-    void Start()
-    {
-        allIslands.Clear();
     }
 
     void Update()
@@ -66,7 +64,10 @@ public class ResourcesManager : MonoBehaviour
     public void UpdateStorage()
     {
         for (int i = 0; i < storage.Count; i++)
+        {
             storage[i].amountInStorage = 0;
+            storage[i].productionAmount = 0;
+        }
 
         for (int i = 0; i < allIslands.Count; i++)
         {
@@ -75,6 +76,7 @@ public class ResourcesManager : MonoBehaviour
                 if (storage[x].name == allIslands[i].resourcesController.storage[x].name)
                 {
                     storage[x].amountInStorage += allIslands[i].resourcesController.storage[x].amountInStorage;
+                    storage[x].productionAmount += allIslands[i].resourcesController.storage[x].productionAmount;
                 }
             }
         }
@@ -102,6 +104,9 @@ public class ResourcesManager : MonoBehaviour
 
     void UpdatePrices()
     {
+        if (storage.Count == 0)
+            return;
+
         totalAvailableResources = 0;
 
         for (int i = 0; i < storage.Count; i++)
@@ -110,32 +115,26 @@ public class ResourcesManager : MonoBehaviour
         for (int i = 0; i < storage.Count; i++)
         {
             if (totalAvailableResources != 0 && storage[i].amountInStorage != 0)
-                storage[i].price = Mathf.FloorToInt(pricesMultiplier / (totalAvailableResources * storage[i].amountInStorage));
-            else if (totalAvailableResources != 0 && storage[i].amountInStorage == 0)
-                storage[i].price = pricesMultiplier / totalAvailableResources;
-            else if (totalAvailableResources == 0)
-                storage[i].price = pricesMultiplier;
+                storage[i].price = Mathf.FloorToInt((float)(pricesMultiplier * totalAvailableResources) / (float)(storage[i].amountInStorage * storage.Count));
+            else
+                storage[i].price = pricesMultiplier * pricesMultiplier;
 
             if (storage[i].price <= 1)
                 storage[i].price = 1;
-        }
-
-        for (int i = 0; i < allIslands.Count; i++)
-        {
-            for (int x = 0; x < storage.Count; x++)
-            {
-                allIslands[i].resourcesController.storage[x].price = storage[x].price;
-            }
         }
     }
 
     public void UpdatePopulation()
     {
         totalPopulation = 0;
+        totalRichPopulation = 0;
+        totalElitePopulation = 0;
 
         for (int i = 0; i < allIslands.Count; i++)
         {
             totalPopulation += allIslands[i].population;
+            totalRichPopulation += allIslands[i].richPopulation;
+            totalElitePopulation += allIslands[i].elitePopulation;
         }
     }
 }

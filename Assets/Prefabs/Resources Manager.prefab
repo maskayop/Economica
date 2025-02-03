@@ -47,895 +47,249 @@ MonoBehaviour:
   allResources:
   - name: "\u042F\u0431\u043B\u043E\u043A\u0438"
     sprite: {fileID: 21300000, guid: 2aa6ab62866ce4439ab7303f7da55e51, type: 3}
-    productionRange: {x: 3, y: 6}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u0410\u0432\u043E\u043A\u0430\u0434\u043E"
     sprite: {fileID: 21300000, guid: 0b97d02305ef74e7ea0cb413d9cc158a, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0411\u0435\u043A\u043E\u043D"
-    sprite: {fileID: 21300000, guid: 6296e4b1e1bac418193950916fde7248, type: 3}
-    productionRange: {x: 3, y: 6}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u0411\u0430\u043D\u0430\u043D\u044B"
     sprite: {fileID: 21300000, guid: 50e0347d981414d189ff77217bc6e69c, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041F\u0438\u0432\u043E"
-    sprite: {fileID: 21300000, guid: dffc9861413334b5c9cdc5e13614b743, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0420\u0435\u043F\u043A\u0430"
-    sprite: {fileID: 21300000, guid: b83080d92786f42589381bbe09110c3c, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0427\u0435\u0440\u043D\u0438\u043A\u0430"
-    sprite: {fileID: 21300000, guid: 26b4d8692c5e74d17bd9dc28bcbe961b, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0411\u043E\u0431\u044B"
-    sprite: {fileID: 21300000, guid: dc035cb5f75664291ad6fee01bf08790, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0425\u043B\u0435\u0431"
-    sprite: {fileID: 21300000, guid: d0f2ca00017af45a59e0ccc1e81d226f, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041C\u0430\u0441\u043B\u043E"
-    sprite: {fileID: 21300000, guid: b70944d5db9ae4c80b01034b6d3d91bf, type: 3}
-    productionRange: {x: 3, y: 6}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u041A\u0430\u043F\u0443\u0441\u0442\u0430"
     sprite: {fileID: 21300000, guid: 50515b87527a140efb4a20420d8a7afe, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0422\u043E\u0440\u0442\u044B"
-    sprite: {fileID: 21300000, guid: 5e0181b769b64401bac538a3310aa847, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041A\u043E\u043D\u0444\u0435\u0442\u044B"
-    sprite: {fileID: 21300000, guid: 3e4143bdfe6a04baca4f6dc3e9a0093f, type: 3}
-    productionRange: {x: 3, y: 6}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u041C\u043E\u0440\u043A\u043E\u0432\u044C"
     sprite: {fileID: 21300000, guid: 1fbdfb9bf6c2e4397a1d62eed589ec1f, type: 3}
-    productionRange: {x: 3, y: 6}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u0413\u0440\u0438\u0431\u044B"
     sprite: {fileID: 21300000, guid: 90e2b60b2e48d40ad91f58045677f955, type: 3}
-    productionRange: {x: 3, y: 6}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
-  - name: "\u0421\u044B\u0440"
-    sprite: {fileID: 21300000, guid: b0155957134394e3ab756113ac6a977e, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0412\u0438\u0448\u043D\u044F"
+  - name: "\u042F\u0433\u043E\u0434\u044B"
     sprite: {fileID: 21300000, guid: 55e29d9a03fe24caba914d7134c713c5, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041A\u0443\u0440\u0438\u0446\u0430"
-    sprite: {fileID: 21300000, guid: eec0facfca0a442239269e367daaad9c, type: 3}
-    productionRange: {x: 3, y: 6}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u0428\u043E\u043A\u043E\u043B\u0430\u0434"
     sprite: {fileID: 21300000, guid: 6abcc03757a494181bcd2f733079582b, type: 3}
-    productionRange: {x: 3, y: 6}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u041A\u043E\u043A\u043E\u0441\u044B"
     sprite: {fileID: 21300000, guid: b3429463970104bf59512601788bb258, type: 3}
-    productionRange: {x: 3, y: 6}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u041A\u043E\u0444\u0435"
     sprite: {fileID: 21300000, guid: e0654092146b349cdbf2909a9205bca0, type: 3}
-    productionRange: {x: 2, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041F\u0435\u0447\u0435\u043D\u044C\u0435"
-    sprite: {fileID: 21300000, guid: f18a3457c7e504b27ac0ad1e1e1f33e9, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041C\u0435\u0434\u044C"
-    sprite: {fileID: 21300000, guid: d720c32c3c9e22149bd93f9180936449, type: 3}
-    productionRange: {x: 2, y: 3}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u041A\u0443\u043A\u0443\u0440\u0443\u0437\u0430"
     sprite: {fileID: 21300000, guid: 23de36d9c9c854d4dbb503079e846575, type: 3}
-    productionRange: {x: 3, y: 6}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u041E\u0433\u0443\u0440\u0446\u044B"
     sprite: {fileID: 21300000, guid: 76e54cc89c69d4cc0aacf00ba224b504, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u0411\u0430\u043A\u043B\u0430\u0436\u0430\u043D\u044B"
     sprite: {fileID: 21300000, guid: 823b5f8305e9543239179c3bf93c1fcd, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u042F\u0439\u0446\u0430"
-    sprite: {fileID: 21300000, guid: db2a00ff894de47e4a7451b104b04eeb, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u0420\u044B\u0431\u0430"
     sprite: {fileID: 21300000, guid: 711c10851768e431d943e3aea6a5f9fd, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u0427\u0435\u0441\u043D\u043E\u043A"
     sprite: {fileID: 21300000, guid: b359b2288b58743708bd438ac3fa1f7f, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0414\u0440\u0430\u0433\u043E\u0446\u0435\u043D\u043D\u044B\u0435 \u043A\u0430\u043C\u043D\u0438"
-    sprite: {fileID: 21300000, guid: f59401c5c79564fd1ae3bfb0876455a7, type: 3}
-    productionRange: {x: 1, y: 2}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0417\u043E\u043B\u043E\u0442\u043E"
-    sprite: {fileID: 21300000, guid: ec9b2680b3960304aa16905b06c6b0ed, type: 3}
-    productionRange: {x: 1, y: 2}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u0413\u0440\u0430\u043D\u0430\u0442\u044B"
     sprite: {fileID: 21300000, guid: af559321fb6ed4843b3012b08adfebb9, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u0412\u0438\u043D\u043E\u0433\u0440\u0430\u0434"
     sprite: {fileID: 21300000, guid: dc278087418e64fca83b3d94ad1973ca, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0421\u0432\u0438\u043D\u0438\u043D\u0430"
-    sprite: {fileID: 21300000, guid: 4bbf93270b9124286876611d9950e2fd, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u041C\u0451\u0434"
     sprite: {fileID: 21300000, guid: 2fae0e1ac747f47648811811d0b34bfb, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041C\u043E\u0440\u043E\u0436\u0435\u043D\u043E\u0435"
-    sprite: {fileID: 21300000, guid: a9436a583a5db4ccfad049bc57c157d2, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0416\u0435\u043B\u0435\u0437\u043E"
-    sprite: {fileID: 21300000, guid: 7e082cc2cf2a4433d85e388c6bf94234, type: 3}
-    productionRange: {x: 2, y: 3}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u041A\u0438\u0432\u0438"
     sprite: {fileID: 21300000, guid: cc8eede50ee1f49efa314de75e5506e3, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u041B\u0438\u043C\u043E\u043D\u044B"
     sprite: {fileID: 21300000, guid: f6d5f58465fff456eb84bd071b3134b9, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0413\u043E\u0432\u044F\u0434\u0438\u043D\u0430"
-    sprite: {fileID: 21300000, guid: 1618cb37bcd5144fd923b9697be57d63, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u0414\u044B\u043D\u0438"
     sprite: {fileID: 21300000, guid: 636ed3763815e48fb855165bd6e3bc89, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041C\u043E\u043B\u043E\u043A\u043E"
-    sprite: {fileID: 21300000, guid: 23d916487f41d4333b22bd60bc91a000, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041C\u044F\u0442\u0430"
-    sprite: {fileID: 21300000, guid: 23d916487f41d4333b22bd60bc91a000, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u041E\u0440\u0435\u0445\u0438"
     sprite: {fileID: 21300000, guid: fa3924bde7f974cb799caaa5594f3409, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u041E\u0441\u044C\u043C\u0438\u043D\u043E\u0433\u0438"
     sprite: {fileID: 21300000, guid: e505938e24e40403c872a4c05df3c3d8, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041F\u043E\u0434\u0441\u043E\u043B\u043D\u0435\u0447\u043D\u043E\u0435
-      \u043C\u0430\u0441\u043B\u043E"
-    sprite: {fileID: 21300000, guid: 52c12fab9ce564f0792ee7745720dfaa, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u041B\u0443\u043A"
     sprite: {fileID: 21300000, guid: 28b180278493e4d0ea58f28a1c0ba01f, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u0410\u043F\u0435\u043B\u044C\u0441\u0438\u043D\u044B"
     sprite: {fileID: 21300000, guid: 6fc31519aded24a839c1af9e163b6c01, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u041F\u0435\u0440\u0441\u0438\u043A\u0438"
     sprite: {fileID: 21300000, guid: c549cabc0e9504b56a64b9171d8962bc, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u0413\u0440\u0443\u0448\u0438"
     sprite: {fileID: 21300000, guid: 31740551f69654fb7bc2a39c35d57d9c, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u0413\u043E\u0440\u043E\u0445"
     sprite: {fileID: 21300000, guid: 7597de3a70e2c4151875c5fb816cf0e5, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
-  - name: "\u0410\u043D\u0430\u043D\u0430\u0441"
+  - name: "\u0410\u043D\u0430\u043D\u0430\u0441\u044B"
     sprite: {fileID: 21300000, guid: a2e86a433aa8b49018db7c80923744bd, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u041A\u0430\u0440\u0442\u043E\u0444\u0435\u043B\u044C"
     sprite: {fileID: 21300000, guid: 44994881295ab4b1084896d685432eff, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u0422\u044B\u043A\u0432\u0430"
     sprite: {fileID: 21300000, guid: 8db812cdee0ff412c94a9c8b74e0b199, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0420\u0435\u0434\u0438\u0441"
-    sprite: {fileID: 21300000, guid: af055d62008e14d7cb107f7e408ab0f1, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u041A\u0440\u0430\u0441\u043D\u044B\u0439 \u043F\u0435\u0440\u0435\u0446"
     sprite: {fileID: 21300000, guid: 0e3588bd6507d4164b8cf749ed372de5, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041A\u043E\u043D\u0438\u043D\u0430"
-    sprite: {fileID: 21300000, guid: af603204026e2456a94a095e52c55613, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0420\u0430\u043A\u0443\u0448\u043A\u0438"
-    sprite: {fileID: 21300000, guid: 7a2fc80c3b3254003bc21e228e6b2cf2, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u041A\u0440\u0435\u0432\u0435\u0442\u043A\u0438"
     sprite: {fileID: 21300000, guid: 8de82cd3a8b8d4fe6be6148f48b9396b, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0421\u0435\u0440\u0435\u0431\u0440\u043E"
-    sprite: {fileID: 21300000, guid: 957df8a9a0ba59e48a0beab060e52259, type: 3}
-    productionRange: {x: 1, y: 2}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0421\u043F\u0435\u0446\u0438\u0438"
-    sprite: {fileID: 21300000, guid: 59310d6494c094eff9ffded8448cca9b, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u041A\u0430\u043B\u044C\u043C\u0430\u0440\u044B"
     sprite: {fileID: 21300000, guid: c346a0526aba14f4285e8d21d3227bad, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0411\u0430\u0440\u0430\u043D\u0438\u043D\u0430"
-    sprite: {fileID: 21300000, guid: 394fa39b4219b4a49a9b64ee3bf35481, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0421\u0430\u0445\u0430\u0440\u043D\u0430\u044F \u0441\u0432\u0435\u043A\u043B\u0430"
-    sprite: {fileID: 21300000, guid: de99b78e476e449da9e89297222df8df, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0421\u0435\u043C\u0435\u043D\u0430 \u043F\u043E\u0434\u0441\u043E\u043B\u043D\u0435\u0447\u043D\u0438\u043A\u0430"
-    sprite: {fileID: 21300000, guid: 475d1ac95f51a4b41969b1c49e47b1f6, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u0427\u0430\u0439"
     sprite: {fileID: 21300000, guid: ffd9c3886ceba4432871778627f9f67f, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u041F\u043E\u043C\u0438\u0434\u043E\u0440\u044B"
     sprite: {fileID: 21300000, guid: bb7faf4c850ef48cdb33c2bd17737619, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0418\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u044B"
-    sprite: {fileID: 21300000, guid: 32fb7e0aee1614fe8ac38467a139e9a6, type: 3}
-    productionRange: {x: 2, y: 4}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0412\u0438\u043D\u043E"
-    sprite: {fileID: 21300000, guid: 17eed5c66afc240adb201899c4537b06, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0412\u043E\u0434\u0430"
-    sprite: {fileID: 21300000, guid: f27b8794232ef48a399fdfa75bcc1569, type: 3}
-    productionRange: {x: 3, y: 7}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u0410\u0440\u0431\u0443\u0437\u044B"
     sprite: {fileID: 21300000, guid: 458b96fa7bc9e4c409f9b7f0b8bb2630, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u041F\u0448\u0435\u043D\u0438\u0446\u0430"
     sprite: {fileID: 21300000, guid: d7bac4c3e8f044f2983b509e3ef144a1, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0414\u0440\u0435\u0432\u0435\u0441\u0438\u043D\u0430"
-    sprite: {fileID: 21300000, guid: e0eac6b76fdd842e88a7f8c75ecffaf4, type: 3}
-    productionRange: {x: 2, y: 4}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u0411\u043E\u043B\u0433\u0430\u0440\u0441\u043A\u0438\u0439 \u043F\u0435\u0440\u0435\u0446"
     sprite: {fileID: 21300000, guid: af9dcf356be2749228f23fff1cc8b7fb, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  storage:
-  - name: "\u042F\u0431\u043B\u043E\u043A\u0438"
-    sprite: {fileID: 21300000, guid: 2aa6ab62866ce4439ab7303f7da55e51, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0410\u0432\u043E\u043A\u0430\u0434\u043E"
-    sprite: {fileID: 21300000, guid: 0b97d02305ef74e7ea0cb413d9cc158a, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0411\u0435\u043A\u043E\u043D"
-    sprite: {fileID: 21300000, guid: 6296e4b1e1bac418193950916fde7248, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0411\u0430\u043D\u0430\u043D\u044B"
-    sprite: {fileID: 21300000, guid: 50e0347d981414d189ff77217bc6e69c, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041F\u0438\u0432\u043E"
-    sprite: {fileID: 21300000, guid: dffc9861413334b5c9cdc5e13614b743, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0420\u0435\u043F\u043A\u0430"
-    sprite: {fileID: 21300000, guid: b83080d92786f42589381bbe09110c3c, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0427\u0435\u0440\u043D\u0438\u043A\u0430"
-    sprite: {fileID: 21300000, guid: 26b4d8692c5e74d17bd9dc28bcbe961b, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0411\u043E\u0431\u044B"
-    sprite: {fileID: 21300000, guid: dc035cb5f75664291ad6fee01bf08790, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0425\u043B\u0435\u0431"
-    sprite: {fileID: 21300000, guid: d0f2ca00017af45a59e0ccc1e81d226f, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041C\u0430\u0441\u043B\u043E"
-    sprite: {fileID: 21300000, guid: b70944d5db9ae4c80b01034b6d3d91bf, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041A\u0430\u043F\u0443\u0441\u0442\u0430"
-    sprite: {fileID: 21300000, guid: 50515b87527a140efb4a20420d8a7afe, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0422\u043E\u0440\u0442\u044B"
-    sprite: {fileID: 21300000, guid: 5e0181b769b64401bac538a3310aa847, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041A\u043E\u043D\u0444\u0435\u0442\u044B"
-    sprite: {fileID: 21300000, guid: 3e4143bdfe6a04baca4f6dc3e9a0093f, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041C\u043E\u0440\u043A\u043E\u0432\u044C"
-    sprite: {fileID: 21300000, guid: 1fbdfb9bf6c2e4397a1d62eed589ec1f, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0413\u0440\u0438\u0431\u044B"
-    sprite: {fileID: 21300000, guid: 90e2b60b2e48d40ad91f58045677f955, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0421\u044B\u0440"
-    sprite: {fileID: 21300000, guid: b0155957134394e3ab756113ac6a977e, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0412\u0438\u0448\u043D\u044F"
-    sprite: {fileID: 21300000, guid: 55e29d9a03fe24caba914d7134c713c5, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041A\u0443\u0440\u0438\u0446\u0430"
-    sprite: {fileID: 21300000, guid: eec0facfca0a442239269e367daaad9c, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0428\u043E\u043A\u043E\u043B\u0430\u0434"
-    sprite: {fileID: 21300000, guid: 6abcc03757a494181bcd2f733079582b, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041A\u043E\u043A\u043E\u0441\u044B"
-    sprite: {fileID: 21300000, guid: b3429463970104bf59512601788bb258, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041A\u043E\u0444\u0435"
-    sprite: {fileID: 21300000, guid: e0654092146b349cdbf2909a9205bca0, type: 3}
-    productionRange: {x: 2, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041F\u0435\u0447\u0435\u043D\u044C\u0435"
-    sprite: {fileID: 21300000, guid: f18a3457c7e504b27ac0ad1e1e1f33e9, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041C\u0435\u0434\u044C"
-    sprite: {fileID: 21300000, guid: d720c32c3c9e22149bd93f9180936449, type: 3}
-    productionRange: {x: 2, y: 3}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041A\u0443\u043A\u0443\u0440\u0443\u0437\u0430"
-    sprite: {fileID: 21300000, guid: 23de36d9c9c854d4dbb503079e846575, type: 3}
-    productionRange: {x: 3, y: 6}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041E\u0433\u0443\u0440\u0446\u044B"
-    sprite: {fileID: 21300000, guid: 76e54cc89c69d4cc0aacf00ba224b504, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0411\u0430\u043A\u043B\u0430\u0436\u0430\u043D\u044B"
-    sprite: {fileID: 21300000, guid: 823b5f8305e9543239179c3bf93c1fcd, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u042F\u0439\u0446\u0430"
-    sprite: {fileID: 21300000, guid: db2a00ff894de47e4a7451b104b04eeb, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0420\u044B\u0431\u0430"
-    sprite: {fileID: 21300000, guid: 711c10851768e431d943e3aea6a5f9fd, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0427\u0435\u0441\u043D\u043E\u043A"
-    sprite: {fileID: 21300000, guid: b359b2288b58743708bd438ac3fa1f7f, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0414\u0440\u0430\u0433\u043E\u0446\u0435\u043D\u043D\u044B\u0435 \u043A\u0430\u043C\u043D\u0438"
-    sprite: {fileID: 21300000, guid: f59401c5c79564fd1ae3bfb0876455a7, type: 3}
-    productionRange: {x: 1, y: 2}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0417\u043E\u043B\u043E\u0442\u043E"
-    sprite: {fileID: 21300000, guid: ec9b2680b3960304aa16905b06c6b0ed, type: 3}
-    productionRange: {x: 1, y: 2}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0413\u0440\u0430\u043D\u0430\u0442\u044B"
-    sprite: {fileID: 21300000, guid: af559321fb6ed4843b3012b08adfebb9, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0412\u0438\u043D\u043E\u0433\u0440\u0430\u0434"
-    sprite: {fileID: 21300000, guid: dc278087418e64fca83b3d94ad1973ca, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0421\u0432\u0438\u043D\u0438\u043D\u0430"
-    sprite: {fileID: 21300000, guid: 4bbf93270b9124286876611d9950e2fd, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041C\u0451\u0434"
-    sprite: {fileID: 21300000, guid: 2fae0e1ac747f47648811811d0b34bfb, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041C\u043E\u0440\u043E\u0436\u0435\u043D\u043E\u0435"
-    sprite: {fileID: 21300000, guid: a9436a583a5db4ccfad049bc57c157d2, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0416\u0435\u043B\u0435\u0437\u043E"
-    sprite: {fileID: 21300000, guid: 7e082cc2cf2a4433d85e388c6bf94234, type: 3}
-    productionRange: {x: 2, y: 3}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041A\u0438\u0432\u0438"
-    sprite: {fileID: 21300000, guid: cc8eede50ee1f49efa314de75e5506e3, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041B\u0438\u043C\u043E\u043D\u044B"
-    sprite: {fileID: 21300000, guid: f6d5f58465fff456eb84bd071b3134b9, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0413\u043E\u0432\u044F\u0434\u0438\u043D\u0430"
-    sprite: {fileID: 21300000, guid: 1618cb37bcd5144fd923b9697be57d63, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0414\u044B\u043D\u0438"
-    sprite: {fileID: 21300000, guid: 636ed3763815e48fb855165bd6e3bc89, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041C\u043E\u043B\u043E\u043A\u043E"
-    sprite: {fileID: 21300000, guid: 23d916487f41d4333b22bd60bc91a000, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041C\u044F\u0442\u0430"
-    sprite: {fileID: 21300000, guid: 23d916487f41d4333b22bd60bc91a000, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041E\u0440\u0435\u0445\u0438"
-    sprite: {fileID: 21300000, guid: fa3924bde7f974cb799caaa5594f3409, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041E\u0441\u044C\u043C\u0438\u043D\u043E\u0433\u0438"
-    sprite: {fileID: 21300000, guid: e505938e24e40403c872a4c05df3c3d8, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041F\u043E\u0434\u0441\u043E\u043B\u043D\u0435\u0447\u043D\u043E\u0435
-      \u043C\u0430\u0441\u043B\u043E"
-    sprite: {fileID: 21300000, guid: 52c12fab9ce564f0792ee7745720dfaa, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041B\u0443\u043A"
-    sprite: {fileID: 21300000, guid: 28b180278493e4d0ea58f28a1c0ba01f, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0410\u043F\u0435\u043B\u044C\u0441\u0438\u043D\u044B"
-    sprite: {fileID: 21300000, guid: 6fc31519aded24a839c1af9e163b6c01, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041F\u0435\u0440\u0441\u0438\u043A\u0438"
-    sprite: {fileID: 21300000, guid: c549cabc0e9504b56a64b9171d8962bc, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0413\u0440\u0443\u0448\u0438"
-    sprite: {fileID: 21300000, guid: 31740551f69654fb7bc2a39c35d57d9c, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0413\u043E\u0440\u043E\u0445"
-    sprite: {fileID: 21300000, guid: 7597de3a70e2c4151875c5fb816cf0e5, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0410\u043D\u0430\u043D\u0430\u0441"
-    sprite: {fileID: 21300000, guid: a2e86a433aa8b49018db7c80923744bd, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041A\u0430\u0440\u0442\u043E\u0444\u0435\u043B\u044C"
-    sprite: {fileID: 21300000, guid: 44994881295ab4b1084896d685432eff, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0422\u044B\u043A\u0432\u0430"
-    sprite: {fileID: 21300000, guid: 8db812cdee0ff412c94a9c8b74e0b199, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0420\u0435\u0434\u0438\u0441"
-    sprite: {fileID: 21300000, guid: af055d62008e14d7cb107f7e408ab0f1, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041A\u0440\u0430\u0441\u043D\u044B\u0439 \u043F\u0435\u0440\u0435\u0446"
-    sprite: {fileID: 21300000, guid: 0e3588bd6507d4164b8cf749ed372de5, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041A\u043E\u043D\u0438\u043D\u0430"
-    sprite: {fileID: 21300000, guid: af603204026e2456a94a095e52c55613, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0420\u0430\u043A\u0443\u0448\u043A\u0438"
-    sprite: {fileID: 21300000, guid: 7a2fc80c3b3254003bc21e228e6b2cf2, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041A\u0440\u0435\u0432\u0435\u0442\u043A\u0438"
-    sprite: {fileID: 21300000, guid: 8de82cd3a8b8d4fe6be6148f48b9396b, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0421\u0435\u0440\u0435\u0431\u0440\u043E"
-    sprite: {fileID: 21300000, guid: 957df8a9a0ba59e48a0beab060e52259, type: 3}
-    productionRange: {x: 1, y: 2}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0421\u043F\u0435\u0446\u0438\u0438"
-    sprite: {fileID: 21300000, guid: 59310d6494c094eff9ffded8448cca9b, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041A\u0430\u043B\u044C\u043C\u0430\u0440\u044B"
-    sprite: {fileID: 21300000, guid: c346a0526aba14f4285e8d21d3227bad, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0411\u0430\u0440\u0430\u043D\u0438\u043D\u0430"
-    sprite: {fileID: 21300000, guid: 394fa39b4219b4a49a9b64ee3bf35481, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
   - name: "\u0421\u0430\u0445\u0430\u0440\u043D\u0430\u044F \u0441\u0432\u0435\u043A\u043B\u0430"
     sprite: {fileID: 21300000, guid: de99b78e476e449da9e89297222df8df, type: 3}
-    productionRange: {x: 2, y: 5}
+    productionRange: {x: 3, y: 5}
     productionAmount: 0
     amountInStorage: 0
     price: 0
-  - name: "\u0421\u0435\u043C\u0435\u043D\u0430 \u043F\u043E\u0434\u0441\u043E\u043B\u043D\u0435\u0447\u043D\u0438\u043A\u0430"
-    sprite: {fileID: 21300000, guid: 475d1ac95f51a4b41969b1c49e47b1f6, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0427\u0430\u0439"
-    sprite: {fileID: 21300000, guid: ffd9c3886ceba4432871778627f9f67f, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041F\u043E\u043C\u0438\u0434\u043E\u0440\u044B"
-    sprite: {fileID: 21300000, guid: bb7faf4c850ef48cdb33c2bd17737619, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0418\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u044B"
-    sprite: {fileID: 21300000, guid: 32fb7e0aee1614fe8ac38467a139e9a6, type: 3}
-    productionRange: {x: 2, y: 4}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0412\u0438\u043D\u043E"
-    sprite: {fileID: 21300000, guid: 17eed5c66afc240adb201899c4537b06, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0412\u043E\u0434\u0430"
-    sprite: {fileID: 21300000, guid: f27b8794232ef48a399fdfa75bcc1569, type: 3}
-    productionRange: {x: 3, y: 7}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0410\u0440\u0431\u0443\u0437\u044B"
-    sprite: {fileID: 21300000, guid: 458b96fa7bc9e4c409f9b7f0b8bb2630, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u041F\u0448\u0435\u043D\u0438\u0446\u0430"
-    sprite: {fileID: 21300000, guid: d7bac4c3e8f044f2983b509e3ef144a1, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0414\u0440\u0435\u0432\u0435\u0441\u0438\u043D\u0430"
-    sprite: {fileID: 21300000, guid: e0eac6b76fdd842e88a7f8c75ecffaf4, type: 3}
-    productionRange: {x: 2, y: 4}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
-  - name: "\u0411\u043E\u043B\u0433\u0430\u0440\u0441\u043A\u0438\u0439 \u043F\u0435\u0440\u0435\u0446"
-    sprite: {fileID: 21300000, guid: af9dcf356be2749228f23fff1cc8b7fb, type: 3}
-    productionRange: {x: 2, y: 5}
-    productionAmount: 0
-    amountInStorage: 0
-    price: 0
+  storage: []
   allIslands: []
-  pricesMultiplier: 1000000000
-  totalProducedResources: 0
+  pricesMultiplier: 1000
+  totalAvailableResources: 0
+  totalIndustries: 0
+  totalPopulation: 0
+  totalRichPopulation: 0
+  totalElitePopulation: 0

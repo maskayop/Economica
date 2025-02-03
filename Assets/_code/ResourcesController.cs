@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using System.Resources;
 using UnityEngine;
 
 public class ResourcesController : MonoBehaviour
 {
-    public Vector2Int industriesAmount;
+    public Vector2Int industriesAmountRange;
+    public int industriesCount;
 
     public List<Resource> producingResources = new List<Resource>();
     public List<Resource> storage = new List<Resource>();
@@ -15,6 +17,7 @@ public class ResourcesController : MonoBehaviour
     [Space(20)]
     public ResourceWidgetsController resourceWidgetController;
 
+    ResourcesManager resourcesManager;
     int currentDay = 0;
 
     void Start()
@@ -32,6 +35,7 @@ public class ResourcesController : MonoBehaviour
     }
     void Init()
     {
+        resourcesManager = ResourcesManager.Instance;
         CalculateIndustries();
         UpdateAvailableResourcesInStorage(true);
         currentDay = GlobalTimeController.Instance.currentDay;
@@ -39,11 +43,11 @@ public class ResourcesController : MonoBehaviour
 
     void CalculateIndustries()
     {
-        int randomAmount = Random.Range(industriesAmount.x, industriesAmount.y);
+        industriesCount = Random.Range(industriesAmountRange.x, industriesAmountRange.y);
 
-        for (int i = 0; i < randomAmount; i++)
+        for (int i = 0; i <= industriesCount; i++)
         {
-            Resource res = ResourcesManager.Instance.GetRandomResource();
+            Resource res = resourcesManager.GetRandomResource();
             
             Resource newres = new Resource();
             newres.name = res.name;
@@ -56,15 +60,13 @@ public class ResourcesController : MonoBehaviour
             producingResources.Add(newres);
         }
 
-        for (int i = 0; i < ResourcesManager.Instance.allResources.Count; i++)
+        for (int i = 0; i < resourcesManager.allResources.Count; i++)
         {
-            Resource res = ResourcesManager.Instance.allResources[i];
+            Resource res = resourcesManager.allResources[i];
 
             Resource storeRes = new Resource();
             storeRes.name = res.name;
             storeRes.sprite = res.sprite;
-            storeRes.productionRange = res.productionRange;
-            storeRes.productionAmount = res.productionAmount;
             storeRes.price = res.price;
 
             storage.Add(storeRes);
@@ -89,7 +91,7 @@ public class ResourcesController : MonoBehaviour
                     storage[x].productionAmount = prodAmount;
                     storage[x].amountInStorage += prodAmount;
                     producingResources[i].amountInStorage += prodAmount;
-                    ResourcesManager.Instance.allResources[x].amountInStorage += prodAmount;
+                    resourcesManager.allResources[x].amountInStorage += prodAmount;
                 }
             }
         }
@@ -103,9 +105,18 @@ public class ResourcesController : MonoBehaviour
 
         for (int i = 0; i < storage.Count; i++)
         {
-            if (storage[i].amountInStorage != 0)
+            if (storage[i].amountInStorage > 0)
+            {
+                storage[i].price = Mathf.FloorToInt((float)(resourcesManager.storage[i].price * resourcesManager.storage[i].amountInStorage) / (float)storage[i].amountInStorage);
                 availableResourcesInStorage.Add(storage[i]);
+            }
+            else if (storage[i].amountInStorage <= 0)
+            {
+                storage[i].price = resourcesManager.storage[i].price * resourcesManager.pricesMultiplier;
+            }
         }
+
+        availableResourcesInStorage.Sort((x, y) => { return x.price.CompareTo(y.price); });
 
         totalAvailableResources = 0;
 
