@@ -27,6 +27,8 @@ public class Character : MonoBehaviour
     Article lastBoughtResource;
     bool canBuy = true;
 
+    ResourcesManager resourcesManager;
+
     void Start()
 	{
 		Init();
@@ -34,6 +36,8 @@ public class Character : MonoBehaviour
 
 	public void Init()
 	{
+        resourcesManager = ResourcesManager.Instance;
+
         characterMovement = GetComponent<CharacterMovement>();
         characterMovement.character = this;
         CharactersManager.Instance.allCharacters.Add(this);
@@ -46,7 +50,7 @@ public class Character : MonoBehaviour
 
     public Island CalculateNextIsland()
     {
-        if (ResourcesManager.Instance.allIslands.Count <= 1)
+        if (resourcesManager.allIslands.Count <= 1)
         {
             Kill();
             return null;
@@ -56,15 +60,15 @@ public class Character : MonoBehaviour
 
         startIsland = finishIsland;
 
-        int randomValue = Random.Range(0, ResourcesManager.Instance.allIslands.Count);
-        island = ResourcesManager.Instance.allIslands[randomValue];
+        int randomValue = Random.Range(0, resourcesManager.allIslands.Count);
+        island = resourcesManager.allIslands[randomValue];
 
         if (island == startIsland)
         {
-            if (randomValue + 1 < ResourcesManager.Instance.allIslands.Count)
-                island = ResourcesManager.Instance.allIslands[randomValue + 1];
+            if (randomValue + 1 < resourcesManager.allIslands.Count)
+                island = resourcesManager.allIslands[randomValue + 1];
             else
-                island = ResourcesManager.Instance.allIslands[0];
+                island = resourcesManager.allIslands[0];
         }
 
         finishIsland = island;

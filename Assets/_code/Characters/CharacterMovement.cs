@@ -14,6 +14,7 @@ public class CharacterMovement : MonoBehaviour
 	float currentPosition = 0;
 	int pointIndex = 0;
 
+	WaypointSection currentSection = null;
 	Waypoint currentWaypoint;
 
 	Waypoint startWaypoint;
@@ -26,9 +27,9 @@ public class CharacterMovement : MonoBehaviour
 		waypointsManager = WaypointsManager.Instance;
 
 		currentCluster = waypointsManager.allClusters[Random.Range(0, waypointsManager.allClusters.Count)];
+		currentSection = currentCluster.islandSection;
         startPoint = transform.position;
-
-		endWaypoint = currentCluster.islandSection.points[0];
+        endWaypoint = currentSection.points[0];
         endPoint = endWaypoint.transform.position;
         character.finishIsland = endWaypoint.island;
     }
@@ -40,7 +41,13 @@ public class CharacterMovement : MonoBehaviour
 
 	void Move()
 	{
-		transform.position = Vector3.Lerp(startPoint, endPoint, currentPosition);
+		if(startWaypoint)
+			startPoint = startWaypoint.transform.position;
+
+        if (endWaypoint)
+			endPoint = endWaypoint.transform.position;
+
+        transform.position = Vector3.Lerp(startPoint, endPoint, currentPosition);
 		currentPosition += speed * Time.deltaTime / Vector3.Distance(startPoint, endPoint);
 
         transform.LookAt(endPoint);
@@ -56,39 +63,50 @@ public class CharacterMovement : MonoBehaviour
 		{
 			currentPosition = 0;
 
-			if (currentCluster)
+			if (currentSection.points.Count == 1)
 			{
-				pointIndex++;
+                startWaypoint = endWaypoint;
+                character.startIsland = startWaypoint.island;
 
-				if (pointIndex + 1 < currentCluster.islandSection.points.Count)
+                Island nextIsland = character.CalculateNextIsland();
+                if (nextIsland)
 				{
-					currentWaypoint = currentCluster.islandSection.points[pointIndex];
+					currentCluster = character.startIsland.waypointCluster;
+					currentSection = GetNextSection(character.startIsland, character.finishIsland);
+                    endWaypoint = currentSection.points[0];
+				}
 
-					startWaypoint = currentCluster.islandSection.points[pointIndex];
-                    startPoint = startWaypoint.transform.position;
-					character.startIsland = currentWaypoint.island;
+                pointIndex = 0;
+            }
+			else
+			{
+                pointIndex++;
+				startWaypoint = currentSection.points[pointIndex];
 
-					Island nextIsland = character.CalculateNextIsland();
-					if(nextIsland)
-						endWaypoint = nextIsland.islandWaypoint;
-
-                    endPoint = endWaypoint.transform.position;
-                    character.finishIsland = endWaypoint.island;
+                if (pointIndex + 1 < currentSection.points.Count)
+				{
+                    endWaypoint = currentSection.points[pointIndex + 1];
                 }
 				else
 				{
-					startWaypoint = endWaypoint;
-                    startPoint = endPoint;
-                    character.startIsland = startWaypoint.island;
-
-                    Island nextIsland = character.CalculateNextIsland();
-                    if (nextIsland)
-                        endWaypoint = nextIsland.islandWaypoint;
-
-                    endPoint = endWaypoint.transform.position;
-                    character.finishIsland = endWaypoint.island;
+                    endWaypoint = character.finishIsland.islandWaypoint;
+					currentSection = character.finishIsland.waypointCluster.islandSection;
+                    pointIndex = 0;
                 }
 			}
+		}
+
+		WaypointSection GetNextSection(Island startIsland, Island finishIsland)
+		{
+			WaypointSection section = null;
+
+			for (int i = 0; i < startIsland.waypointCluster.directions.Count; i++)
+			{
+				if (startIsland.waypointCluster.directions[i].nextIsland == finishIsland)
+					return startIsland.waypointCluster.directions[i].section;
+            }
+
+			return section;
 		}
 	}
 }
