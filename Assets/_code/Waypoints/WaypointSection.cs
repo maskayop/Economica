@@ -3,24 +3,19 @@ using UnityEngine;
 
 public class WaypointSection : MonoBehaviour
 {
-	List<Waypoint> points = new List<Waypoint>();
-
-	public List<Waypoint> Points
-	{
-		private set => points = value;
-		get => points;
-	}
-
-	public bool shouldReverse = false;
+	public List<Waypoint> points = new List<Waypoint>();
 
 	void Start()
 	{
-		CollectPoints();
-		if (shouldReverse)
-			points.Reverse();
+		Init();
 	}
 
-	public void CollectPoints()
+	public void Init()
+	{
+		CollectPoints();
+	}
+
+	void CollectPoints()
 	{
 		foreach (Transform child in transform)
 		{

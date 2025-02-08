@@ -23,12 +23,12 @@ public class ResourceWidgetsController : MonoBehaviour
         widgetsPanel.transform.rotation = CameraController.Instance.mainCamera.transform.rotation;
     }
 
-    public void CreateWidget(Resource res)
+    public void CreateWidget(Article article)
     {
         var p = Instantiate(widgetPrefab, widgetsPanel.transform);
 
         ResourceWidget widget = p.GetComponent<ResourceWidget>();
-        widget.ChangeSprite(res.sprite);
+        widget.ChangeSprite(article.sprite);
         widgets.Add(widget);
 
         ArrangeWidgets();

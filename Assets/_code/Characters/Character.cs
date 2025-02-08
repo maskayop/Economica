@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -14,18 +13,18 @@ public class Character : MonoBehaviour
 	[Space(20)]
     public int cargoHoldCapacity = 10;
     public int cargoHold = 0;
-    public List<Resource> resourcesInCargoHold = new List<Resource>();
+    public List<Article> resourcesInCargoHold = new List<Article>();
 
     [Space(20)]
     public Island startIsland;
     public Island finishIsland;
 
-    public Resource resourceForBuying;
+    public Article resourceForBuying;
 
     [Space(20)]
     public ResourceWidgetsController resourceWidgetController;
 
-    Resource lastBoughtResource;
+    Article lastBoughtResource;
     bool canBuy = true;
 
     void Start()
@@ -86,7 +85,7 @@ public class Character : MonoBehaviour
         Sell();
         Buy();
 
-        startIsland.resourcesController.UpdateAvailableResourcesInStorage(true);
+        startIsland.resourcesController.UpdateAvailableInStorage(true);
 
         foreach (Transform t in resourceWidgetController.widgetsPanel.transform)
             Destroy(t.gameObject);
@@ -121,7 +120,7 @@ public class Character : MonoBehaviour
                     cargoHold -= resourcesInCargoHold[i].amountInStorage;
                     resourcesInCargoHold[i].amountInStorage -= resourcesInCargoHold[i].amountInStorage;
 
-                    startIsland.resourcesController.UpdateAvailableResourcesInStorage(false);
+                    startIsland.resourcesController.UpdateAvailableInStorage(false);
 
                     canBuy = true;
                 }
@@ -134,23 +133,26 @@ public class Character : MonoBehaviour
         if (!canBuy)
             return;
 
-        if (startIsland.resourcesController.availableResourcesInStorage.Count == 0)
+        if (startIsland.resourcesController.availableInStorage.Count == 0)
             return;
 
-        int randomValue = Random.Range(0, startIsland.resourcesController.availableResourcesInStorage.Count);
+        int randomValue = Random.Range(0, startIsland.resourcesController.availableInStorage.Count);
         randomValue = 0;
-        resourceForBuying = startIsland.resourcesController.availableResourcesInStorage[randomValue];
+        resourceForBuying = startIsland.resourcesController.availableInStorage[randomValue];
         
-        if (resourceForBuying.name == lastBoughtResource.name)
+        if (resourceForBuying != null && lastBoughtResource != null)
         {
-            if (randomValue + 1 < startIsland.resourcesController.availableResourcesInStorage.Count)
-                resourceForBuying = startIsland.resourcesController.availableResourcesInStorage[randomValue + 1];
-            else
-                resourceForBuying = startIsland.resourcesController.availableResourcesInStorage[0];
-        }
+            if (resourceForBuying.name == lastBoughtResource.name)
+            {
+                if (randomValue + 1 < startIsland.resourcesController.availableInStorage.Count)
+                    resourceForBuying = startIsland.resourcesController.availableInStorage[randomValue + 1];
+                else
+                    resourceForBuying = startIsland.resourcesController.availableInStorage[0];
+            }
 
-        if (resourceForBuying.name == lastBoughtResource.name)
-            return;
+            if (resourceForBuying.name == lastBoughtResource.name && lastBoughtResource != null)
+                return;
+        }
 
         bool resourceIsExists = false;
 
@@ -165,13 +167,13 @@ public class Character : MonoBehaviour
 
         if (!resourceIsExists)
         {
-            Resource newres = new Resource();
-            newres.name = resourceForBuying.name;
-            newres.sprite = resourceForBuying.sprite;
-            newres.amountInStorage = 0;
-            newres.price = resourceForBuying.price;
+            Article newArticle = new Article();
+            newArticle.name = resourceForBuying.name;
+            newArticle.sprite = resourceForBuying.sprite;
+            newArticle.amountInStorage = 0;
+            newArticle.price = resourceForBuying.price;
 
-            resourcesInCargoHold.Add(newres);
+            resourcesInCargoHold.Add(newArticle);
         }
 
         for (int i = 0; i < resourcesInCargoHold.Count; i++)
@@ -197,7 +199,7 @@ public class Character : MonoBehaviour
             }
         }
 
-        startIsland.resourcesController.UpdateAvailableResourcesInStorage(true);
+        startIsland.resourcesController.UpdateAvailableInStorage(true);
         canBuy = true;
     }
 }

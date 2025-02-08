@@ -1,50 +1,146 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class Direction
+{
+    public string name;
+    public Island nextIsland;
+    public WaypointSection section;
+}
+
 public class WaypointCluster : MonoBehaviour
 {
-	public List<WaypointSection> sections = new();
-	public List<Waypoint> points = new();
+	public Island island;
+    public WaypointSection islandSection;
+    public List<Direction> directions = new();
 
-	public List<Waypoint> Points
-	{
-		private set => points = value;
-		get => points;
-	}
+	[Header("Waypoints Creating")]
+	public GameObject waypointPrefab;
+	public float createdWaypointsSpacing = 10;
+	public float islandCorrectionRadius = 100;
+    public float islandRadiusCorrectionMultiplier = 0.1f;
 
-	[Range(1, 10)]
-	[SerializeField]
-	float collapseDistance = 1;
+	[Range(0, 5)]
+	public int smoothIterations = 1;
+
+    float distance;
+	float distanceFromIsland;
+	List<GameObject> waypoints = new List<GameObject>();
 
     void Start()
     {
         WaypointsManager.Instance.allClusters.Add(this);
-		CollectClusterPoints();
+		CreateIslandToIslandSection();
     }
 
-    void CollectSections()
+	void CreateIslandToIslandSection()
 	{
-		foreach (Transform child in transform)
+		for (int i = 0; i < ResourcesManager.Instance.allIslands.Count; i++)
 		{
-			if (child.TryGetComponent<WaypointSection>(out WaypointSection section))
-				sections.Add(section);
+			if (ResourcesManager.Instance.allIslands[i] != island)
+			{
+				GameObject sectionGO = new GameObject(island.gameObject.name + " - " + ResourcesManager.Instance.allIslands[i].gameObject.name);
+				sectionGO.transform.parent = transform;
+				sectionGO.transform.localPosition = Vector3.zero;
+				sectionGO.transform.localRotation = Quaternion.identity;
+				sectionGO.transform.localScale = Vector3.one;
+
+				WaypointSection section = sectionGO.AddComponent<WaypointSection>();
+
+				CreateIslandToIslandWaypoints(sectionGO.transform, ResourcesManager.Instance.allIslands[i]);
+
+                Direction direction = new Direction();
+                direction.section = section;
+                direction.nextIsland = ResourcesManager.Instance.allIslands[i];
+                direction.name = sectionGO.name;
+
+                directions.Add(direction);
+            }
 		}
 	}
 
-	void CollectClusterPoints()
+	void CreateIslandToIslandWaypoints(Transform parent, Island nextIsland)
 	{
-		CollectSections();
+        waypoints.Clear();
 
-		foreach (var section in sections)
-		{
-			points.AddRange(section.Points);
-		}
+        distance = Vector3.Distance(island.islandWaypoint.transform.position, nextIsland.islandWaypoint.transform.position);
 
-		for (int i = 0; i < (points.Count - 1); i++)
+		float currentAbsolutePosition = 0;
+		float currentNormalizedPosition = 0;
+		int id = 0;
+
+		for (currentAbsolutePosition = 0; currentAbsolutePosition <= distance; currentAbsolutePosition += createdWaypointsSpacing)
 		{
-			float dist = Vector3.Distance(points[i].transform.position, points[i + 1].transform.position);
-			if (dist < collapseDistance)
-				points.RemoveAt(i);
-		}
-	}
+			id++;
+			currentNormalizedPosition = currentAbsolutePosition / distance;
+
+            CreateWaypoint(parent, nextIsland, currentNormalizedPosition);
+        }
+
+        SmoothWay(nextIsland);
+    }
+
+    void CreateWaypoint(Transform parent, Island nextIsland, float currentPosition)
+    {
+        Vector3 position = Vector3.Lerp(island.islandWaypoint.transform.position, nextIsland.islandWaypoint.transform.position, currentPosition);
+
+        for (int i = 0; i < ResourcesManager.Instance.allIslands.Count; i++)
+        {
+            distanceFromIsland = Vector3.Distance(position, ResourcesManager.Instance.allIslands[i].transform.position);
+
+            if (distanceFromIsland <= islandCorrectionRadius)
+            {
+                GameObject waypointGO = Instantiate(waypointPrefab, parent);
+                waypointGO.transform.position = position;
+                waypointGO.transform.localRotation = Quaternion.identity;
+                waypointGO.transform.localScale = Vector3.one;
+
+                CorrectWaypointPosition(ResourcesManager.Instance.allIslands[i], waypointGO);
+
+                waypoints.Add(waypointGO);
+            }
+        }
+
+        for (int i = 0; i < waypoints.Count; i++)
+            waypoints[i].name = "Waypoint " + i;
+    }
+
+    void SmoothWay(Island nextIsland)
+	{
+        if (waypoints.Count >= 2)
+        {
+            for (int s = 0; s < smoothIterations; s++)
+            {
+                for (int i = 0; i < waypoints.Count; i++)
+                {
+                    if (i == 0)
+                        waypoints[i].transform.position = (island.islandWaypoint.transform.position + waypoints[i + 1].transform.position) / 2;
+                    else if (i == waypoints.Count - 1)
+                        waypoints[i].transform.position = (waypoints[i - 1].transform.position + nextIsland.islandWaypoint.transform.position) / 2;
+                    else
+                        waypoints[i].transform.position = (waypoints[i - 1].transform.position + waypoints[i + 1].transform.position) / 2;
+                }
+            }
+        }
+
+        for (int i = 0; i < ResourcesManager.Instance.allIslands.Count; i++)
+        {
+            for (int w = 0; w < waypoints.Count; w++)
+            {
+                distanceFromIsland = Vector3.Distance(waypoints[w].transform.position, ResourcesManager.Instance.allIslands[i].transform.position);
+
+                if (distanceFromIsland <= islandCorrectionRadius)
+                    CorrectWaypointPosition(ResourcesManager.Instance.allIslands[i], waypoints[w]);
+            }
+        }
+    }
+
+    //коррекция позиции, чтобы быть вне островов
+    void CorrectWaypointPosition(Island island, GameObject waypoint)
+    {
+        Vector3 direction = Vector3.Normalize(island.transform.position - waypoint.transform.position);
+        waypoint.transform.position = island.transform.position;
+        waypoint.transform.Translate(direction * -islandRadiusCorrectionMultiplier * islandCorrectionRadius, Space.World);
+    }
 }

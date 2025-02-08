@@ -10,7 +10,7 @@ public class GlobalTimeController : MonoBehaviour
 
     [Space(20)]
     public bool useTimeDeceleration = true;
-    [Range(0.01f, 1f)]
+    [Range(0.001f, 1f)]
     public float miltiplier = 0.01f;
 
     void Awake()

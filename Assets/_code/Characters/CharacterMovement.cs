@@ -28,7 +28,7 @@ public class CharacterMovement : MonoBehaviour
 		currentCluster = waypointsManager.allClusters[Random.Range(0, waypointsManager.allClusters.Count)];
         startPoint = transform.position;
 
-		endWaypoint = currentCluster.Points[0];
+		endWaypoint = currentCluster.islandSection.points[0];
         endPoint = endWaypoint.transform.position;
         character.finishIsland = endWaypoint.island;
     }
@@ -38,22 +38,19 @@ public class CharacterMovement : MonoBehaviour
 		MoveFromPointToPoint();
 	}
 
-	void TransformPosition()
+	void Move()
 	{
 		transform.position = Vector3.Lerp(startPoint, endPoint, currentPosition);
-		var passedDistance = speed * Time.deltaTime;
-		var fullDistance = Vector3.Distance(startPoint, endPoint);
-		var relativePostition = passedDistance / fullDistance;
-		currentPosition += relativePostition;
+		currentPosition += speed * Time.deltaTime / Vector3.Distance(startPoint, endPoint);
 
-		transform.LookAt(endPoint);
+        transform.LookAt(endPoint);
 		Quaternion q = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, transform.eulerAngles.z));
 		transform.rotation = q;
 	}
 
 	void MoveFromPointToPoint()
 	{
-		TransformPosition();
+		Move();
 
 		if (currentPosition >= 1)
 		{
@@ -63,11 +60,11 @@ public class CharacterMovement : MonoBehaviour
 			{
 				pointIndex++;
 
-				if (pointIndex + 1 < currentCluster.Points.Count)
+				if (pointIndex + 1 < currentCluster.islandSection.points.Count)
 				{
-					currentWaypoint = currentCluster.Points[pointIndex];
+					currentWaypoint = currentCluster.islandSection.points[pointIndex];
 
-					startWaypoint = currentCluster.Points[pointIndex];
+					startWaypoint = currentCluster.islandSection.points[pointIndex];
                     startPoint = startWaypoint.transform.position;
 					character.startIsland = currentWaypoint.island;
 

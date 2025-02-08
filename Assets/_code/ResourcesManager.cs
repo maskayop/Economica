@@ -12,14 +12,23 @@ public class Resource
     public int price;
 }
 
+[System.Serializable]
+public class Article
+{
+    public string name;
+    public Sprite sprite;
+    public int amountInStorage;
+    public int price;
+}
+
 public class ResourcesManager : MonoBehaviour
 {
     public static ResourcesManager Instance;
 
     public List<Resource> allResources = new List<Resource>();
-    public List<Resource> storage = new List<Resource>();
+    public List<Article> storage = new List<Article>();
 
-    [HideInInspector]
+    //[HideInInspector]
     public List<Island> allIslands = new List<Island>();
 
     public int pricesMultiplier = 1000000;
@@ -66,7 +75,6 @@ public class ResourcesManager : MonoBehaviour
         for (int i = 0; i < storage.Count; i++)
         {
             storage[i].amountInStorage = 0;
-            storage[i].productionAmount = 0;
         }
 
         for (int i = 0; i < allIslands.Count; i++)
@@ -76,7 +84,6 @@ public class ResourcesManager : MonoBehaviour
                 if (storage[x].name == allIslands[i].resourcesController.storage[x].name)
                 {
                     storage[x].amountInStorage += allIslands[i].resourcesController.storage[x].amountInStorage;
-                    storage[x].productionAmount += allIslands[i].resourcesController.storage[x].productionAmount;
                 }
             }
         }
@@ -90,15 +97,13 @@ public class ResourcesManager : MonoBehaviour
 
         for (int i = 0; i < allResources.Count; i++)
         {
-            Resource newres = new Resource();
-            newres.name = allResources[i].name;
-            newres.sprite = allResources[i].sprite;
-            newres.productionRange = allResources[i].productionRange;
-            newres.productionAmount = allResources[i].productionAmount;
-            newres.amountInStorage = allResources[i].amountInStorage;
-            newres.price = allResources[i].price;
+            Article newArticle = new Article();
+            newArticle.name = allResources[i].name;
+            newArticle.sprite = allResources[i].sprite;
+            newArticle.amountInStorage = allResources[i].amountInStorage;
+            newArticle.price = allResources[i].price;
 
-            storage.Add(newres);
+            storage.Add(newArticle);
         }
     }
 

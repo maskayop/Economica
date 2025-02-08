@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentDay: 1
-  dayLenght: 5
+  dayLenght: 3
   currentTime: 0
   useTimeDeceleration: 1
-  miltiplier: 0.01
+  miltiplier: 0.008

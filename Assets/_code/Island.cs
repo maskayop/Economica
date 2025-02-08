@@ -11,6 +11,7 @@ public class Island : MonoBehaviour
 
 	[Space(20)]
 	public Waypoint islandWaypoint;
+	public WaypointCluster waypointCluster;
 
     int currentDay = 0;
 
@@ -55,6 +56,7 @@ public class Island : MonoBehaviour
 		ResourcesManager.Instance.allIslands.Add(this);
 		ResourcesManager.Instance.totalIndustries += resourcesController.industriesCount;
         ResourcesManager.Instance.UpdatePopulation();
+        waypointCluster.island = this;
     }
 
 	void AddPeople()
@@ -65,19 +67,35 @@ public class Island : MonoBehaviour
 
 	void GoShoping(int customers)
 	{
-		for (int i = 0; i < customers; i++)
-		{
-			//int randomValue = Random.Range(0, resourcesController.availableResourcesInStorage.Count);
+		if (customers == 0)
+			return;
+		
+		int shoppedTotal = 0;
+		int shopped = 0;
 
-			if (resourcesController.availableResourcesInStorage.Count != 0 &&
-				resourcesController.availableResourcesInStorage[0].amountInStorage != 0)
+        for (int i = 0; i < resourcesController.availableInStorage.Count; i++)
+        {
+			if (resourcesController.availableInStorage[i].amountInStorage != 0 && shoppedTotal <= customers)
 			{
-				resourcesController.availableResourcesInStorage[0].amountInStorage--;
-                resourcesController.UpdateAvailableResourcesInStorage(false);
-            }
+                shopped = resourcesController.availableInStorage[i].amountInStorage;
+
+                if (shopped + shoppedTotal <= customers)
+				{
+                    shoppedTotal += shopped;
+                    resourcesController.availableInStorage[i].amountInStorage -= shopped;
+				}
+				else
+				{
+                    resourcesController.availableInStorage[i].amountInStorage -= customers - shoppedTotal;
+                    shoppedTotal = customers;
+                }
+
+			}			
+			else if (shoppedTotal > customers)
+				break;
         }
 
-        resourcesController.UpdateAvailableResourcesInStorage(true);
+        resourcesController.UpdateAvailableInStorage(true);
         ResourcesManager.Instance.UpdateStorage();
     }
 
