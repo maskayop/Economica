@@ -37,15 +37,13 @@ public class Character : MonoBehaviour
 	public void Init()
 	{
         resourcesManager = ResourcesManager.Instance;
-
         characterMovement = GetComponent<CharacterMovement>();
         characterMovement.character = this;
         CharactersManager.Instance.allCharacters.Add(this);
-
         transform.localScale += transform.localScale * Random.Range(-scaleSpread, scaleSpread);
         characterMovement.speed += characterMovement.speed * Random.Range(-speedSpread, speedSpread);
-
         cargoHoldCapacity = Random.Range(cargoHoldCapacitySpread.x, cargoHoldCapacitySpread.y);
+        resourceWidgetController.Init();
     }
 
     public Island CalculateNextIsland()
@@ -91,13 +89,7 @@ public class Character : MonoBehaviour
 
         startIsland.resourcesController.UpdateAvailableInStorage(true);
 
-        foreach (Transform t in resourceWidgetController.widgetsPanel.transform)
-            Destroy(t.gameObject);
-
-        resourceWidgetController.widgets.Clear();
-
-        if(lastBoughtResource != null && cargoHold != 0)
-            resourceWidgetController.CreateWidget(lastBoughtResource);
+        UpdateWidgets();
     }
 
     void Sell()
@@ -205,5 +197,39 @@ public class Character : MonoBehaviour
 
         startIsland.resourcesController.UpdateAvailableInStorage(true);
         canBuy = true;
+    }
+
+    void UpdateWidgets()
+    {
+        if (lastBoughtResource != null && cargoHold != 0)
+        {
+            bool widgetIsExists = false;
+
+            for (int i = 0; i < resourceWidgetController.widgets.Count; i++)
+            {
+                if (resourceWidgetController.widgets[i].articleName == lastBoughtResource.name)
+                {
+                    widgetIsExists = true;
+                    break;
+                }
+            }
+
+            if (!widgetIsExists)
+                resourceWidgetController.CreateWidget(lastBoughtResource);
+        }
+
+        for (int i = 0; i < resourceWidgetController.widgets.Count; i++)
+        {
+            for (int r = 0; r < resourcesInCargoHold.Count; r++)
+            {
+                if (resourceWidgetController.widgets[i].articleName == resourcesInCargoHold[r].name)
+                {
+                    resourceWidgetController.widgets[i].amount = resourcesInCargoHold[r].amountInStorage;
+                    resourceWidgetController.widgets[i].price = resourcesInCargoHold[r].price;
+                }
+            }
+        }
+
+        resourceWidgetController.UpdateWidgets();
     }
 }

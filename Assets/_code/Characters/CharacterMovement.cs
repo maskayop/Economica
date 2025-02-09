@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CharacterMovement : MonoBehaviour
 {
 	public WaypointCluster currentCluster = null;
 
 	public float speed;
+	public float rotationTime = 0.5f;
 
 	[HideInInspector] public Character character;
 
@@ -14,13 +16,18 @@ public class CharacterMovement : MonoBehaviour
 	float currentPosition = 0;
 	int pointIndex = 0;
 
+	Vector3 prevEndPoint;
+	Quaternion prevRotation = Quaternion.identity;
+	bool rotate = false;
+	float currentRotation = 0;
+
 	WaypointSection currentSection = null;
-	Waypoint currentWaypoint;
 
 	Waypoint startWaypoint;
 	Waypoint endWaypoint;
 
 	WaypointsManager waypointsManager;
+
 
     void Start()
 	{
@@ -50,10 +57,36 @@ public class CharacterMovement : MonoBehaviour
         transform.position = Vector3.Lerp(startPoint, endPoint, currentPosition);
 		currentPosition += speed * Time.deltaTime / Vector3.Distance(startPoint, endPoint);
 
-        transform.LookAt(endPoint);
-		Quaternion q = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, transform.eulerAngles.z));
-		transform.rotation = q;
-	}
+		if (prevEndPoint != endPoint)
+			rotate = true;
+
+		Quaternion q = Quaternion.identity;
+
+        if (rotate)
+		{
+			currentRotation += Time.deltaTime;
+
+            transform.LookAt(endPoint);
+			q = Quaternion.Lerp(prevRotation, transform.rotation, currentRotation);
+            q = Quaternion.Euler(new Vector3(0, q.eulerAngles.y, 0));
+            transform.rotation = q;
+		}
+		else
+		{
+            transform.LookAt(endPoint);
+			q = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
+			transform.rotation = q;
+        }
+		
+        prevRotation = transform.rotation;
+        prevEndPoint = endPoint;
+
+		if (currentRotation > rotationTime)
+		{
+			currentRotation = 0;
+			rotate = false;
+        }
+    }
 
 	void MoveFromPointToPoint()
 	{
@@ -76,7 +109,7 @@ public class CharacterMovement : MonoBehaviour
                     endWaypoint = currentSection.points[0];
 				}
 
-                pointIndex = 0;
+                pointIndex = -1;
             }
 			else
 			{
@@ -91,7 +124,7 @@ public class CharacterMovement : MonoBehaviour
 				{
                     endWaypoint = character.finishIsland.islandWaypoint;
 					currentSection = character.finishIsland.waypointCluster.islandSection;
-                    pointIndex = 0;
+                    pointIndex = -1;
                 }
 			}
 		}

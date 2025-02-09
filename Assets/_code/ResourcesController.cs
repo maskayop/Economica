@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Resources;
 using UnityEngine;
 
 public class ResourcesController : MonoBehaviour
@@ -15,7 +14,7 @@ public class ResourcesController : MonoBehaviour
     [HideInInspector] public Island island;
 
     [Space(20)]
-    public ResourceWidgetsController resourceWidgetController;
+    public ResourceWidgetsController resourceWidgetsController;
 
     ResourcesManager resourcesManager;
     int currentDay = 0;
@@ -39,6 +38,7 @@ public class ResourcesController : MonoBehaviour
         CalculateIndustries();
         UpdateAvailableInStorage(true);
         currentDay = GlobalTimeController.Instance.currentDay;
+        CreateWidgets();
     }
 
     void CalculateIndustries()
@@ -105,7 +105,9 @@ public class ResourcesController : MonoBehaviour
         {
             if (storage[i].amountInStorage > 0)
             {
-                storage[i].price = Mathf.FloorToInt((float)(resourcesManager.storage[i].price * resourcesManager.storage[i].amountInStorage) / (float)storage[i].amountInStorage);
+                storage[i].price = Mathf.FloorToInt(
+                    (float)(resourcesManager.storage[i].price * resourcesManager.storage[i].amountInStorage) / (float)storage[i].amountInStorage
+                    );
                 availableInStorage.Add(storage[i]);
             }
             else if (storage[i].amountInStorage <= 0)
@@ -121,17 +123,35 @@ public class ResourcesController : MonoBehaviour
         for (int i = 0; i < storage.Count; i++)
             totalAvailableResources += storage[i].amountInStorage;
 
-        if (!updateWidgets)
-            return;
-
-        foreach (Transform t in resourceWidgetController.widgetsPanel.transform)
-            Destroy(t.gameObject);
-
-        resourceWidgetController.widgets.Clear();
-
-        for (int i = 0; i < availableInStorage.Count; i++)
-        {
-            resourceWidgetController.CreateWidget(availableInStorage[i]);
-        }
+        if (updateWidgets)
+            UpdateWidgets();
     }
+
+    void CreateWidgets()
+    {
+        resourceWidgetsController.Init();
+
+        for (int x = 0; x < storage.Count; x++)
+            resourceWidgetsController.CreateWidget(storage[x]);
+    }
+
+    void UpdateWidgets()
+    {
+        for (int i = 0; i < resourceWidgetsController.widgets.Count; i++)
+        {
+            resourceWidgetsController.widgets[i].amount = 0;
+            resourceWidgetsController.widgets[i].price = 0;
+
+            for (int r = 0; r < availableInStorage.Count; r++)
+            {
+                if (resourceWidgetsController.widgets[i].articleName == availableInStorage[r].name)
+                {
+                    resourceWidgetsController.widgets[i].amount = availableInStorage[r].amountInStorage;
+                    resourceWidgetsController.widgets[i].price = availableInStorage[r].price;
+                }
+            }
+        }
+
+        resourceWidgetsController.UpdateWidgets();
+    }    
 }

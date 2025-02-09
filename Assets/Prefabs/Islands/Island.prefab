@@ -130,14 +130,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bf9c1e0f97fe1e429fd8f68c4fbc721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  industriesAmountRange: {x: 3, y: 6}
+  industriesAmountRange: {x: 3, y: 7}
   industriesCount: 0
   producingResources: []
   storage: []
   availableInStorage: []
   totalAvailableResources: 0
   island: {fileID: 0}
-  resourceWidgetController: {fileID: 3473447236678922743}
+  resourceWidgetsController: {fileID: 3473447236678922743}
 --- !u!114 &7497654141061691735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
   richPopulation: 0
   elitePopulation: 0
   populationGrowthRate: {x: -1, y: 2}
-  popToProdMultiplier: {x: 0.055, y: 0.075}
+  popToProdMultiplier: {x: 0.06, y: 0.08}
   islandWaypoint: {fileID: 786960558078470242}
   waypointCluster: {fileID: 4647685151967198906}
 --- !u!114 &4647685151967198906
@@ -174,10 +174,10 @@ MonoBehaviour:
   islandSection: {fileID: 4961515969477619796}
   directions: []
   waypointPrefab: {fileID: 7015756965715916888, guid: 1a14be29d05adfe40bec32e9b7890938, type: 3}
-  createdWaypointsSpacing: 10
-  islandCorrectionRadius: 40
+  createdWaypointsSpacing: 8
+  islandCorrectionRadius: 42
   islandRadiusCorrectionMultiplier: 1.1
-  smoothIterations: 3
+  smoothIterations: 4
 --- !u!114 &3473447236678922743
 MonoBehaviour:
   m_ObjectHideFlags: 0
