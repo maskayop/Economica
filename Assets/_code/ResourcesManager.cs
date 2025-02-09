@@ -28,7 +28,6 @@ public class ResourcesManager : MonoBehaviour
     public List<Resource> allResources = new List<Resource>();
     public List<Article> storage = new List<Article>();
 
-    //[HideInInspector]
     public List<Island> allIslands = new List<Island>();
 
     public int pricesMultiplier = 1000000;
@@ -61,6 +60,8 @@ public class ResourcesManager : MonoBehaviour
         {
             currentDay = GlobalTimeController.Instance.currentDay;
             UpdateStorage();
+
+            allIslands.Sort((x, y) => { return x.resourcesController.totalAvailableResources.CompareTo(y.resourcesController.totalAvailableResources); });
         }
     }
 

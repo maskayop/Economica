@@ -11,6 +11,8 @@ public class ResourcesController : MonoBehaviour
     public List<Article> availableInStorage = new List<Article>();
     public int totalAvailableResources = 0;
 
+    public Vector2 spoilingFactor = new Vector2(0.85f, 0.95f);
+
     [HideInInspector] public Island island;
 
     [Space(20)]
@@ -92,6 +94,11 @@ public class ResourcesController : MonoBehaviour
                     resourcesManager.allResources[x].amountInStorage += prodAmount;
                 }
             }
+        }
+
+        for (int i = 0; i < availableInStorage.Count; i++)
+        {
+            availableInStorage[i].amountInStorage *= Mathf.CeilToInt(Random.Range(spoilingFactor.x, spoilingFactor.y));
         }
 
         UpdateAvailableInStorage(true);

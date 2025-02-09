@@ -55,16 +55,55 @@ public class Character : MonoBehaviour
         }
 
         Island island = null;
-
         startIsland = finishIsland;
+        
+        int nextIslandId = 0;
+        
+        if (cargoHold == 0)
+        {
+            for (int i = resourcesManager.allIslands.Count - 1; i >= 0; i--)
+            {
+                int randomValue = Random.Range(-2, 2);
+                bool randomBool;
 
-        int randomValue = Random.Range(0, resourcesManager.allIslands.Count);
-        island = resourcesManager.allIslands[randomValue];
+                if (randomValue <= 0)
+                    randomBool = false;
+                else
+                    randomBool = true;
+
+                if (randomBool)
+                {
+                    nextIslandId = i;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < resourcesManager.allIslands.Count; i++)
+            {
+                int randomValue = Random.Range(-2, 2);
+                bool randomBool;
+
+                if (randomValue <= 0)
+                    randomBool = false;
+                else
+                    randomBool = true;
+
+                if (randomBool)
+                {
+                    nextIslandId = i;
+                    break;
+                }
+            }
+        }
+
+        island = resourcesManager.allIslands[nextIslandId];
 
         if (island == startIsland)
         {
-            if (randomValue + 1 < resourcesManager.allIslands.Count)
-                island = resourcesManager.allIslands[randomValue + 1];
+            if (nextIslandId + 1 < resourcesManager.allIslands.Count)
+                island = resourcesManager.allIslands[nextIslandId + 1];
             else
                 island = resourcesManager.allIslands[0];
         }
@@ -129,7 +168,7 @@ public class Character : MonoBehaviour
         if (!canBuy)
             return;
 
-        if (startIsland.resourcesController.availableInStorage.Count == 0)
+        if (startIsland.resourcesController.availableInStorage.Count <= 1)
             return;
 
         int randomValue = Random.Range(0, startIsland.resourcesController.availableInStorage.Count);

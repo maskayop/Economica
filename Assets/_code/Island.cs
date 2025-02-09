@@ -6,6 +6,12 @@ public class Island : MonoBehaviour
 	public int population = 10;
 	public int richPopulation = 0;
 	public int elitePopulation = 0;
+
+	[Space(20)]
+    public int shoppedTotal = 0;
+    public int starvingPopulation = 0;
+
+	[Space(20)]
 	public Vector2Int populationGrowthRate;
 	public Vector2 popToProdMultiplier;
 
@@ -27,7 +33,7 @@ public class Island : MonoBehaviour
             AddPeople();
 
 			//идут закупаться все
-            GoShoping(population);
+            GoShoping(population, true);
 
 			//идут закупаться ещё раз богатые
 			richPopulation = Mathf.FloorToInt(resourcesController.totalAvailableResources / population);
@@ -35,7 +41,7 @@ public class Island : MonoBehaviour
             if (richPopulation >= population)
                 richPopulation = population;
 
-            GoShoping(richPopulation);
+            GoShoping(richPopulation, false);
 
             //идут закупаться ещё раз элита
             elitePopulation = Mathf.FloorToInt(resourcesController.totalAvailableResources / (population * population));
@@ -43,7 +49,7 @@ public class Island : MonoBehaviour
             if (elitePopulation >= population)
                 elitePopulation = population;
 
-            GoShoping(elitePopulation);
+            GoShoping(elitePopulation, false);
 
             currentDay = GlobalTimeController.Instance.currentDay;
         }
@@ -62,15 +68,20 @@ public class Island : MonoBehaviour
 	void AddPeople()
 	{
 		population += Random.Range(populationGrowthRate.x, populationGrowthRate.y + 1);
-		ResourcesManager.Instance.UpdatePopulation();
+		population -= Random.Range(0, starvingPopulation);
+
+		if (population <= 0)
+			population = 1;
+
+        ResourcesManager.Instance.UpdatePopulation();
 	}
 
-	void GoShoping(int customers)
+	void GoShoping(int customers, bool isStarving)
 	{
 		if (customers == 0)
 			return;
 		
-		int shoppedTotal = 0;
+		shoppedTotal = 0;
 		int shopped = 0;
 
         for (int i = 0; i < resourcesController.availableInStorage.Count; i++)
@@ -97,6 +108,9 @@ public class Island : MonoBehaviour
 
         resourcesController.UpdateAvailableInStorage(true);
         ResourcesManager.Instance.UpdateStorage();
+
+		if(isStarving)
+			starvingPopulation = population - shoppedTotal;
     }
 
 	public float GetPopToProdMultiplier()

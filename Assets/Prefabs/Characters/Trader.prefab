@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleSpread: 0.25
-  speedSpread: 0.2
+  speedSpread: 0.15
   cargoHoldCapacitySpread: {x: 50, y: 200}
   cargoHoldCapacity: 10
   cargoHold: 0
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCluster: {fileID: 0}
-  speed: 60
+  speed: 80
   rotationTime: 0.4
   character: {fileID: 0}
 --- !u!114 &6806978784441238533
