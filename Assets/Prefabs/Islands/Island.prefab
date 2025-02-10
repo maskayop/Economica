@@ -131,13 +131,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bf9c1e0f97fe1e429fd8f68c4fbc721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  industriesAmountRange: {x: 3, y: 6}
+  industriesAmountRange: {x: 3, y: 7}
   industriesCount: 0
   producingResources: []
   storage: []
   availableInStorage: []
   totalAvailableResources: 0
-  spoilingFactor: {x: 0.8, y: 0.95}
+  spoilingFactor: {x: 0.75, y: 0.95}
   island: {fileID: 0}
   resourceWidgetsController: {fileID: 3473447236678922743}
 --- !u!114 &7497654141061691735
@@ -179,9 +179,9 @@ MonoBehaviour:
   directions: []
   waypointPrefab: {fileID: 7015756965715916888, guid: 1a14be29d05adfe40bec32e9b7890938, type: 3}
   createdWaypointsSpacing: 8
-  islandCorrectionRadius: 42
-  islandRadiusCorrectionMultiplier: 1.15
-  smoothIterations: 4
+  islandCorrectionRadius: 60
+  islandRadiusCorrectionMultiplier: 0.75
+  smoothIterations: 2
 --- !u!114 &3473447236678922743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +209,14 @@ PrefabInstance:
     - target: {fileID: 604414993872763770, guid: fe0174d4b41cc244c85e5f4484cea773, type: 3}
       propertyPath: m_Name
       value: Resource Widget (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 604414993872763770, guid: fe0174d4b41cc244c85e5f4484cea773, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4654957353601997642, guid: fe0174d4b41cc244c85e5f4484cea773, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8504705633582711280, guid: fe0174d4b41cc244c85e5f4484cea773, type: 3}
       propertyPath: m_LocalPosition.x
@@ -333,6 +341,14 @@ PrefabInstance:
     - target: {fileID: 604414993872763770, guid: fe0174d4b41cc244c85e5f4484cea773, type: 3}
       propertyPath: m_Name
       value: Resource Widget (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 604414993872763770, guid: fe0174d4b41cc244c85e5f4484cea773, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4654957353601997642, guid: fe0174d4b41cc244c85e5f4484cea773, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8504705633582711280, guid: fe0174d4b41cc244c85e5f4484cea773, type: 3}
       propertyPath: m_LocalPosition.x
@@ -510,6 +526,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Waypoint Island
       objectReference: {fileID: 0}
+    - target: {fileID: 7015756965715916888, guid: 7aede720d89992b438abbd73cb528f0d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8057537883745887782, guid: 7aede720d89992b438abbd73cb528f0d, type: 3}
       propertyPath: island
       value: 
@@ -546,6 +566,14 @@ PrefabInstance:
     - target: {fileID: 604414993872763770, guid: fe0174d4b41cc244c85e5f4484cea773, type: 3}
       propertyPath: m_Name
       value: Resource Widget (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 604414993872763770, guid: fe0174d4b41cc244c85e5f4484cea773, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4654957353601997642, guid: fe0174d4b41cc244c85e5f4484cea773, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8504705633582711280, guid: fe0174d4b41cc244c85e5f4484cea773, type: 3}
       propertyPath: m_LocalPosition.x

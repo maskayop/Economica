@@ -419,8 +419,8 @@ Camera:
   m_GameObject: {fileID: 6009753297422213940}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.22352941, g: 0.3254902, b: 0.43137255, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -609,7 +609,7 @@ MonoBehaviour:
   - {fileID: 4619795358637074642}
   - {fileID: 1314448342882149303}
   movementSpeed: 0.25
-  positionLimits: {x: 400, y: 400}
+  positionLimits: {x: 450, y: 450}
   scrollSpeed: 0.1
   maxTranslationY: 600
   minTranslationY: 100

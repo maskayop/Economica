@@ -79,7 +79,12 @@ public class CameraController : MonoBehaviour
 		{
 			startCameraPosition = transform.position;
 		}
-	}
+
+        if (Input.GetMouseButtonDown(2))
+        {
+			transform.position = Vector3.zero;
+        }
+    }
 
 	void SetCamera()
 	{

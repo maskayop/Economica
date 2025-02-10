@@ -31,7 +31,7 @@ public class ResourcesManager : MonoBehaviour
     public List<Island> allIslands = new List<Island>();
 
     public int pricesMultiplier = 1000000;
-    public int totalAvailableResources = 0;
+    public long totalAvailableResources = 0;
     public int totalIndustries = 0;
     public int totalPopulation = 0;
     public int totalRichPopulation = 0;
@@ -121,12 +121,9 @@ public class ResourcesManager : MonoBehaviour
         for (int i = 0; i < storage.Count; i++)
         {
             if (totalAvailableResources != 0 && storage[i].amountInStorage != 0)
-                storage[i].price = Mathf.FloorToInt((float)(pricesMultiplier * totalAvailableResources) / (float)(storage[i].amountInStorage * storage.Count));
+                storage[i].price = Mathf.FloorToInt(pricesMultiplier * (float)totalAvailableResources / (float)storage[i].amountInStorage);
             else
                 storage[i].price = pricesMultiplier * pricesMultiplier;
-
-            if (storage[i].price <= 1)
-                storage[i].price = 1;
         }
     }
 

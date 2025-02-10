@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class CharacterMovement : MonoBehaviour
 {
@@ -101,8 +100,8 @@ public class CharacterMovement : MonoBehaviour
                 startWaypoint = endWaypoint;
                 character.startIsland = startWaypoint.island;
 
-                Island nextIsland = character.CalculateNextIsland();
-                if (nextIsland)
+                character.CalculateNextIsland();
+                if (character.finishIsland)
 				{
 					currentCluster = character.startIsland.waypointCluster;
 					currentSection = GetNextSection(character.startIsland, character.finishIsland);

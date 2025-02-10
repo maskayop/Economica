@@ -26,6 +26,7 @@ public class Character : MonoBehaviour
 
     Article lastBoughtResource;
     bool canBuy = true;
+    int buyIndex = 0;
 
     ResourcesManager resourcesManager;
 
@@ -40,19 +41,27 @@ public class Character : MonoBehaviour
         characterMovement = GetComponent<CharacterMovement>();
         characterMovement.character = this;
         CharactersManager.Instance.allCharacters.Add(this);
+
         transform.localScale += transform.localScale * Random.Range(-scaleSpread, scaleSpread);
+
         characterMovement.speed += characterMovement.speed * Random.Range(-speedSpread, speedSpread);
+        characterMovement.speed /= transform.localScale.x;
+
         cargoHoldCapacity = Random.Range(cargoHoldCapacitySpread.x, cargoHoldCapacitySpread.y);
+        cargoHoldCapacity = Mathf.FloorToInt(cargoHoldCapacity * transform.localScale.x);
+
         resourceWidgetController.Init();
     }
 
-    public Island CalculateNextIsland()
+    public void CalculateNextIsland()
     {
         if (resourcesManager.allIslands.Count <= 1)
         {
             Kill();
-            return null;
+            return;
         }
+
+        Sell();
 
         Island island = null;
         startIsland = finishIsland;
@@ -110,9 +119,9 @@ public class Character : MonoBehaviour
 
         finishIsland = island;
 
-        GoTrading();
-
-        return island;
+        Buy();
+        startIsland.resourcesController.UpdateAvailableInStorage(true);
+        UpdateWidgets();
     }
 
 	public void Kill()
@@ -120,16 +129,6 @@ public class Character : MonoBehaviour
         CharactersManager.Instance.allCharacters.Remove(this);
 		Destroy(gameObject);
 	}
-
-    void GoTrading()
-    {
-        Sell();
-        Buy();
-
-        startIsland.resourcesController.UpdateAvailableInStorage(true);
-
-        UpdateWidgets();
-    }
 
     void Sell()
     {
@@ -157,6 +156,7 @@ public class Character : MonoBehaviour
 
                     startIsland.resourcesController.UpdateAvailableInStorage(false);
 
+                    buyIndex = 0;
                     canBuy = true;
                 }
             }
@@ -171,22 +171,39 @@ public class Character : MonoBehaviour
         if (startIsland.resourcesController.availableInStorage.Count <= 1)
             return;
 
-        int randomValue = Random.Range(0, startIsland.resourcesController.availableInStorage.Count);
-        randomValue = 0;
-        resourceForBuying = startIsland.resourcesController.availableInStorage[randomValue];
+        if (buyIndex >= startIsland.resourcesController.availableInStorage.Count)
+        {
+            buyIndex = 0;
+            return;
+        }
+        
+        resourceForBuying = startIsland.resourcesController.availableInStorage[buyIndex];
         
         if (resourceForBuying != null && lastBoughtResource != null)
         {
             if (resourceForBuying.name == lastBoughtResource.name)
             {
-                if (randomValue + 1 < startIsland.resourcesController.availableInStorage.Count)
-                    resourceForBuying = startIsland.resourcesController.availableInStorage[randomValue + 1];
+                if (buyIndex + 1 < startIsland.resourcesController.availableInStorage.Count)
+                    resourceForBuying = startIsland.resourcesController.availableInStorage[buyIndex + 1];
                 else
                     resourceForBuying = startIsland.resourcesController.availableInStorage[0];
             }
 
             if (resourceForBuying.name == lastBoughtResource.name && lastBoughtResource != null)
                 return;
+        }
+
+        for (int i = 0; i < finishIsland.resourcesController.storage.Count; i++)
+        {
+            if (resourceForBuying.name == finishIsland.resourcesController.storage[i].name)
+            {
+                if (resourceForBuying.price >= finishIsland.resourcesController.storage[i].price)
+                {
+                    buyIndex++;
+                    Buy();
+                    return;
+                }
+            }
         }
 
         bool resourceIsExists = false;

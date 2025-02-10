@@ -21,7 +21,7 @@ public class WaypointCluster : MonoBehaviour
 	public float islandCorrectionRadius = 100;
     public float islandRadiusCorrectionMultiplier = 0.1f;
 
-	[Range(0, 5)]
+	[Range(0, 3)]
 	public int smoothIterations = 1;
 
     float distance;
