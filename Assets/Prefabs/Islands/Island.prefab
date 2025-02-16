@@ -134,7 +134,7 @@ MonoBehaviour:
   money: 0
   pricesSpread: 0.15
   pricesSpreadRandomFactor: 0.05
-  industriesAmountRange: {x: 3, y: 7}
+  industriesAmountRange: {x: 3, y: 6}
   industriesCount: 0
   producingResources: []
   storage: []
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ff49a4f8d63a154c99bf4d60a1a25d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourcesController: {fileID: -5854934910013760451}
+  resCont: {fileID: 0}
   population: 10
   richPopulation: 0
   elitePopulation: 0

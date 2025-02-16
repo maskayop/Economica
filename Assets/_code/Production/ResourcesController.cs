@@ -14,6 +14,7 @@ public class ResourcesController : MonoBehaviour
     public List<Resource> producingResources = new List<Resource>();
     public List<Article> storage = new List<Article>();
     public List<Article> availableInStorage = new List<Article>();
+
     public int totalAvailableResources = 0;
 
     public Vector2 spoilingFactor = new Vector2(0.85f, 0.95f);
@@ -60,10 +61,9 @@ public class ResourcesController : MonoBehaviour
             Resource newres = new Resource();
             newres.name = res.name;
             newres.sprite = res.sprite;
-            newres.productionRange = res.productionRange;
-            newres.productionAmount = Random.Range(newres.productionRange.x, newres.productionRange.y);
-            res.productionAmount += newres.productionAmount;
-            newres.price = res.price;
+            newres.prodRange = res.prodRange;
+            newres.prodAmountBase = Random.Range(newres.prodRange.x, newres.prodRange.y);
+            res.prodAmountBase += newres.prodAmountBase;
 
             producingResources.Add(newres);
         }
@@ -75,7 +75,6 @@ public class ResourcesController : MonoBehaviour
             Article storeArticle = new Article();
             storeArticle.name = res.name;
             storeArticle.sprite = res.sprite;
-            storeArticle.price = res.price;
 
             storage.Add(storeArticle);
         }
@@ -93,24 +92,29 @@ public class ResourcesController : MonoBehaviour
                 if (producingResources[i].name == storage[x].name)
                 {
                     popToProdMult = island.GetPopToProdMultiplier();
-                    prodAmount = Mathf.FloorToInt(producingResources[i].productionAmount * popToProdMult);
+                    prodAmount = Mathf.FloorToInt(producingResources[i].prodAmountBase * popToProdMult);
 
                     if (prodAmount <= 1)
                         prodAmount = 1;
 
-                    storage[x].amountInStorage += prodAmount;
-                    producingResources[i].amountInStorage += prodAmount;
-                    resMan.allResources[x].amountInStorage += prodAmount;
+                    producingResources[i].prodAmountActual = prodAmount;
+                    producingResources[i].totalProduced += prodAmount;
+                    storage[x].inStorage += prodAmount;
+                    resMan.allResources[x].totalProduced += prodAmount;
+                    resMan.storage[x].inStorage += prodAmount;
+
+                    storage[x].price = Mathf.CeilToInt((float)(resMan.storage[x].price * resMan.storage[x].inStorage) / (float)storage[x].inStorage);
                 }
             }
         }
 
         for (int i = 0; i < availableInStorage.Count; i++)
         {
-            availableInStorage[i].amountInStorage *= Mathf.CeilToInt(Random.Range(spoilingFactor.x, spoilingFactor.y));
+            availableInStorage[i].inStorage *= Mathf.CeilToInt(Random.Range(spoilingFactor.x, spoilingFactor.y));
         }
 
         UpdateAvailableInStorage(true);
+        //UpdatePrevAvailableInStorage();
     }
 
     public void UpdateAvailableInStorage(bool updateWidgets)
@@ -119,14 +123,12 @@ public class ResourcesController : MonoBehaviour
 
         for (int i = 0; i < storage.Count; i++)
         {
-            if (storage[i].amountInStorage > 0)
+            if (storage[i].inStorage > 0)
             {
-                storage[i].price = Mathf.CeilToInt(
-                    (float)(resMan.storage[i].price * resMan.storage[i].amountInStorage) / (float)storage[i].amountInStorage
-                    );
+                storage[i].price = Mathf.CeilToInt((float)(resMan.storage[i].price * resMan.storage[i].inStorage) / (float)storage[i].inStorage);
                 availableInStorage.Add(storage[i]);
             }
-            else if (storage[i].amountInStorage <= 0)
+            else if (storage[i].inStorage <= 0)
             {
                 storage[i].price = resMan.pricesMultiplier * resMan.pricesMultiplier;
             }
@@ -137,11 +139,31 @@ public class ResourcesController : MonoBehaviour
         totalAvailableResources = 0;
 
         for (int i = 0; i < storage.Count; i++)
-            totalAvailableResources += storage[i].amountInStorage;
+            totalAvailableResources += storage[i].inStorage;
 
         if (updateWidgets)
             UpdateWidgets();
     }
+    /*
+    void UpdatePrevAvailableInStorage()
+    {
+        prevAvailableInStorage.Clear();
+
+        for (int i = 0; i < storage.Count; i++)
+        {
+            if (storage[i].totalProduced > 0)
+            {
+                Article storeArticle = new Article();
+                storeArticle.name = storage[i].name;
+                storeArticle.totalProduced = storage[i].totalProduced;
+                storage[i].price = Mathf.CeilToInt((float)(resMan.storage[i].price * resMan.storage[i].totalProduced) / (float)storage[i].totalProduced);
+                storeArticle.price = storage[i].price;
+
+                prevAvailableInStorage.Add(storeArticle);
+            }
+        }
+    }
+    */
 
     public void GoShoping(int customers, bool isStarving)
     {
@@ -155,20 +177,20 @@ public class ResourcesController : MonoBehaviour
 
         for (int i = 0; i < availableInStorage.Count; i++)
         {
-            if (availableInStorage[i].amountInStorage != 0 && island.shoppedTotal < customers)
+            if (availableInStorage[i].inStorage != 0 && island.shoppedTotal < customers)
             {
-                shopped = availableInStorage[i].amountInStorage;
+                shopped = availableInStorage[i].inStorage;
 
                 if (shopped + island.shoppedTotal <= customers)
                 {
                     money += availableInStorage[i].price * shopped;
-                    availableInStorage[i].amountInStorage -= shopped;
+                    availableInStorage[i].inStorage -= shopped;
 
                     island.shoppedTotal += shopped;
                 }
                 else if (shopped + island.shoppedTotal > customers)
                 {
-                    availableInStorage[i].amountInStorage -= customers - island.shoppedTotal;
+                    availableInStorage[i].inStorage -= customers - island.shoppedTotal;
                     money += availableInStorage[i].price * (customers - island.shoppedTotal);
 
                     island.shoppedTotal = customers;
@@ -202,7 +224,7 @@ public class ResourcesController : MonoBehaviour
             {
                 if (resourceWidgetsController.widgets[i].articleName == availableInStorage[r].name)
                 {
-                    resourceWidgetsController.widgets[i].amount = availableInStorage[r].amountInStorage;
+                    resourceWidgetsController.widgets[i].amount = availableInStorage[r].inStorage;
                     resourceWidgetsController.widgets[i].price = availableInStorage[r].price;
                 }
             }

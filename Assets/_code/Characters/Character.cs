@@ -154,11 +154,11 @@ public class Character : MonoBehaviour
                         return;
                     }
 
-                    startIsland.resCont.storage[x].amountInStorage += resourcesInCargoHold[i].amountInStorage;
-                    startIsland.resCont.money -= resourcesInCargoHold[i].amountInStorage * startIsland.resCont.storage[x].price;
-                    money += resourcesInCargoHold[i].amountInStorage * startIsland.resCont.storage[x].price;
-                    cargoHold -= resourcesInCargoHold[i].amountInStorage;
-                    resourcesInCargoHold[i].amountInStorage -= resourcesInCargoHold[i].amountInStorage;
+                    startIsland.resCont.storage[x].inStorage += resourcesInCargoHold[i].inStorage;
+                    startIsland.resCont.money -= resourcesInCargoHold[i].inStorage * startIsland.resCont.storage[x].price;
+                    money += resourcesInCargoHold[i].inStorage * startIsland.resCont.storage[x].price;
+                    cargoHold -= resourcesInCargoHold[i].inStorage;
+                    resourcesInCargoHold[i].inStorage -= resourcesInCargoHold[i].inStorage;
 
                     startIsland.resCont.UpdateAvailableInStorage(false);
 
@@ -232,7 +232,7 @@ public class Character : MonoBehaviour
             Article newArticle = new Article();
             newArticle.name = resourceForBuying.name;
             newArticle.sprite = resourceForBuying.sprite;
-            newArticle.amountInStorage = 0;
+            newArticle.inStorage = 0;
             newArticle.price = resourceForBuying.price;
 
             resourcesInCargoHold.Add(newArticle);
@@ -240,23 +240,23 @@ public class Character : MonoBehaviour
 
         for (int i = 0; i < resourcesInCargoHold.Count; i++)
         {
-            if (resourcesInCargoHold[i].name == resourceForBuying.name && resourcesInCargoHold[i].amountInStorage == 0)
+            if (resourcesInCargoHold[i].name == resourceForBuying.name && resourcesInCargoHold[i].inStorage == 0)
             {
-                if (resourceForBuying.amountInStorage > cargoHoldCapacity)
+                if (resourceForBuying.inStorage > cargoHoldCapacity)
                 {
-                    resourcesInCargoHold[i].amountInStorage += cargoHoldCapacity;
+                    resourcesInCargoHold[i].inStorage += cargoHoldCapacity;
                     cargoHold += cargoHoldCapacity;
                     money -= cargoHoldCapacity * resourcesInCargoHold[i].price;
                     startIsland.resCont.money += cargoHoldCapacity * resourcesInCargoHold[i].price;
-                    resourceForBuying.amountInStorage -= cargoHoldCapacity;
+                    resourceForBuying.inStorage -= cargoHoldCapacity;
                 }
                 else
                 {
-                    resourcesInCargoHold[i].amountInStorage += resourceForBuying.amountInStorage;
-                    cargoHold += resourceForBuying.amountInStorage;
-                    money -= resourceForBuying.amountInStorage * resourceForBuying.price;
-                    startIsland.resCont.money += resourceForBuying.amountInStorage * resourceForBuying.price;
-                    resourceForBuying.amountInStorage -= resourceForBuying.amountInStorage;
+                    resourcesInCargoHold[i].inStorage += resourceForBuying.inStorage;
+                    cargoHold += resourceForBuying.inStorage;
+                    money -= resourceForBuying.inStorage * resourceForBuying.price;
+                    startIsland.resCont.money += resourceForBuying.inStorage * resourceForBuying.price;
+                    resourceForBuying.inStorage -= resourceForBuying.inStorage;
                 }
 
                 lastBoughtResource = resourceForBuying;
@@ -292,7 +292,7 @@ public class Character : MonoBehaviour
             {
                 if (resourceWidgetController.widgets[i].articleName == resourcesInCargoHold[r].name)
                 {
-                    resourceWidgetController.widgets[i].amount = resourcesInCargoHold[r].amountInStorage;
+                    resourceWidgetController.widgets[i].amount = resourcesInCargoHold[r].inStorage;
                     resourceWidgetController.widgets[i].price = resourcesInCargoHold[r].price;
                 }
             }

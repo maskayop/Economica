@@ -6,10 +6,10 @@ public class Resource
 {
     public string name;
     public Sprite sprite;
-    public Vector2Int productionRange;
-    public int productionAmount;
-    public int amountInStorage;
-    public int price;
+    public Vector2Int prodRange;
+    public int prodAmountBase;
+    public int prodAmountActual;
+    public int totalProduced;
 }
 
 [System.Serializable]
@@ -17,7 +17,7 @@ public class Article
 {
     public string name;
     public Sprite sprite;
-    public int amountInStorage;
+    public int inStorage;
     public int price;
 }
 
@@ -30,7 +30,7 @@ public class ResourcesManager : MonoBehaviour
 
     public List<Island> allIslands = new List<Island>();
 
-    public int pricesMultiplier = 1000000;
+    public int pricesMultiplier = 1000;
     public long totalAvailableResources = 0;
     public int totalIndustries = 0;
     public int totalPopulation = 0;
@@ -60,6 +60,8 @@ public class ResourcesManager : MonoBehaviour
         if (GlobalTimeController.Instance.currentDay != currentDay)
         {
             currentDay = GlobalTimeController.Instance.currentDay;
+
+            UpdateAllResources();
             UpdateStorage();
             UpdateMoney();
 
@@ -73,12 +75,30 @@ public class ResourcesManager : MonoBehaviour
         return resource;
     }
 
+    void UpdateAllResources()
+    {
+        for (int i = 0; i < allResources.Count; i++)
+            allResources[i].prodAmountActual = 0;
+
+        for (int i = 0; i < allIslands.Count; i++)
+        {
+            for (int p = 0; p < allIslands[i].resCont.producingResources.Count; p++)
+            {
+                for (int x = 0; x < allResources.Count; x++)
+                {                
+                    if (allResources[x].name == allIslands[i].resCont.producingResources[p].name)
+                    {
+                        allResources[x].prodAmountActual += allIslands[i].resCont.producingResources[p].prodAmountActual;
+                    }
+                }
+            }
+        }
+    }
+
     public void UpdateStorage()
     {
         for (int i = 0; i < storage.Count; i++)
-        {
-            storage[i].amountInStorage = 0;
-        }
+            storage[i].inStorage = 0;
 
         for (int i = 0; i < allIslands.Count; i++)
         {
@@ -86,7 +106,7 @@ public class ResourcesManager : MonoBehaviour
             {
                 if (storage[x].name == allIslands[i].resCont.storage[x].name)
                 {
-                    storage[x].amountInStorage += allIslands[i].resCont.storage[x].amountInStorage;
+                    storage[x].inStorage += allIslands[i].resCont.storage[x].inStorage;
                 }
             }
         }
@@ -103,8 +123,7 @@ public class ResourcesManager : MonoBehaviour
             Article newArticle = new Article();
             newArticle.name = allResources[i].name;
             newArticle.sprite = allResources[i].sprite;
-            newArticle.amountInStorage = allResources[i].amountInStorage;
-            newArticle.price = allResources[i].price;
+            newArticle.inStorage = allResources[i].totalProduced;
 
             storage.Add(newArticle);
         }
@@ -118,12 +137,12 @@ public class ResourcesManager : MonoBehaviour
         totalAvailableResources = 0;
 
         for (int i = 0; i < storage.Count; i++)
-            totalAvailableResources += storage[i].amountInStorage;
+            totalAvailableResources += storage[i].inStorage;
 
         for (int i = 0; i < storage.Count; i++)
         {
-            if (totalAvailableResources != 0 && storage[i].amountInStorage != 0)
-                storage[i].price = Mathf.CeilToInt(pricesMultiplier * (float)totalAvailableResources / (float)storage[i].amountInStorage);
+            if (totalAvailableResources != 0 && storage[i].inStorage != 0)
+                storage[i].price = Mathf.CeilToInt(pricesMultiplier * (float)totalAvailableResources / (float)storage[i].inStorage);
             else
                 storage[i].price = pricesMultiplier * pricesMultiplier;
         }
