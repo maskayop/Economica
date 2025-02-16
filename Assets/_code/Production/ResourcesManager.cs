@@ -36,6 +36,7 @@ public class ResourcesManager : MonoBehaviour
     public int totalPopulation = 0;
     public int totalRichPopulation = 0;
     public int totalElitePopulation = 0;
+    public long totalMoney = 0;
 
     int currentDay = 0;
 
@@ -60,8 +61,9 @@ public class ResourcesManager : MonoBehaviour
         {
             currentDay = GlobalTimeController.Instance.currentDay;
             UpdateStorage();
+            UpdateMoney();
 
-            allIslands.Sort((x, y) => { return x.resourcesController.totalAvailableResources.CompareTo(y.resourcesController.totalAvailableResources); });
+            allIslands.Sort((x, y) => { return x.resCont.totalAvailableResources.CompareTo(y.resCont.totalAvailableResources); });
         }
     }
 
@@ -82,9 +84,9 @@ public class ResourcesManager : MonoBehaviour
         {
             for (int x = 0; x < storage.Count; x++)
             {
-                if (storage[x].name == allIslands[i].resourcesController.storage[x].name)
+                if (storage[x].name == allIslands[i].resCont.storage[x].name)
                 {
-                    storage[x].amountInStorage += allIslands[i].resourcesController.storage[x].amountInStorage;
+                    storage[x].amountInStorage += allIslands[i].resCont.storage[x].amountInStorage;
                 }
             }
         }
@@ -121,7 +123,7 @@ public class ResourcesManager : MonoBehaviour
         for (int i = 0; i < storage.Count; i++)
         {
             if (totalAvailableResources != 0 && storage[i].amountInStorage != 0)
-                storage[i].price = Mathf.FloorToInt(pricesMultiplier * (float)totalAvailableResources / (float)storage[i].amountInStorage);
+                storage[i].price = Mathf.CeilToInt(pricesMultiplier * (float)totalAvailableResources / (float)storage[i].amountInStorage);
             else
                 storage[i].price = pricesMultiplier * pricesMultiplier;
         }
@@ -138,6 +140,16 @@ public class ResourcesManager : MonoBehaviour
             totalPopulation += allIslands[i].population;
             totalRichPopulation += allIslands[i].richPopulation;
             totalElitePopulation += allIslands[i].elitePopulation;
+        }
+    }
+
+    public void UpdateMoney()
+    {
+        totalMoney = 0;
+
+        for (int i = 0; i < allIslands.Count; i++)
+        {
+            totalMoney += allIslands[i].GetComponent<ResourcesController>().money;
         }
     }
 }

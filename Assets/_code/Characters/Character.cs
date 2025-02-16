@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-	CharacterMovement characterMovement;
+    public long money;
 
+    [Space(20)]
     [Range(0, 1)] public float scaleSpread = 0;
     [Range(0, 1)] public float speedSpread = 0;
     
@@ -28,6 +29,7 @@ public class Character : MonoBehaviour
     bool canBuy = true;
     int buyIndex = 0;
 
+	CharacterMovement characterMovement;
     ResourcesManager resourcesManager;
 
     void Start()
@@ -120,7 +122,7 @@ public class Character : MonoBehaviour
         finishIsland = island;
 
         Buy();
-        startIsland.resourcesController.UpdateAvailableInStorage(true);
+        
         UpdateWidgets();
     }
 
@@ -138,29 +140,35 @@ public class Character : MonoBehaviour
             return;
         }
 
+        startIsland.resCont.UpdateAvailableInStorage(false);
+
         for (int i = 0; i < resourcesInCargoHold.Count; i++)
         {
-            for (int x = 0; x < startIsland.resourcesController.storage.Count; x++)
+            for (int x = 0; x < startIsland.resCont.storage.Count; x++)
             {
-                if (resourcesInCargoHold[i].name == startIsland.resourcesController.storage[x].name)
+                if (resourcesInCargoHold[i].name == startIsland.resCont.storage[x].name)
                 {
-                    if (resourcesInCargoHold[i].price >= startIsland.resourcesController.storage[x].price)
+                    if (resourcesInCargoHold[i].price >= startIsland.resCont.storage[x].price)
                     {
                         canBuy = false;
                         return;
                     }
 
-                    startIsland.resourcesController.storage[x].amountInStorage += resourcesInCargoHold[i].amountInStorage;
+                    startIsland.resCont.storage[x].amountInStorage += resourcesInCargoHold[i].amountInStorage;
+                    startIsland.resCont.money -= resourcesInCargoHold[i].amountInStorage * startIsland.resCont.storage[x].price;
+                    money += resourcesInCargoHold[i].amountInStorage * startIsland.resCont.storage[x].price;
                     cargoHold -= resourcesInCargoHold[i].amountInStorage;
                     resourcesInCargoHold[i].amountInStorage -= resourcesInCargoHold[i].amountInStorage;
 
-                    startIsland.resourcesController.UpdateAvailableInStorage(false);
+                    startIsland.resCont.UpdateAvailableInStorage(false);
 
                     buyIndex = 0;
                     canBuy = true;
                 }
             }
         }
+
+        startIsland.resCont.UpdateAvailableInStorage(true);
     }
 
     void Buy()
@@ -168,36 +176,38 @@ public class Character : MonoBehaviour
         if (!canBuy)
             return;
 
-        if (startIsland.resourcesController.availableInStorage.Count <= 1)
+        if (startIsland.resCont.availableInStorage.Count <= 1)
             return;
 
-        if (buyIndex >= startIsland.resourcesController.availableInStorage.Count)
+        if (buyIndex >= startIsland.resCont.availableInStorage.Count)
         {
             buyIndex = 0;
             return;
         }
-        
-        resourceForBuying = startIsland.resourcesController.availableInStorage[buyIndex];
+
+        startIsland.resCont.UpdateAvailableInStorage(false);
+
+        resourceForBuying = startIsland.resCont.availableInStorage[buyIndex];
         
         if (resourceForBuying != null && lastBoughtResource != null)
         {
             if (resourceForBuying.name == lastBoughtResource.name)
             {
-                if (buyIndex + 1 < startIsland.resourcesController.availableInStorage.Count)
-                    resourceForBuying = startIsland.resourcesController.availableInStorage[buyIndex + 1];
+                if (buyIndex + 1 < startIsland.resCont.availableInStorage.Count)
+                    resourceForBuying = startIsland.resCont.availableInStorage[buyIndex + 1];
                 else
-                    resourceForBuying = startIsland.resourcesController.availableInStorage[0];
+                    resourceForBuying = startIsland.resCont.availableInStorage[0];
             }
 
             if (resourceForBuying.name == lastBoughtResource.name && lastBoughtResource != null)
                 return;
         }
 
-        for (int i = 0; i < finishIsland.resourcesController.storage.Count; i++)
+        for (int i = 0; i < finishIsland.resCont.storage.Count; i++)
         {
-            if (resourceForBuying.name == finishIsland.resourcesController.storage[i].name)
+            if (resourceForBuying.name == finishIsland.resCont.storage[i].name)
             {
-                if (resourceForBuying.price >= finishIsland.resourcesController.storage[i].price)
+                if (resourceForBuying.price >= finishIsland.resCont.storage[i].price)
                 {
                     buyIndex++;
                     Buy();
@@ -236,14 +246,16 @@ public class Character : MonoBehaviour
                 {
                     resourcesInCargoHold[i].amountInStorage += cargoHoldCapacity;
                     cargoHold += cargoHoldCapacity;
-
+                    money -= cargoHoldCapacity * resourcesInCargoHold[i].price;
+                    startIsland.resCont.money += cargoHoldCapacity * resourcesInCargoHold[i].price;
                     resourceForBuying.amountInStorage -= cargoHoldCapacity;
                 }
                 else
                 {
                     resourcesInCargoHold[i].amountInStorage += resourceForBuying.amountInStorage;
                     cargoHold += resourceForBuying.amountInStorage;
-
+                    money -= resourceForBuying.amountInStorage * resourceForBuying.price;
+                    startIsland.resCont.money += resourceForBuying.amountInStorage * resourceForBuying.price;
                     resourceForBuying.amountInStorage -= resourceForBuying.amountInStorage;
                 }
 
@@ -251,7 +263,7 @@ public class Character : MonoBehaviour
             }
         }
 
-        startIsland.resourcesController.UpdateAvailableInStorage(true);
+        startIsland.resCont.UpdateAvailableInStorage(true);
         canBuy = true;
     }
 

@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class ResourcesController : MonoBehaviour
 {
+    public long money;
+    [Range(0, 1)] public float pricesSpread = 0;
+    [Range(0, 0.1f)] public float pricesSpreadRandomFactor = 0;
+
+    [Space(20)]
     public Vector2Int industriesAmountRange;
     public int industriesCount;
 
@@ -18,7 +23,7 @@ public class ResourcesController : MonoBehaviour
     [Space(20)]
     public ResourceWidgetsController resourceWidgetsController;
 
-    ResourcesManager resourcesManager;
+    ResourcesManager resMan;
     int currentDay = 0;
 
     void Start()
@@ -36,11 +41,12 @@ public class ResourcesController : MonoBehaviour
     }
     void Init()
     {
-        resourcesManager = ResourcesManager.Instance;
+        resMan = ResourcesManager.Instance;
         CalculateIndustries();
         UpdateAvailableInStorage(true);
         currentDay = GlobalTimeController.Instance.currentDay;
         CreateWidgets();
+        pricesSpread = Random.Range(pricesSpread - pricesSpreadRandomFactor, pricesSpread + pricesSpreadRandomFactor);
     }
 
     void CalculateIndustries()
@@ -49,7 +55,7 @@ public class ResourcesController : MonoBehaviour
 
         for (int i = 0; i < industriesCount; i++)
         {
-            Resource res = resourcesManager.GetRandomResource();
+            Resource res = resMan.GetRandomResource();
             
             Resource newres = new Resource();
             newres.name = res.name;
@@ -62,9 +68,9 @@ public class ResourcesController : MonoBehaviour
             producingResources.Add(newres);
         }
 
-        for (int i = 0; i < resourcesManager.allResources.Count; i++)
+        for (int i = 0; i < resMan.allResources.Count; i++)
         {
-            Resource res = resourcesManager.allResources[i];
+            Resource res = resMan.allResources[i];
 
             Article storeArticle = new Article();
             storeArticle.name = res.name;
@@ -77,21 +83,24 @@ public class ResourcesController : MonoBehaviour
 
     void Produce()
     {
+        float popToProdMult = 0;
+        int prodAmount = 0;
+
         for (int i = 0; i < producingResources.Count; i++)
         {
             for (int x = 0; x < storage.Count; x++)
             {
                 if (producingResources[i].name == storage[x].name)
                 {
-                    float popToProdMult = island.GetPopToProdMultiplier();
-                    int prodAmount = Mathf.FloorToInt(producingResources[i].productionAmount * popToProdMult);
+                    popToProdMult = island.GetPopToProdMultiplier();
+                    prodAmount = Mathf.FloorToInt(producingResources[i].productionAmount * popToProdMult);
 
                     if (prodAmount <= 1)
                         prodAmount = 1;
 
                     storage[x].amountInStorage += prodAmount;
                     producingResources[i].amountInStorage += prodAmount;
-                    resourcesManager.allResources[x].amountInStorage += prodAmount;
+                    resMan.allResources[x].amountInStorage += prodAmount;
                 }
             }
         }
@@ -112,14 +121,14 @@ public class ResourcesController : MonoBehaviour
         {
             if (storage[i].amountInStorage > 0)
             {
-                storage[i].price = Mathf.FloorToInt(
-                    (float)(resourcesManager.storage[i].price * resourcesManager.storage[i].amountInStorage) / (float)storage[i].amountInStorage
+                storage[i].price = Mathf.CeilToInt(
+                    (float)(resMan.storage[i].price * resMan.storage[i].amountInStorage) / (float)storage[i].amountInStorage
                     );
                 availableInStorage.Add(storage[i]);
             }
             else if (storage[i].amountInStorage <= 0)
             {
-                storage[i].price = resourcesManager.storage[i].price * resourcesManager.pricesMultiplier;
+                storage[i].price = resMan.pricesMultiplier * resMan.pricesMultiplier;
             }
         }
 
@@ -132,6 +141,46 @@ public class ResourcesController : MonoBehaviour
 
         if (updateWidgets)
             UpdateWidgets();
+    }
+
+    public void GoShoping(int customers, bool isStarving)
+    {
+        if (customers == 0)
+            return;
+
+        UpdateAvailableInStorage(false);
+
+        island.shoppedTotal = 0;
+        int shopped = 0;
+
+        for (int i = 0; i < availableInStorage.Count; i++)
+        {
+            if (availableInStorage[i].amountInStorage != 0 && island.shoppedTotal < customers)
+            {
+                shopped = availableInStorage[i].amountInStorage;
+
+                if (shopped + island.shoppedTotal <= customers)
+                {
+                    money += availableInStorage[i].price * shopped;
+                    availableInStorage[i].amountInStorage -= shopped;
+
+                    island.shoppedTotal += shopped;
+                }
+                else if (shopped + island.shoppedTotal > customers)
+                {
+                    availableInStorage[i].amountInStorage -= customers - island.shoppedTotal;
+                    money += availableInStorage[i].price * (customers - island.shoppedTotal);
+
+                    island.shoppedTotal = customers;
+                }
+            }
+            else
+                break;
+        }
+
+        resMan.UpdateStorage();
+        resMan.UpdateMoney();
+        UpdateAvailableInStorage(true);
     }
 
     void CreateWidgets()

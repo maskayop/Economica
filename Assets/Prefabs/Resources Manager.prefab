@@ -293,3 +293,4 @@ MonoBehaviour:
   totalPopulation: 0
   totalRichPopulation: 0
   totalElitePopulation: 0
+  totalMoney: 0

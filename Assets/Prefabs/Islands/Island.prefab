@@ -131,6 +131,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bf9c1e0f97fe1e429fd8f68c4fbc721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  money: 0
+  pricesSpread: 0.15
+  pricesSpreadRandomFactor: 0.05
   industriesAmountRange: {x: 3, y: 7}
   industriesCount: 0
   producingResources: []

@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class Island : MonoBehaviour
 {
-	public ResourcesController resourcesController;
+	[HideInInspector]
+	public ResourcesController resCont;
+
 	public int population = 10;
 	public int richPopulation = 0;
 	public int elitePopulation = 0;
@@ -34,9 +36,9 @@ public class Island : MonoBehaviour
 
 			//идут закупаться все
             GoShoping(population, true);
-
+			/*
 			//идут закупаться ещё раз богатые
-			richPopulation = Mathf.FloorToInt(resourcesController.totalAvailableResources / population);
+			richPopulation = Mathf.FloorToInt(resCont.totalAvailableResources / population);
 
             if (richPopulation >= population)
                 richPopulation = population;
@@ -44,23 +46,24 @@ public class Island : MonoBehaviour
             GoShoping(richPopulation, false);
 
             //идут закупаться ещё раз элита
-            elitePopulation = Mathf.FloorToInt(resourcesController.totalAvailableResources / (population * population));
+            elitePopulation = Mathf.FloorToInt(resCont.totalAvailableResources / (population * population));
 
             if (elitePopulation >= population)
                 elitePopulation = population;
 
             GoShoping(elitePopulation, false);
-
+			*/
             currentDay = GlobalTimeController.Instance.currentDay;
         }
     }
 
 	public void Init()
 	{
+        resCont = GetComponent<ResourcesController>();
         currentDay = GlobalTimeController.Instance.currentDay;
-		resourcesController.island = this;
+		resCont.island = this;
 		ResourcesManager.Instance.allIslands.Add(this);
-		ResourcesManager.Instance.totalIndustries += resourcesController.industriesCount;
+		ResourcesManager.Instance.totalIndustries += resCont.industriesCount;
         ResourcesManager.Instance.UpdatePopulation();
         waypointCluster.island = this;
     }
@@ -78,36 +81,7 @@ public class Island : MonoBehaviour
 
 	void GoShoping(int customers, bool isStarving)
 	{
-		if (customers == 0)
-			return;
-		
-		shoppedTotal = 0;
-		int shopped = 0;
-
-        for (int i = 0; i < resourcesController.availableInStorage.Count; i++)
-        {
-			if (resourcesController.availableInStorage[i].amountInStorage != 0 && shoppedTotal <= customers)
-			{
-                shopped = resourcesController.availableInStorage[i].amountInStorage;
-
-                if (shopped + shoppedTotal <= customers)
-				{
-                    shoppedTotal += shopped;
-                    resourcesController.availableInStorage[i].amountInStorage -= shopped;
-				}
-				else
-				{
-                    resourcesController.availableInStorage[i].amountInStorage -= customers - shoppedTotal;
-                    shoppedTotal = customers;
-                }
-
-			}			
-			else if (shoppedTotal > customers)
-				break;
-        }
-
-        resourcesController.UpdateAvailableInStorage(true);
-        ResourcesManager.Instance.UpdateStorage();
+        resCont.GoShoping(customers, isStarving);
 
 		if(isStarving)
 			starvingPopulation = population - shoppedTotal;

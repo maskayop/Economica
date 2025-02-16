@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (75)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 98
@@ -192,6 +196,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (84)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -255,6 +263,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (45)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -122
@@ -316,6 +328,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (40)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -379,6 +395,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -214
@@ -440,6 +460,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -503,6 +527,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -144
@@ -564,6 +592,10 @@ PrefabInstance:
     - target: {fileID: 7751957713316639188, guid: 557955c89652f7f44a6abf2883241d6e, type: 3}
       propertyPath: m_Name
       value: Island (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7751957713316639188, guid: 557955c89652f7f44a6abf2883241d6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8093990946068907038, guid: 557955c89652f7f44a6abf2883241d6e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -667,6 +699,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island Snowy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8834717083587035625, guid: e71423b1c2c050f4eb78ddf927deac3d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -688,6 +724,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (55)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -751,6 +791,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (79)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 183
@@ -812,6 +856,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (95)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -875,6 +923,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (80)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 203
@@ -936,6 +988,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (42)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -999,6 +1055,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -37
@@ -1060,6 +1120,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (49)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1123,6 +1187,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -167
@@ -1184,6 +1252,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1247,6 +1319,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (88)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -57
@@ -1308,6 +1384,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (56)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1371,6 +1451,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7751957713316639188, guid: 557955c89652f7f44a6abf2883241d6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8093990946068907038, guid: 557955c89652f7f44a6abf2883241d6e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 272
@@ -1429,6 +1513,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2140674828}
     m_Modifications:
+    - target: {fileID: -5854934910013760451, guid: 557955c89652f7f44a6abf2883241d6e, type: 3}
+      propertyPath: spoilingFactor.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5854934910013760451, guid: 557955c89652f7f44a6abf2883241d6e, type: 3}
+      propertyPath: spoilingFactor.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5854934910013760451, guid: 557955c89652f7f44a6abf2883241d6e, type: 3}
+      propertyPath: industriesAmountRange.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -5854934910013760451, guid: 557955c89652f7f44a6abf2883241d6e, type: 3}
+      propertyPath: industriesAmountRange.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497654141061691735, guid: 557955c89652f7f44a6abf2883241d6e, type: 3}
+      propertyPath: popToProdMultiplier.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497654141061691735, guid: 557955c89652f7f44a6abf2883241d6e, type: 3}
+      propertyPath: popToProdMultiplier.y
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7751957713316639188, guid: 557955c89652f7f44a6abf2883241d6e, type: 3}
       propertyPath: m_Name
       value: Island (1)
@@ -1581,6 +1689,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29
@@ -1642,6 +1754,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (82)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1705,6 +1821,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (57)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 141
@@ -1766,6 +1886,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1829,6 +1953,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7751957713316639188, guid: 557955c89652f7f44a6abf2883241d6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8093990946068907038, guid: 557955c89652f7f44a6abf2883241d6e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -439.53094
@@ -1890,6 +2018,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1953,6 +2085,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (86)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -101
@@ -2014,6 +2150,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (76)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2077,6 +2217,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (93)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 53
@@ -2138,6 +2282,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (47)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2201,6 +2349,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (83)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -167
@@ -2262,6 +2414,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (50)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2325,6 +2481,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (89)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -37
@@ -2386,6 +2546,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2449,6 +2613,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7751957713316639188, guid: 557955c89652f7f44a6abf2883241d6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8093990946068907038, guid: 557955c89652f7f44a6abf2883241d6e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 87.46907
@@ -2510,6 +2678,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (68)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2613,6 +2785,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island Hills (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8834717083587035625, guid: 6524776292bd52645bf149906deb3e31, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2634,6 +2810,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (66)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2697,6 +2877,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (58)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 163
@@ -2758,6 +2942,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2861,6 +3049,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island Snowy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8834717083587035625, guid: e71423b1c2c050f4eb78ddf927deac3d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2882,6 +3074,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (81)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2945,6 +3141,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (35)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 98
@@ -3007,6 +3207,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17
@@ -3068,6 +3272,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (46)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3180,6 +3388,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (67)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -79
@@ -3241,6 +3453,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3304,6 +3520,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -57
@@ -3365,6 +3585,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (64)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3428,6 +3652,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 7751957713316639188, guid: 557955c89652f7f44a6abf2883241d6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8093990946068907038, guid: 557955c89652f7f44a6abf2883241d6e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -584
@@ -3490,6 +3718,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (41)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -214
@@ -3551,6 +3783,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (98)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3654,6 +3890,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island Snowy (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8834717083587035625, guid: e71423b1c2c050f4eb78ddf927deac3d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3675,6 +3915,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (87)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3737,6 +3981,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (99)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3857,6 +4105,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (33)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 53
@@ -3918,6 +4170,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (62)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3981,6 +4237,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 98
@@ -4042,6 +4302,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4105,6 +4369,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (43)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -167
@@ -4166,6 +4434,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (51)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4229,6 +4501,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (70)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17
@@ -4290,6 +4566,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4353,6 +4633,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (59)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 183
@@ -4414,6 +4698,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (52)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4517,6 +4805,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island Hills (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8834717083587035625, guid: 6524776292bd52645bf149906deb3e31, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4538,6 +4830,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4600,6 +4896,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4749,6 +5049,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (97)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 141
@@ -4851,6 +5155,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island Snowy (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8834717083587035625, guid: e71423b1c2c050f4eb78ddf927deac3d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4872,6 +5180,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (74)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4935,6 +5247,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (44)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -144
@@ -4996,6 +5312,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (78)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5059,6 +5379,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (94)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 76
@@ -5121,6 +5445,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (85)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -122
@@ -5182,6 +5510,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5285,6 +5617,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island Hills (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8834717083587035625, guid: 6524776292bd52645bf149906deb3e31, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5347,6 +5683,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island Hills (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 8834717083587035625, guid: 6524776292bd52645bf149906deb3e31, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5368,6 +5708,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5509,6 +5853,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5768,6 +6116,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -191
@@ -5829,6 +6181,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (39)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5892,6 +6248,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (96)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 119
@@ -5953,6 +6313,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6016,6 +6380,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -122
@@ -6078,6 +6446,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (90)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17
@@ -6139,6 +6511,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (38)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6242,6 +6618,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island Snowy (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8834717083587035625, guid: e71423b1c2c050f4eb78ddf927deac3d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6263,6 +6643,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (72)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6326,6 +6710,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (100)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 203
@@ -6387,6 +6775,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6490,6 +6882,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island Hills (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8834717083587035625, guid: 6524776292bd52645bf149906deb3e31, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6511,6 +6907,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (54)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6574,6 +6974,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (71)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6
@@ -6636,6 +7040,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (65)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -122
@@ -6697,6 +7105,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (91)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6800,6 +7212,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island Snowy (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 8834717083587035625, guid: e71423b1c2c050f4eb78ddf927deac3d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6862,6 +7278,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island Hills (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8834717083587035625, guid: 6524776292bd52645bf149906deb3e31, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6883,6 +7303,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (77)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6946,6 +7370,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (61)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -214
@@ -7007,6 +7435,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (69)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7070,6 +7502,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (73)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 53
@@ -7131,6 +7567,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (60)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7194,6 +7634,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 76
@@ -7256,6 +7700,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -101
@@ -7317,6 +7765,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (92)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7420,6 +7872,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island Hills (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8834717083587035625, guid: 6524776292bd52645bf149906deb3e31, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7441,6 +7897,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7504,6 +7964,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 203
@@ -7565,6 +8029,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7628,6 +8096,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 163
@@ -7689,6 +8161,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (63)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7792,6 +8268,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island Snowy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8834717083587035625, guid: e71423b1c2c050f4eb78ddf927deac3d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7813,6 +8293,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (37)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7876,6 +8360,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trader (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -167
@@ -7937,6 +8425,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8000,6 +8492,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7751957713316639188, guid: 557955c89652f7f44a6abf2883241d6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8093990946068907038, guid: 557955c89652f7f44a6abf2883241d6e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 214.46907
@@ -8061,6 +8557,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (53)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8175,6 +8675,10 @@ PrefabInstance:
     - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_Name
       value: Trader (48)
+      objectReference: {fileID: 0}
+    - target: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 418056, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8420,6 +8924,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 590588844419656665, guid: 0bac357fc09c5a0408658f268b5df411, type: 3}
+      propertyPath: dayLenght
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 590588844419656665, guid: 0bac357fc09c5a0408658f268b5df411, type: 3}
+      propertyPath: useTimeDeceleration
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 763945134299987868, guid: 0bac357fc09c5a0408658f268b5df411, type: 3}
       propertyPath: m_Name
       value: Game Controller

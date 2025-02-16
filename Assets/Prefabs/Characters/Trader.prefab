@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9620fced50b8cdd4b81a6b5d10e2021f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  money: 10000
   scaleSpread: 0.25
   speedSpread: 0.1
   cargoHoldCapacitySpread: {x: 100, y: 150}

@@ -77,4 +77,4 @@ MonoBehaviour:
   dayLenght: 3
   currentTime: 0
   useTimeDeceleration: 1
-  miltiplier: 0.001
+  miltiplier: 0.01
