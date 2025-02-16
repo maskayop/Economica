@@ -1,43 +1,69 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class Character : MonoBehaviour
 {
     public long money;
+    public int maintenance;
 
     [Space(20)]
     [Range(0, 1)] public float scaleSpread = 0;
     [Range(0, 1)] public float speedSpread = 0;
     
 	public Vector2Int cargoHoldCapacitySpread;
+    public Vector2 spoilingFactor = new Vector2(0.9f, 0.95f);
 
 	[Space(20)]
     public int cargoHoldCapacity = 10;
     public int cargoHold = 0;
-    public List<Article> resourcesInCargoHold = new List<Article>();
+    public List<Article> articlesInCargo = new List<Article>();
 
     [Space(20)]
     public Island startIsland;
     public Island finishIsland;
 
-    public Article resourceForBuying;
+    public Article forBuying;
 
     [Space(20)]
     public ResourceWidgetsController resourceWidgetController;
 
-    Article lastBoughtResource;
+    Article lastBoughtArticle;
     bool canBuy = true;
     int buyIndex = 0;
 
 	CharacterMovement characterMovement;
     ResourcesManager resourcesManager;
 
+    int currentDay = 0;
+
     void Start()
 	{
 		Init();
 	}
 
-	public void Init()
+    void Update()
+    {
+        if (GlobalTimeController.Instance.currentDay != currentDay)
+        {
+            money -= maintenance;
+
+            for (int i = 0; i < articlesInCargo.Count; i++)
+            {
+                if (articlesInCargo[i].inStorage != 0)
+                {
+                    articlesInCargo[i].inStorage = Mathf.CeilToInt(
+                        Random.Range(articlesInCargo[i].inStorage * spoilingFactor.x, articlesInCargo[i].inStorage *  spoilingFactor.y)
+                        );
+                    cargoHold = articlesInCargo[i].inStorage;
+                }
+            }
+
+            currentDay = GlobalTimeController.Instance.currentDay;
+        }
+    }
+
+    public void Init()
 	{
         resourcesManager = ResourcesManager.Instance;
         characterMovement = GetComponent<CharacterMovement>();
@@ -62,8 +88,6 @@ public class Character : MonoBehaviour
             Kill();
             return;
         }
-
-        Sell();
 
         Island island = null;
         startIsland = finishIsland;
@@ -121,7 +145,15 @@ public class Character : MonoBehaviour
 
         finishIsland = island;
 
-        Buy();
+        TrySell();
+
+        if (money < 0)
+        {
+            Kill();
+            return;
+        }
+
+        TryBuy();
         
         UpdateWidgets();
     }
@@ -132,7 +164,7 @@ public class Character : MonoBehaviour
 		Destroy(gameObject);
 	}
 
-    void Sell()
+    void TrySell()
     {
         if (cargoHold == 0)
         {
@@ -142,25 +174,19 @@ public class Character : MonoBehaviour
 
         startIsland.resCont.UpdateAvailableInStorage(false);
 
-        for (int i = 0; i < resourcesInCargoHold.Count; i++)
+        for (int i = 0; i < articlesInCargo.Count; i++)
         {
             for (int x = 0; x < startIsland.resCont.storage.Count; x++)
             {
-                if (resourcesInCargoHold[i].name == startIsland.resCont.storage[x].name)
+                if (articlesInCargo[i].name == startIsland.resCont.storage[x].name)
                 {
-                    if (resourcesInCargoHold[i].price >= startIsland.resCont.storage[x].price)
+                    if (articlesInCargo[i].price >= startIsland.resCont.storage[x].price)
                     {
                         canBuy = false;
                         return;
                     }
 
-                    startIsland.resCont.storage[x].inStorage += resourcesInCargoHold[i].inStorage;
-                    startIsland.resCont.money -= resourcesInCargoHold[i].inStorage * startIsland.resCont.storage[x].price;
-                    money += resourcesInCargoHold[i].inStorage * startIsland.resCont.storage[x].price;
-                    cargoHold -= resourcesInCargoHold[i].inStorage;
-                    resourcesInCargoHold[i].inStorage -= resourcesInCargoHold[i].inStorage;
-
-                    startIsland.resCont.UpdateAvailableInStorage(false);
+                    Sell(startIsland.resCont.storage[x], articlesInCargo[i]);
 
                     buyIndex = 0;
                     canBuy = true;
@@ -171,7 +197,27 @@ public class Character : MonoBehaviour
         startIsland.resCont.UpdateAvailableInStorage(true);
     }
 
-    void Buy()
+    void Sell(Article inStore, Article inCargo)
+    {
+        int cost = Mathf.FloorToInt(inCargo.inStorage * inStore.price * (1 - startIsland.resCont.pricesSpread));
+
+        if (cost > startIsland.resCont.money)
+        {
+            canBuy = false;
+            return;
+        }
+
+        startIsland.resCont.money -= cost;
+        money += cost;
+
+        inStore.inStorage += inCargo.inStorage;
+        cargoHold = 0;
+        inCargo.inStorage = 0;
+
+        startIsland.resCont.UpdateAvailableInStorage(false);
+    }
+
+    void TryBuy()
     {
         if (!canBuy)
             return;
@@ -187,30 +233,30 @@ public class Character : MonoBehaviour
 
         startIsland.resCont.UpdateAvailableInStorage(false);
 
-        resourceForBuying = startIsland.resCont.availableInStorage[buyIndex];
+        forBuying = startIsland.resCont.availableInStorage[buyIndex];
         
-        if (resourceForBuying != null && lastBoughtResource != null)
+        if (forBuying != null && lastBoughtArticle != null)
         {
-            if (resourceForBuying.name == lastBoughtResource.name)
+            if (forBuying.name == lastBoughtArticle.name)
             {
                 if (buyIndex + 1 < startIsland.resCont.availableInStorage.Count)
-                    resourceForBuying = startIsland.resCont.availableInStorage[buyIndex + 1];
+                    forBuying = startIsland.resCont.availableInStorage[buyIndex + 1];
                 else
-                    resourceForBuying = startIsland.resCont.availableInStorage[0];
+                    forBuying = startIsland.resCont.availableInStorage[0];
             }
 
-            if (resourceForBuying.name == lastBoughtResource.name && lastBoughtResource != null)
+            if (forBuying.name == lastBoughtArticle.name && lastBoughtArticle != null)
                 return;
         }
 
         for (int i = 0; i < finishIsland.resCont.storage.Count; i++)
         {
-            if (resourceForBuying.name == finishIsland.resCont.storage[i].name)
+            if (forBuying.name == finishIsland.resCont.storage[i].name)
             {
-                if (resourceForBuying.price >= finishIsland.resCont.storage[i].price)
+                if (forBuying.price >= finishIsland.resCont.storage[i].price)
                 {
                     buyIndex++;
-                    Buy();
+                    TryBuy();
                     return;
                 }
             }
@@ -218,9 +264,9 @@ public class Character : MonoBehaviour
 
         bool resourceIsExists = false;
 
-        for (int i = 0; i < resourcesInCargoHold.Count; i++)
+        for (int i = 0; i < articlesInCargo.Count; i++)
         {
-            if (resourcesInCargoHold[i].name == resourceForBuying.name)
+            if (articlesInCargo[i].name == forBuying.name)
             {
                 resourceIsExists = true;
                 break;
@@ -230,52 +276,69 @@ public class Character : MonoBehaviour
         if (!resourceIsExists)
         {
             Article newArticle = new Article();
-            newArticle.name = resourceForBuying.name;
-            newArticle.sprite = resourceForBuying.sprite;
+            newArticle.name = forBuying.name;
+            newArticle.sprite = forBuying.sprite;
             newArticle.inStorage = 0;
-            newArticle.price = resourceForBuying.price;
+            newArticle.price = forBuying.price;
 
-            resourcesInCargoHold.Add(newArticle);
+            articlesInCargo.Add(newArticle);
         }
 
-        for (int i = 0; i < resourcesInCargoHold.Count; i++)
+        for (int i = 0; i < articlesInCargo.Count; i++)
         {
-            if (resourcesInCargoHold[i].name == resourceForBuying.name && resourcesInCargoHold[i].inStorage == 0)
+            if (articlesInCargo[i].name == forBuying.name && articlesInCargo[i].inStorage == 0)
             {
-                if (resourceForBuying.inStorage > cargoHoldCapacity)
-                {
-                    resourcesInCargoHold[i].inStorage += cargoHoldCapacity;
-                    cargoHold += cargoHoldCapacity;
-                    money -= cargoHoldCapacity * resourcesInCargoHold[i].price;
-                    startIsland.resCont.money += cargoHoldCapacity * resourcesInCargoHold[i].price;
-                    resourceForBuying.inStorage -= cargoHoldCapacity;
-                }
-                else
-                {
-                    resourcesInCargoHold[i].inStorage += resourceForBuying.inStorage;
-                    cargoHold += resourceForBuying.inStorage;
-                    money -= resourceForBuying.inStorage * resourceForBuying.price;
-                    startIsland.resCont.money += resourceForBuying.inStorage * resourceForBuying.price;
-                    resourceForBuying.inStorage -= resourceForBuying.inStorage;
-                }
-
-                lastBoughtResource = resourceForBuying;
+                Buy(articlesInCargo[i]);
             }
         }
 
         startIsland.resCont.UpdateAvailableInStorage(true);
         canBuy = true;
     }
+    
+    void Buy(Article inCargo)
+    {
+        if (forBuying.inStorage > cargoHoldCapacity)
+        {
+            int cost = Mathf.FloorToInt(cargoHoldCapacity * inCargo.price * (1 + startIsland.resCont.pricesSpread));
+
+            if (cost > money)
+                return;
+
+            money -= cost;
+            startIsland.resCont.money += cost;
+
+            inCargo.inStorage += cargoHoldCapacity;
+            cargoHold += cargoHoldCapacity;
+            forBuying.inStorage -= cargoHoldCapacity;
+        }
+        else
+        {
+            int cost = Mathf.FloorToInt(forBuying.inStorage * forBuying.price * (1 + startIsland.resCont.pricesSpread));
+
+            if (cost > money)
+                return;
+
+            money -= cost;
+            startIsland.resCont.money += cost;
+
+            inCargo.inStorage += forBuying.inStorage;
+            cargoHold += forBuying.inStorage;
+            forBuying.inStorage = 0;
+        }
+
+        lastBoughtArticle = forBuying;
+    }    
 
     void UpdateWidgets()
     {
-        if (lastBoughtResource != null && cargoHold != 0)
+        if (lastBoughtArticle != null && cargoHold != 0)
         {
             bool widgetIsExists = false;
 
             for (int i = 0; i < resourceWidgetController.widgets.Count; i++)
             {
-                if (resourceWidgetController.widgets[i].articleName == lastBoughtResource.name)
+                if (resourceWidgetController.widgets[i].articleName == lastBoughtArticle.name)
                 {
                     widgetIsExists = true;
                     break;
@@ -283,17 +346,17 @@ public class Character : MonoBehaviour
             }
 
             if (!widgetIsExists)
-                resourceWidgetController.CreateWidget(lastBoughtResource);
+                resourceWidgetController.CreateWidget(lastBoughtArticle);
         }
 
         for (int i = 0; i < resourceWidgetController.widgets.Count; i++)
         {
-            for (int r = 0; r < resourcesInCargoHold.Count; r++)
+            for (int r = 0; r < articlesInCargo.Count; r++)
             {
-                if (resourceWidgetController.widgets[i].articleName == resourcesInCargoHold[r].name)
+                if (resourceWidgetController.widgets[i].articleName == articlesInCargo[r].name)
                 {
-                    resourceWidgetController.widgets[i].amount = resourcesInCargoHold[r].inStorage;
-                    resourceWidgetController.widgets[i].price = resourcesInCargoHold[r].price;
+                    resourceWidgetController.widgets[i].amount = articlesInCargo[r].inStorage;
+                    resourceWidgetController.widgets[i].price = articlesInCargo[r].price;
                 }
             }
         }

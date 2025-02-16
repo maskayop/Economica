@@ -49,19 +49,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9620fced50b8cdd4b81a6b5d10e2021f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 10000
+  money: 1000000
+  maintenance: 1000
   scaleSpread: 0.25
   speedSpread: 0.1
   cargoHoldCapacitySpread: {x: 100, y: 150}
+  spoilingFactor: {x: 0.97, y: 1}
   cargoHoldCapacity: 10
   cargoHold: 0
-  resourcesInCargoHold: []
+  articlesInCargo: []
   startIsland: {fileID: 0}
   finishIsland: {fileID: 0}
-  resourceForBuying:
+  forBuying:
     name: 
     sprite: {fileID: 0}
-    amountInStorage: 0
+    inStorage: 0
     price: 0
   resourceWidgetController: {fileID: 6806978784441238533}
 --- !u!114 &-4959889297646970934

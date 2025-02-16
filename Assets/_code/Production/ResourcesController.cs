@@ -4,6 +4,8 @@ using UnityEngine;
 public class ResourcesController : MonoBehaviour
 {
     public long money;
+    public int maintenance;
+
     [Range(0, 1)] public float pricesSpread = 0;
     [Range(0, 0.1f)] public float pricesSpreadRandomFactor = 0;
 
@@ -26,6 +28,8 @@ public class ResourcesController : MonoBehaviour
 
     ResourcesManager resMan;
     int currentDay = 0;
+    
+    public float prodMultiplier = 1;
 
     void Start()
     {
@@ -36,6 +40,13 @@ public class ResourcesController : MonoBehaviour
     {
         if (GlobalTimeController.Instance.currentDay != currentDay)
         {
+            money -= maintenance;
+
+            if (money < 0)
+                prodMultiplier /= 2f;
+            else
+                prodMultiplier = 1;
+
             Produce();
             currentDay = GlobalTimeController.Instance.currentDay;
         }
@@ -92,7 +103,7 @@ public class ResourcesController : MonoBehaviour
                 if (producingResources[i].name == storage[x].name)
                 {
                     popToProdMult = island.GetPopToProdMultiplier();
-                    prodAmount = Mathf.FloorToInt(producingResources[i].prodAmountBase * popToProdMult);
+                    prodAmount = Mathf.FloorToInt(producingResources[i].prodAmountBase * popToProdMult * prodMultiplier);
 
                     if (prodAmount <= 1)
                         prodAmount = 1;
@@ -104,14 +115,16 @@ public class ResourcesController : MonoBehaviour
                     resMan.storage[x].inStorage += prodAmount;
 
                     storage[x].price = Mathf.CeilToInt((float)(resMan.storage[x].price * resMan.storage[x].inStorage) / (float)storage[x].inStorage);
+
+                    money -= Mathf.FloorToInt(resMan.storage[x].price * prodAmount * prodMultiplier);
                 }
             }
         }
 
         for (int i = 0; i < availableInStorage.Count; i++)
-        {
-            availableInStorage[i].inStorage *= Mathf.CeilToInt(Random.Range(spoilingFactor.x, spoilingFactor.y));
-        }
+            availableInStorage[i].inStorage = Mathf.CeilToInt(
+                Random.Range(availableInStorage[i].inStorage * spoilingFactor.x, availableInStorage[i].inStorage * spoilingFactor.y)
+                );
 
         UpdateAvailableInStorage(true);
         //UpdatePrevAvailableInStorage();
@@ -183,15 +196,15 @@ public class ResourcesController : MonoBehaviour
 
                 if (shopped + island.shoppedTotal <= customers)
                 {
-                    money += availableInStorage[i].price * shopped;
+                    money += Mathf.FloorToInt(availableInStorage[i].price * shopped * (1 + pricesSpread));
                     availableInStorage[i].inStorage -= shopped;
 
                     island.shoppedTotal += shopped;
                 }
                 else if (shopped + island.shoppedTotal > customers)
                 {
+                    money += Mathf.FloorToInt(availableInStorage[i].price * (customers - island.shoppedTotal) * (1 + pricesSpread));
                     availableInStorage[i].inStorage -= customers - island.shoppedTotal;
-                    money += availableInStorage[i].price * (customers - island.shoppedTotal);
 
                     island.shoppedTotal = customers;
                 }

@@ -131,18 +131,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bf9c1e0f97fe1e429fd8f68c4fbc721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 0
-  pricesSpread: 0.15
-  pricesSpreadRandomFactor: 0.05
+  money: 100000000
+  maintenance: 0
+  pricesSpread: 0.05
+  pricesSpreadRandomFactor: 0.03
   industriesAmountRange: {x: 3, y: 6}
   industriesCount: 0
   producingResources: []
   storage: []
   availableInStorage: []
   totalAvailableResources: 0
-  spoilingFactor: {x: 0.75, y: 0.95}
+  spoilingFactor: {x: 0.9, y: 0.95}
   island: {fileID: 0}
   resourceWidgetsController: {fileID: 3473447236678922743}
+  prodMultiplier: 1
 --- !u!114 &7497654141061691735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +164,7 @@ MonoBehaviour:
   shoppedTotal: 0
   starvingPopulation: 0
   populationGrowthRate: {x: -1, y: 2}
-  popToProdMultiplier: {x: 0.055, y: 0.075}
+  popToProdMultiplier: {x: 0.075, y: 0.09}
   islandWaypoint: {fileID: 786960558078470242}
   waypointCluster: {fileID: 4647685151967198906}
 --- !u!114 &4647685151967198906
