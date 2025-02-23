@@ -28,17 +28,15 @@ public class ResourcesManager : MonoBehaviour
     public List<Resource> allResources = new List<Resource>();
     public List<Article> storage = new List<Article>();
 
-    public List<Island> allIslands = new List<Island>();
-
     public int pricesMultiplier = 1000;
     public long totalAvailableResources = 0;
     public int totalIndustries = 0;
-    public int totalPopulation = 0;
-    public int totalRichPopulation = 0;
-    public int totalElitePopulation = 0;
+    
     public long totalMoney = 0;
 
     int currentDay = 0;
+
+    IslandsManager islandsManager;
 
     void Awake()
     {
@@ -53,6 +51,8 @@ public class ResourcesManager : MonoBehaviour
 
         allResources.Sort( (x, y) => { return x.name.CompareTo(y.name); } );
         CreateStorageList();
+
+        islandsManager = IslandsManager.Instance;
     }
 
     void Update()
@@ -64,8 +64,6 @@ public class ResourcesManager : MonoBehaviour
             UpdateAllResources();
             UpdateStorage();
             UpdateMoney();
-
-            allIslands.Sort((x, y) => { return x.resCont.totalAvailableResources.CompareTo(y.resCont.totalAvailableResources); });
         }
     }
 
@@ -80,15 +78,15 @@ public class ResourcesManager : MonoBehaviour
         for (int i = 0; i < allResources.Count; i++)
             allResources[i].prodAmountActual = 0;
 
-        for (int i = 0; i < allIslands.Count; i++)
+        for (int i = 0; i < islandsManager.allIslands.Count; i++)
         {
-            for (int p = 0; p < allIslands[i].resCont.producingResources.Count; p++)
+            for (int p = 0; p < islandsManager.allIslands[i].resCont.producingResources.Count; p++)
             {
                 for (int x = 0; x < allResources.Count; x++)
                 {                
-                    if (allResources[x].name == allIslands[i].resCont.producingResources[p].name)
+                    if (allResources[x].name == islandsManager.allIslands[i].resCont.producingResources[p].name)
                     {
-                        allResources[x].prodAmountActual += allIslands[i].resCont.producingResources[p].prodAmountActual;
+                        allResources[x].prodAmountActual += islandsManager.allIslands[i].resCont.producingResources[p].prodAmountActual;
                     }
                 }
             }
@@ -100,13 +98,13 @@ public class ResourcesManager : MonoBehaviour
         for (int i = 0; i < storage.Count; i++)
             storage[i].inStorage = 0;
 
-        for (int i = 0; i < allIslands.Count; i++)
+        for (int i = 0; i < islandsManager.allIslands.Count; i++)
         {
             for (int x = 0; x < storage.Count; x++)
             {
-                if (storage[x].name == allIslands[i].resCont.storage[x].name)
+                if (storage[x].name == islandsManager.allIslands[i].resCont.storage[x].name)
                 {
-                    storage[x].inStorage += allIslands[i].resCont.storage[x].inStorage;
+                    storage[x].inStorage += islandsManager.allIslands[i].resCont.storage[x].inStorage;
                 }
             }
         }
@@ -148,27 +146,13 @@ public class ResourcesManager : MonoBehaviour
         }
     }
 
-    public void UpdatePopulation()
-    {
-        totalPopulation = 0;
-        totalRichPopulation = 0;
-        totalElitePopulation = 0;
-
-        for (int i = 0; i < allIslands.Count; i++)
-        {
-            totalPopulation += allIslands[i].population;
-            totalRichPopulation += allIslands[i].richPopulation;
-            totalElitePopulation += allIslands[i].elitePopulation;
-        }
-    }
-
     public void UpdateMoney()
     {
         totalMoney = 0;
 
-        for (int i = 0; i < allIslands.Count; i++)
+        for (int i = 0; i < islandsManager.allIslands.Count; i++)
         {
-            totalMoney += allIslands[i].GetComponent<ResourcesController>().money;
+            totalMoney += islandsManager.allIslands[i].GetComponent<ResourcesController>().money;
         }
     }
 }

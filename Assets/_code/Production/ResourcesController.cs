@@ -26,7 +26,7 @@ public class ResourcesController : MonoBehaviour
     [Space(20)]
     public ResourceWidgetsController resourceWidgetsController;
 
-    ResourcesManager resMan;
+    ResourcesManager resManager;
     int currentDay = 0;
     
     public float prodMultiplier = 1;
@@ -53,7 +53,7 @@ public class ResourcesController : MonoBehaviour
     }
     void Init()
     {
-        resMan = ResourcesManager.Instance;
+        resManager = ResourcesManager.Instance;
         CalculateIndustries();
         UpdateAvailableInStorage(true);
         currentDay = GlobalTimeController.Instance.currentDay;
@@ -67,7 +67,7 @@ public class ResourcesController : MonoBehaviour
 
         for (int i = 0; i < industriesCount; i++)
         {
-            Resource res = resMan.GetRandomResource();
+            Resource res = resManager.GetRandomResource();
             
             Resource newres = new Resource();
             newres.name = res.name;
@@ -79,9 +79,9 @@ public class ResourcesController : MonoBehaviour
             producingResources.Add(newres);
         }
 
-        for (int i = 0; i < resMan.allResources.Count; i++)
+        for (int i = 0; i < resManager.allResources.Count; i++)
         {
-            Resource res = resMan.allResources[i];
+            Resource res = resManager.allResources[i];
 
             Article storeArticle = new Article();
             storeArticle.name = res.name;
@@ -111,12 +111,12 @@ public class ResourcesController : MonoBehaviour
                     producingResources[i].prodAmountActual = prodAmount;
                     producingResources[i].totalProduced += prodAmount;
                     storage[x].inStorage += prodAmount;
-                    resMan.allResources[x].totalProduced += prodAmount;
-                    resMan.storage[x].inStorage += prodAmount;
+                    resManager.allResources[x].totalProduced += prodAmount;
+                    resManager.storage[x].inStorage += prodAmount;
 
-                    storage[x].price = Mathf.CeilToInt((float)(resMan.storage[x].price * resMan.storage[x].inStorage) / (float)storage[x].inStorage);
+                    storage[x].price = Mathf.CeilToInt((float)(resManager.storage[x].price * resManager.storage[x].inStorage) / (float)storage[x].inStorage);
 
-                    money -= Mathf.FloorToInt(resMan.storage[x].price * prodAmount * prodMultiplier);
+                    money -= Mathf.FloorToInt(resManager.storage[x].price * prodAmount * prodMultiplier);
                 }
             }
         }
@@ -127,7 +127,6 @@ public class ResourcesController : MonoBehaviour
                 );
 
         UpdateAvailableInStorage(true);
-        //UpdatePrevAvailableInStorage();
     }
 
     public void UpdateAvailableInStorage(bool updateWidgets)
@@ -138,12 +137,12 @@ public class ResourcesController : MonoBehaviour
         {
             if (storage[i].inStorage > 0)
             {
-                storage[i].price = Mathf.CeilToInt((float)(resMan.storage[i].price * resMan.storage[i].inStorage) / (float)storage[i].inStorage);
+                storage[i].price = Mathf.CeilToInt((float)(resManager.storage[i].price * resManager.storage[i].inStorage) / (float)storage[i].inStorage);
                 availableInStorage.Add(storage[i]);
             }
             else if (storage[i].inStorage <= 0)
             {
-                storage[i].price = resMan.pricesMultiplier * resMan.pricesMultiplier;
+                storage[i].price = resManager.pricesMultiplier * resManager.pricesMultiplier;
             }
         }
 
@@ -157,26 +156,6 @@ public class ResourcesController : MonoBehaviour
         if (updateWidgets)
             UpdateWidgets();
     }
-    /*
-    void UpdatePrevAvailableInStorage()
-    {
-        prevAvailableInStorage.Clear();
-
-        for (int i = 0; i < storage.Count; i++)
-        {
-            if (storage[i].totalProduced > 0)
-            {
-                Article storeArticle = new Article();
-                storeArticle.name = storage[i].name;
-                storeArticle.totalProduced = storage[i].totalProduced;
-                storage[i].price = Mathf.CeilToInt((float)(resMan.storage[i].price * resMan.storage[i].totalProduced) / (float)storage[i].totalProduced);
-                storeArticle.price = storage[i].price;
-
-                prevAvailableInStorage.Add(storeArticle);
-            }
-        }
-    }
-    */
 
     public void GoShoping(int customers, bool isStarving)
     {
@@ -213,8 +192,8 @@ public class ResourcesController : MonoBehaviour
                 break;
         }
 
-        resMan.UpdateStorage();
-        resMan.UpdateMoney();
+        resManager.UpdateStorage();
+        resManager.UpdateMoney();
         UpdateAvailableInStorage(true);
     }
 

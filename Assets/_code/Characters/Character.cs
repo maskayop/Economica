@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 public class Character : MonoBehaviour
 {
@@ -23,17 +22,23 @@ public class Character : MonoBehaviour
     public Island startIsland;
     public Island finishIsland;
 
+    [Space(20)]
     public Article forBuying;
+    public Article lastSold;
 
     [Space(20)]
     public ResourceWidgetsController resourceWidgetController;
 
-    Article lastBoughtArticle;
+    [Space(20)]
+    public GameObject sellingFX;
+    public GameObject buyingFX;
+
+    Article lastBought;
     bool canBuy = true;
     int buyIndex = 0;
 
 	CharacterMovement characterMovement;
-    ResourcesManager resourcesManager;
+    IslandsManager islandsManager;
 
     int currentDay = 0;
 
@@ -65,7 +70,8 @@ public class Character : MonoBehaviour
 
     public void Init()
 	{
-        resourcesManager = ResourcesManager.Instance;
+        islandsManager = IslandsManager.Instance;
+
         characterMovement = GetComponent<CharacterMovement>();
         characterMovement.character = this;
         CharactersManager.Instance.allCharacters.Add(this);
@@ -81,9 +87,9 @@ public class Character : MonoBehaviour
         resourceWidgetController.Init();
     }
 
-    public void CalculateNextIsland()
+    public void GoTrading()
     {
-        if (resourcesManager.allIslands.Count <= 1)
+        if (islandsManager.allIslands.Count <= 1)
         {
             Kill();
             return;
@@ -91,12 +97,14 @@ public class Character : MonoBehaviour
 
         Island island = null;
         startIsland = finishIsland;
-        
+
+        TrySell();
+
         int nextIslandId = 0;
         
         if (cargoHold == 0)
         {
-            for (int i = resourcesManager.allIslands.Count - 1; i >= 0; i--)
+            for (int i = islandsManager.allIslands.Count - 1; i >= 0; i--)
             {
                 int randomValue = Random.Range(-2, 2);
                 bool randomBool;
@@ -115,7 +123,7 @@ public class Character : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < resourcesManager.allIslands.Count; i++)
+            for (int i = 0; i < islandsManager.allIslands.Count; i++)
             {
                 int randomValue = Random.Range(-2, 2);
                 bool randomBool;
@@ -133,19 +141,17 @@ public class Character : MonoBehaviour
             }
         }
 
-        island = resourcesManager.allIslands[nextIslandId];
+        island = islandsManager.allIslands[nextIslandId];
 
         if (island == startIsland)
         {
-            if (nextIslandId + 1 < resourcesManager.allIslands.Count)
-                island = resourcesManager.allIslands[nextIslandId + 1];
+            if (nextIslandId + 1 < islandsManager.allIslands.Count)
+                island = islandsManager.allIslands[nextIslandId + 1];
             else
-                island = resourcesManager.allIslands[0];
+                island = islandsManager.allIslands[0];
         }
 
         finishIsland = island;
-
-        TrySell();
 
         if (money < 0)
         {
@@ -186,10 +192,13 @@ public class Character : MonoBehaviour
                         return;
                     }
 
-                    Sell(startIsland.resCont.storage[x], articlesInCargo[i]);
+                    if (articlesInCargo[i].inStorage != 0)
+                    {
+                        Sell(startIsland.resCont.storage[x], articlesInCargo[i]);
 
-                    buyIndex = 0;
-                    canBuy = true;
+                        buyIndex = 0;
+                        canBuy = true;
+                    }
                 }
             }
         }
@@ -197,9 +206,9 @@ public class Character : MonoBehaviour
         startIsland.resCont.UpdateAvailableInStorage(true);
     }
 
-    void Sell(Article inStore, Article inCargo)
+    void Sell(Article inStore, Article inCargoHold)
     {
-        int cost = Mathf.FloorToInt(inCargo.inStorage * inStore.price * (1 - startIsland.resCont.pricesSpread));
+        int cost = Mathf.FloorToInt(inCargoHold.inStorage * inStore.price * (1 - startIsland.resCont.pricesSpread));
 
         if (cost > startIsland.resCont.money)
         {
@@ -207,14 +216,20 @@ public class Character : MonoBehaviour
             return;
         }
 
-        startIsland.resCont.money -= cost;
         money += cost;
+        startIsland.resCont.money -= cost;
 
-        inStore.inStorage += inCargo.inStorage;
+        lastSold.name = inCargoHold.name;
+        lastSold.inStorage = inCargoHold.inStorage;
+        lastSold.price = inStore.price;
+
+        inStore.inStorage += inCargoHold.inStorage;
         cargoHold = 0;
-        inCargo.inStorage = 0;
+        inCargoHold.inStorage = 0;
 
         startIsland.resCont.UpdateAvailableInStorage(false);
+
+        Instantiate(sellingFX, transform);
     }
 
     void TryBuy()
@@ -235,9 +250,9 @@ public class Character : MonoBehaviour
 
         forBuying = startIsland.resCont.availableInStorage[buyIndex];
         
-        if (forBuying != null && lastBoughtArticle != null)
+        if (forBuying != null && lastBought != null)
         {
-            if (forBuying.name == lastBoughtArticle.name)
+            if (forBuying.name == lastBought.name)
             {
                 if (buyIndex + 1 < startIsland.resCont.availableInStorage.Count)
                     forBuying = startIsland.resCont.availableInStorage[buyIndex + 1];
@@ -245,7 +260,7 @@ public class Character : MonoBehaviour
                     forBuying = startIsland.resCont.availableInStorage[0];
             }
 
-            if (forBuying.name == lastBoughtArticle.name && lastBoughtArticle != null)
+            if (forBuying.name == lastBought.name && lastBought != null)
                 return;
         }
 
@@ -262,27 +277,7 @@ public class Character : MonoBehaviour
             }
         }
 
-        bool resourceIsExists = false;
-
-        for (int i = 0; i < articlesInCargo.Count; i++)
-        {
-            if (articlesInCargo[i].name == forBuying.name)
-            {
-                resourceIsExists = true;
-                break;
-            }            
-        }
-
-        if (!resourceIsExists)
-        {
-            Article newArticle = new Article();
-            newArticle.name = forBuying.name;
-            newArticle.sprite = forBuying.sprite;
-            newArticle.inStorage = 0;
-            newArticle.price = forBuying.price;
-
-            articlesInCargo.Add(newArticle);
-        }
+        CreateArticle();
 
         for (int i = 0; i < articlesInCargo.Count; i++)
         {
@@ -296,19 +291,19 @@ public class Character : MonoBehaviour
         canBuy = true;
     }
     
-    void Buy(Article inCargo)
+    void Buy(Article inCargoHold)
     {
         if (forBuying.inStorage > cargoHoldCapacity)
         {
-            int cost = Mathf.FloorToInt(cargoHoldCapacity * inCargo.price * (1 + startIsland.resCont.pricesSpread));
+            int cost = Mathf.FloorToInt(cargoHoldCapacity * inCargoHold.price * (1 + startIsland.resCont.pricesSpread));
 
             if (cost > money)
                 return;
 
-            money -= cost;
             startIsland.resCont.money += cost;
+            money -= cost;
 
-            inCargo.inStorage += cargoHoldCapacity;
+            inCargoHold.inStorage += cargoHoldCapacity;
             cargoHold += cargoHoldCapacity;
             forBuying.inStorage -= cargoHoldCapacity;
         }
@@ -322,23 +317,50 @@ public class Character : MonoBehaviour
             money -= cost;
             startIsland.resCont.money += cost;
 
-            inCargo.inStorage += forBuying.inStorage;
+            inCargoHold.inStorage += forBuying.inStorage;
             cargoHold += forBuying.inStorage;
             forBuying.inStorage = 0;
         }
 
-        lastBoughtArticle = forBuying;
-    }    
+        lastBought = forBuying;
+
+        Instantiate(buyingFX, transform);
+    }
+
+    void CreateArticle()
+    {
+        bool resourceIsExists = false;
+
+        for (int i = 0; i < articlesInCargo.Count; i++)
+        {
+            if (articlesInCargo[i].name == forBuying.name)
+            {
+                resourceIsExists = true;
+                break;
+            }
+        }
+
+        if (!resourceIsExists)
+        {
+            Article newArticle = new Article();
+            newArticle.name = forBuying.name;
+            newArticle.sprite = forBuying.sprite;
+            newArticle.inStorage = 0;
+            newArticle.price = forBuying.price;
+
+            articlesInCargo.Add(newArticle);
+        }
+    }
 
     void UpdateWidgets()
     {
-        if (lastBoughtArticle != null && cargoHold != 0)
+        if (lastBought != null && cargoHold != 0)
         {
             bool widgetIsExists = false;
 
             for (int i = 0; i < resourceWidgetController.widgets.Count; i++)
             {
-                if (resourceWidgetController.widgets[i].articleName == lastBoughtArticle.name)
+                if (resourceWidgetController.widgets[i].articleName == lastBought.name)
                 {
                     widgetIsExists = true;
                     break;
@@ -346,7 +368,7 @@ public class Character : MonoBehaviour
             }
 
             if (!widgetIsExists)
-                resourceWidgetController.CreateWidget(lastBoughtArticle);
+                resourceWidgetController.CreateWidget(lastBought);
         }
 
         for (int i = 0; i < resourceWidgetController.widgets.Count; i++)

@@ -23,6 +23,8 @@ public class Island : MonoBehaviour
 
     int currentDay = 0;
 
+    IslandsManager islandsManager;
+
     void Start()
 	{
 		Init();
@@ -36,7 +38,7 @@ public class Island : MonoBehaviour
 
 			//идут закупатьс€ все
             GoShoping(population, true);
-			/*
+			
 			//идут закупатьс€ ещЄ раз богатые
 			richPopulation = Mathf.FloorToInt(resCont.totalAvailableResources / population);
 
@@ -52,7 +54,7 @@ public class Island : MonoBehaviour
                 elitePopulation = population;
 
             GoShoping(elitePopulation, false);
-			*/
+			
             currentDay = GlobalTimeController.Instance.currentDay;
         }
     }
@@ -62,9 +64,10 @@ public class Island : MonoBehaviour
         resCont = GetComponent<ResourcesController>();
         currentDay = GlobalTimeController.Instance.currentDay;
 		resCont.island = this;
-		ResourcesManager.Instance.allIslands.Add(this);
+		islandsManager = IslandsManager.Instance;
+        islandsManager.allIslands.Add(this);
 		ResourcesManager.Instance.totalIndustries += resCont.industriesCount;
-        ResourcesManager.Instance.UpdatePopulation();
+        islandsManager.UpdatePopulation();
         waypointCluster.island = this;
     }
 
@@ -76,7 +79,7 @@ public class Island : MonoBehaviour
 		if (population <= 0)
 			population = 1;
 
-        ResourcesManager.Instance.UpdatePopulation();
+        IslandsManager.Instance.UpdatePopulation();
 	}
 
 	void GoShoping(int customers, bool isStarving)

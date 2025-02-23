@@ -133,9 +133,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   money: 100000000
   maintenance: 0
-  pricesSpread: 0.05
-  pricesSpreadRandomFactor: 0.03
-  industriesAmountRange: {x: 3, y: 6}
+  pricesSpread: 0.04
+  pricesSpreadRandomFactor: 0.02
+  industriesAmountRange: {x: 4, y: 6}
   industriesCount: 0
   producingResources: []
   storage: []

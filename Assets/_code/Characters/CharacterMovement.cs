@@ -55,43 +55,47 @@ public class CharacterMovement : MonoBehaviour
 
         transform.position = Vector3.Lerp(startPoint, endPoint, currentPosition);
 		currentPosition += speed * Time.deltaTime / Vector3.Distance(startPoint, endPoint);
+    }
 
-		if (prevEndPoint != endPoint)
-			rotate = true;
+	void Rotate()
+	{
+        if (prevEndPoint != endPoint)
+            rotate = true;
 
-		Quaternion q = Quaternion.identity;
+        Quaternion q = Quaternion.identity;
 
         if (rotate)
-		{
-			currentRotation += Time.deltaTime;
+        {
+            currentRotation += Time.deltaTime;
 
             transform.LookAt(endPoint);
-			q = Quaternion.Lerp(prevRotation, transform.rotation, currentRotation);
+            q = Quaternion.Lerp(prevRotation, transform.rotation, currentRotation);
             q = Quaternion.Euler(new Vector3(0, q.eulerAngles.y, 0));
             transform.rotation = q;
-		}
-		else
-		{
-            transform.LookAt(endPoint);
-			q = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
-			transform.rotation = q;
         }
-		
+        else
+        {
+            transform.LookAt(endPoint);
+            q = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
+            transform.rotation = q;
+        }
+
         prevRotation = transform.rotation;
         prevEndPoint = endPoint;
 
-		if (currentRotation > rotationTime)
-		{
-			currentRotation = 0;
-			rotate = false;
+        if (currentRotation > rotationTime)
+        {
+            currentRotation = 0;
+            rotate = false;
         }
     }
 
 	void MoveFromPointToPoint()
 	{
 		Move();
+		Rotate();
 
-		if (currentPosition >= 1)
+        if (currentPosition >= 1)
 		{
 			currentPosition = 0;
 
@@ -100,7 +104,7 @@ public class CharacterMovement : MonoBehaviour
                 startWaypoint = endWaypoint;
                 character.startIsland = startWaypoint.island;
 
-                character.CalculateNextIsland();
+                character.GoTrading();
                 if (character.finishIsland)
 				{
 					currentCluster = character.startIsland.waypointCluster;

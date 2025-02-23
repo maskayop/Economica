@@ -54,7 +54,7 @@ MonoBehaviour:
   scaleSpread: 0.25
   speedSpread: 0.1
   cargoHoldCapacitySpread: {x: 100, y: 150}
-  spoilingFactor: {x: 0.97, y: 1}
+  spoilingFactor: {x: 0.98, y: 1}
   cargoHoldCapacity: 10
   cargoHold: 0
   articlesInCargo: []
@@ -65,7 +65,14 @@ MonoBehaviour:
     sprite: {fileID: 0}
     inStorage: 0
     price: 0
+  lastSold:
+    name: 
+    sprite: {fileID: 0}
+    inStorage: 0
+    price: 0
   resourceWidgetController: {fileID: 6806978784441238533}
+  sellingFX: {fileID: 7137377463640376589, guid: 5bde1791591751f468f71944503af5bb, type: 3}
+  buyingFX: {fileID: 7137377463640376589, guid: 85c73882d1f204046af0234eedfddb92, type: 3}
 --- !u!114 &-4959889297646970934
 MonoBehaviour:
   m_ObjectHideFlags: 0

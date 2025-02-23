@@ -28,22 +28,22 @@ public class WaypointCluster : MonoBehaviour
 	float distanceFromIsland;
 	List<GameObject> waypoints = new List<GameObject>();
 
-    ResourcesManager resourcesManager;
+    IslandsManager islandsManager;
 
     void Start()
     {
-        resourcesManager = ResourcesManager.Instance;
+        islandsManager = IslandsManager.Instance;
         WaypointsManager.Instance.allClusters.Add(this);
 		CreateIslandToIslandSection();
     }
 
 	void CreateIslandToIslandSection()
 	{
-		for (int i = 0; i < resourcesManager.allIslands.Count; i++)
+		for (int i = 0; i < islandsManager.allIslands.Count; i++)
 		{
-			if (resourcesManager.allIslands[i] != island)
+			if (islandsManager.allIslands[i] != island)
 			{
-				GameObject sectionGO = new GameObject(island.gameObject.name + " - " + resourcesManager.allIslands[i].gameObject.name);
+				GameObject sectionGO = new GameObject(island.gameObject.name + " - " + islandsManager.allIslands[i].gameObject.name);
 				sectionGO.transform.parent = transform;
 				sectionGO.transform.localPosition = Vector3.zero;
 				sectionGO.transform.localRotation = Quaternion.identity;
@@ -51,11 +51,11 @@ public class WaypointCluster : MonoBehaviour
 
 				WaypointSection section = sectionGO.AddComponent<WaypointSection>();
 
-				CreateIslandToIslandWaypoints(sectionGO.transform, resourcesManager.allIslands[i]);
+				CreateIslandToIslandWaypoints(sectionGO.transform, islandsManager.allIslands[i]);
 
                 Direction direction = new Direction();
                 direction.section = section;
-                direction.nextIsland = resourcesManager.allIslands[i];
+                direction.nextIsland = islandsManager.allIslands[i];
                 direction.name = sectionGO.name;
 
                 directions.Add(direction);
@@ -88,9 +88,9 @@ public class WaypointCluster : MonoBehaviour
     {
         Vector3 position = Vector3.Lerp(island.islandWaypoint.transform.position, nextIsland.islandWaypoint.transform.position, currentPosition);
 
-        for (int i = 0; i < resourcesManager.allIslands.Count; i++)
+        for (int i = 0; i < islandsManager.allIslands.Count; i++)
         {
-            distanceFromIsland = Vector3.Distance(position, resourcesManager.allIslands[i].transform.position);
+            distanceFromIsland = Vector3.Distance(position, islandsManager.allIslands[i].transform.position);
 
             if (distanceFromIsland <= islandCorrectionRadius)
             {
@@ -99,7 +99,7 @@ public class WaypointCluster : MonoBehaviour
                 waypointGO.transform.localRotation = Quaternion.identity;
                 waypointGO.transform.localScale = Vector3.one;
 
-                CorrectWaypointPosition(resourcesManager.allIslands[i], waypointGO);
+                CorrectWaypointPosition(islandsManager.allIslands[i], waypointGO);
 
                 waypoints.Add(waypointGO);
             }
@@ -127,14 +127,14 @@ public class WaypointCluster : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < resourcesManager.allIslands.Count; i++)
+        for (int i = 0; i < islandsManager.allIslands.Count; i++)
         {
             for (int w = 0; w < waypoints.Count; w++)
             {
-                distanceFromIsland = Vector3.Distance(waypoints[w].transform.position, resourcesManager.allIslands[i].transform.position);
+                distanceFromIsland = Vector3.Distance(waypoints[w].transform.position, islandsManager.allIslands[i].transform.position);
 
                 if (distanceFromIsland <= islandCorrectionRadius)
-                    CorrectWaypointPosition(resourcesManager.allIslands[i], waypoints[w]);
+                    CorrectWaypointPosition(islandsManager.allIslands[i], waypoints[w]);
             }
         }
     }
