@@ -11,6 +11,8 @@ public class IslandsManager: MonoBehaviour
     public int totalRichPopulation = 0;
     public int totalElitePopulation = 0;
 
+    int currentDay = 0;
+
     void Awake()
     {
         if (Instance != null)
@@ -25,7 +27,11 @@ public class IslandsManager: MonoBehaviour
 
     void Update()
     {
-        allIslands.Sort((x, y) => { return x.resCont.totalAvailableResources.CompareTo(y.resCont.totalAvailableResources); });
+        if (GlobalTimeController.Instance.currentDay != currentDay)
+        {
+            allIslands.Sort((x, y) => { return x.resCont.totalAvailableResources.CompareTo(y.resCont.totalAvailableResources); });
+            currentDay = GlobalTimeController.Instance.currentDay;
+        }
     }
 
     public void UpdatePopulation()

@@ -138,12 +138,13 @@ public class ResourcesManager : MonoBehaviour
             totalAvailableResources += storage[i].inStorage;
 
         for (int i = 0; i < storage.Count; i++)
-        {
-            if (totalAvailableResources != 0 && storage[i].inStorage != 0)
-                storage[i].price = Mathf.CeilToInt(pricesMultiplier * (float)totalAvailableResources / (float)storage[i].inStorage);
-            else
-                storage[i].price = pricesMultiplier * pricesMultiplier;
-        }
+            CalculateArticlePrice(i);
+    }
+
+    void CalculateArticlePrice(int id)
+    {
+        float lerp = (float)storage[id].inStorage / (float)totalAvailableResources;
+        storage[id].price = Mathf.CeilToInt(Mathf.Lerp((float)pricesMultiplier * storage[id].price, (float)storage[id].price, lerp));
     }
 
     public void UpdateMoney()

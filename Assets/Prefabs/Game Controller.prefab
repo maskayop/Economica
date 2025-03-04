@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4219693021287092976}
   - component: {fileID: 4575767921990558391}
   - component: {fileID: 590588844419656665}
+  - component: {fileID: 1620885955575414003}
   m_Layer: 0
   m_Name: Game Controller
   m_TagString: Untagged
@@ -95,3 +96,17 @@ MonoBehaviour:
   currentTime: 0
   useTimeDeceleration: 0
   miltiplier: 0.001
+--- !u!114 &1620885955575414003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763945134299987868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c62f8f66089bd4481d54564b7808c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterPrefab: {fileID: 139938, guid: a489ec50301dccc4f95ab5b7974044f9, type: 3}
+  spawners: []

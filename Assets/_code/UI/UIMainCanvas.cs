@@ -32,4 +32,9 @@ public class UIMainCanvas : MonoBehaviour
     { 
         CameraController.Instance.GoToCamera(isNext);
     }
+
+    public void CreateCharacter()
+    {
+        SpawnController.Instance.CreateCharacter();
+    }
 }

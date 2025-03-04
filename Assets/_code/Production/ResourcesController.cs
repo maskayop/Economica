@@ -114,7 +114,7 @@ public class ResourcesController : MonoBehaviour
                     resManager.allResources[x].totalProduced += prodAmount;
                     resManager.storage[x].inStorage += prodAmount;
 
-                    storage[x].price = Mathf.CeilToInt((float)(resManager.storage[x].price * resManager.storage[x].inStorage) / (float)storage[x].inStorage);
+                    CalculateArticlePrice(x);
 
                     money -= Mathf.FloorToInt(resManager.storage[x].price * prodAmount * prodMultiplier);
                 }
@@ -135,15 +135,8 @@ public class ResourcesController : MonoBehaviour
 
         for (int i = 0; i < storage.Count; i++)
         {
-            if (storage[i].inStorage > 0)
-            {
-                storage[i].price = Mathf.CeilToInt((float)(resManager.storage[i].price * resManager.storage[i].inStorage) / (float)storage[i].inStorage);
-                availableInStorage.Add(storage[i]);
-            }
-            else if (storage[i].inStorage <= 0)
-            {
-                storage[i].price = resManager.pricesMultiplier * resManager.pricesMultiplier;
-            }
+            CalculateArticlePrice(i);
+            availableInStorage.Add(storage[i]);
         }
 
         availableInStorage.Sort((x, y) => { return x.price.CompareTo(y.price); });
@@ -155,6 +148,12 @@ public class ResourcesController : MonoBehaviour
 
         if (updateWidgets)
             UpdateWidgets();
+    }
+
+    void CalculateArticlePrice(int id)
+    {
+        float lerp = (float)storage[id].inStorage / (float)resManager.storage[id].inStorage;
+        storage[id].price = Mathf.CeilToInt(Mathf.Lerp((float)resManager.pricesMultiplier * resManager.storage[id].price, (float)resManager.storage[id].price, lerp));
     }
 
     public void GoShoping(int customers, bool isStarving)

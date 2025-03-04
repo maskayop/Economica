@@ -32,7 +32,9 @@ public class CharacterMovement : MonoBehaviour
 	{
 		waypointsManager = WaypointsManager.Instance;
 
-		currentCluster = waypointsManager.allClusters[Random.Range(0, waypointsManager.allClusters.Count)];
+		if(!currentCluster)
+			currentCluster = waypointsManager.allClusters[Random.Range(0, waypointsManager.allClusters.Count)];
+
 		currentSection = currentCluster.islandSection;
         startPoint = transform.position;
         endWaypoint = currentSection.points[0];

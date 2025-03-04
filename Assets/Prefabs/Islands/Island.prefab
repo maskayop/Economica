@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 7497654141061691735}
   - component: {fileID: 4647685151967198906}
   - component: {fileID: 3473447236678922743}
+  - component: {fileID: 6325777071018016499}
   m_Layer: 0
   m_Name: Island
   m_TagString: Untagged
@@ -131,10 +132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bf9c1e0f97fe1e429fd8f68c4fbc721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 100000000
+  money: 10000000
   maintenance: 0
-  pricesSpread: 0.04
-  pricesSpreadRandomFactor: 0.02
+  pricesSpread: 0
+  pricesSpreadRandomFactor: 0
   industriesAmountRange: {x: 4, y: 6}
   industriesCount: 0
   producingResources: []
@@ -183,9 +184,9 @@ MonoBehaviour:
   islandSection: {fileID: 4961515969477619796}
   directions: []
   waypointPrefab: {fileID: 7015756965715916888, guid: 1a14be29d05adfe40bec32e9b7890938, type: 3}
-  createdWaypointsSpacing: 8
+  createdWaypointsSpacing: 10
   islandCorrectionRadius: 60
-  islandRadiusCorrectionMultiplier: 0.75
+  islandRadiusCorrectionMultiplier: 0.8
   smoothIterations: 2
 --- !u!114 &3473447236678922743
 MonoBehaviour:
@@ -203,6 +204,19 @@ MonoBehaviour:
   widgetPrefab: {fileID: 604414993872763770, guid: fe0174d4b41cc244c85e5f4484cea773, type: 3}
   spacing: 8
   widgets: []
+--- !u!114 &6325777071018016499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7751957713316639188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ee142ece1619f4eb475a3e1ca50170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  island: {fileID: 7497654141061691735}
 --- !u!1001 &107798879920151401
 PrefabInstance:
   m_ObjectHideFlags: 0

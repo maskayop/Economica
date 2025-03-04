@@ -51,9 +51,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   money: 1000000
   maintenance: 1000
-  scaleSpread: 0.25
-  speedSpread: 0.1
-  cargoHoldCapacitySpread: {x: 100, y: 150}
+  scaleSpread: {x: 0.8, y: 1.2}
+  speedSpread: {x: 90, y: 110}
+  cargoHoldCapacitySpread: {x: 100, y: 200}
   spoilingFactor: {x: 0.98, y: 1}
   cargoHoldCapacity: 10
   cargoHold: 0
@@ -73,6 +73,7 @@ MonoBehaviour:
   resourceWidgetController: {fileID: 6806978784441238533}
   sellingFX: {fileID: 7137377463640376589, guid: 5bde1791591751f468f71944503af5bb, type: 3}
   buyingFX: {fileID: 7137377463640376589, guid: 85c73882d1f204046af0234eedfddb92, type: 3}
+  canBuy: 1
 --- !u!114 &-4959889297646970934
 MonoBehaviour:
   m_ObjectHideFlags: 0

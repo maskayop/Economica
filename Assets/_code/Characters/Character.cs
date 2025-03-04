@@ -6,14 +6,13 @@ public class Character : MonoBehaviour
     public long money;
     public int maintenance;
 
-    [Space(20)]
-    [Range(0, 1)] public float scaleSpread = 0;
-    [Range(0, 1)] public float speedSpread = 0;
-    
-	public Vector2Int cargoHoldCapacitySpread;
+    [Header("Свойства корабля")]
+    public Vector2 scaleSpread = new Vector2(0.8f, 1.2f);
+    public Vector2 speedSpread = new Vector2(90, 110);
+    public Vector2Int cargoHoldCapacitySpread = new Vector2Int(100, 200);
     public Vector2 spoilingFactor = new Vector2(0.9f, 0.95f);
 
-	[Space(20)]
+	[Header("Грузовой отсек")]
     public int cargoHoldCapacity = 10;
     public int cargoHold = 0;
     public List<Article> articlesInCargo = new List<Article>();
@@ -34,7 +33,7 @@ public class Character : MonoBehaviour
     public GameObject buyingFX;
 
     Article lastBought;
-    bool canBuy = true;
+    public bool canBuy = true;
     int buyIndex = 0;
 
 	CharacterMovement characterMovement;
@@ -58,7 +57,7 @@ public class Character : MonoBehaviour
                 if (articlesInCargo[i].inStorage != 0)
                 {
                     articlesInCargo[i].inStorage = Mathf.CeilToInt(
-                        Random.Range(articlesInCargo[i].inStorage * spoilingFactor.x, articlesInCargo[i].inStorage *  spoilingFactor.y)
+                        Random.Range(articlesInCargo[i].inStorage * spoilingFactor.x, articlesInCargo[i].inStorage * spoilingFactor.y)
                         );
                     cargoHold = articlesInCargo[i].inStorage;
                 }
@@ -76,9 +75,9 @@ public class Character : MonoBehaviour
         characterMovement.character = this;
         CharactersManager.Instance.allCharacters.Add(this);
 
-        transform.localScale += transform.localScale * Random.Range(-scaleSpread, scaleSpread);
+        transform.localScale *= Random.Range(scaleSpread.x, scaleSpread.y);
 
-        characterMovement.speed += characterMovement.speed * Random.Range(-speedSpread, speedSpread);
+        characterMovement.speed = Random.Range(speedSpread.x, speedSpread.y);
         characterMovement.speed /= transform.localScale.x;
 
         cargoHoldCapacity = Random.Range(cargoHoldCapacitySpread.x, cargoHoldCapacitySpread.y);
@@ -94,27 +93,32 @@ public class Character : MonoBehaviour
             Kill();
             return;
         }
-
-        Island island = null;
+        
         startIsland = finishIsland;
 
         TrySell();
 
-        int nextIslandId = 0;
-        
-        if (cargoHold == 0)
+        if (money < 0)
         {
-            for (int i = islandsManager.allIslands.Count - 1; i >= 0; i--)
+            Kill();
+            return;
+        }
+
+        ChooseNextIsland();
+        TryBuy();        
+        UpdateWidgets();
+    }
+
+    void ChooseNextIsland()
+    {
+        int nextIslandId = 0;
+        Island island = null;
+
+        if (cargoHold != 0)
+        {
+            for (int i = 0; i < islandsManager.allIslands.Count; i++)
             {
-                int randomValue = Random.Range(-2, 2);
-                bool randomBool;
-
-                if (randomValue <= 0)
-                    randomBool = false;
-                else
-                    randomBool = true;
-
-                if (randomBool)
+                if (IsRandomIslandId())
                 {
                     nextIslandId = i;
                     break;
@@ -123,17 +127,9 @@ public class Character : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < islandsManager.allIslands.Count; i++)
+            for (int i = islandsManager.allIslands.Count - 1; i >= 0; i--)
             {
-                int randomValue = Random.Range(-2, 2);
-                bool randomBool;
-
-                if (randomValue <= 0)
-                    randomBool = false;
-                else
-                    randomBool = true;
-
-                if (randomBool)
+                if (IsRandomIslandId())
                 {
                     nextIslandId = i;
                     break;
@@ -152,16 +148,16 @@ public class Character : MonoBehaviour
         }
 
         finishIsland = island;
+    }
 
-        if (money < 0)
-        {
-            Kill();
-            return;
-        }
+    bool IsRandomIslandId()
+    {
+        int randomValue = Random.Range(-2, 2);
 
-        TryBuy();
-        
-        UpdateWidgets();
+        if (randomValue <= 0)
+            return false;
+        else
+            return true;
     }
 
 	public void Kill()
@@ -195,9 +191,6 @@ public class Character : MonoBehaviour
                     if (articlesInCargo[i].inStorage != 0)
                     {
                         Sell(startIsland.resCont.storage[x], articlesInCargo[i]);
-
-                        buyIndex = 0;
-                        canBuy = true;
                     }
                 }
             }
@@ -230,6 +223,9 @@ public class Character : MonoBehaviour
         startIsland.resCont.UpdateAvailableInStorage(false);
 
         Instantiate(sellingFX, transform);
+
+        buyIndex = 0;
+        canBuy = true;
     }
 
     void TryBuy()
