@@ -135,8 +135,12 @@ public class ResourcesController : MonoBehaviour
 
         for (int i = 0; i < storage.Count; i++)
         {
-            CalculateArticlePrice(i);
-            availableInStorage.Add(storage[i]);
+
+            if (storage[i].inStorage != 0)
+            {
+                CalculateArticlePrice(i);
+                availableInStorage.Add(storage[i]);
+            }
         }
 
         availableInStorage.Sort((x, y) => { return x.price.CompareTo(y.price); });

@@ -52,7 +52,7 @@ MonoBehaviour:
   money: 1000000
   maintenance: 1000
   scaleSpread: {x: 0.8, y: 1.2}
-  speedSpread: {x: 90, y: 110}
+  speedSpread: {x: 80, y: 100}
   cargoHoldCapacitySpread: {x: 100, y: 200}
   spoilingFactor: {x: 0.98, y: 1}
   cargoHoldCapacity: 10
@@ -300,7 +300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 522708720542660530, guid: bbf85af71020cc148970f89cabf63d0d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 522708720542660530, guid: bbf85af71020cc148970f89cabf63d0d, type: 3}
       propertyPath: m_LocalPosition.z
