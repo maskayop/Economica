@@ -157,7 +157,7 @@ public class ResourcesController : MonoBehaviour
     void CalculateArticlePrice(int id)
     {
         float lerp = (float)storage[id].inStorage / (float)resManager.storage[id].inStorage;
-        storage[id].price = Mathf.CeilToInt(Mathf.Lerp((float)resManager.pricesMultiplier * resManager.storage[id].price, (float)resManager.storage[id].price, lerp));
+        storage[id].price = Mathf.CeilToInt(Mathf.Lerp((float)resManager.pricesMultiplier * (float)resManager.storage[id].price, (float)resManager.storage[id].price, lerp));
     }
 
     public void GoShoping(int customers, bool isStarving)

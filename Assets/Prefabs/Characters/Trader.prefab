@@ -52,7 +52,7 @@ MonoBehaviour:
   money: 1000000
   maintenance: 1000
   scaleSpread: {x: 0.8, y: 1.2}
-  speedSpread: {x: 80, y: 100}
+  speedSpread: {x: 60, y: 80}
   cargoHoldCapacitySpread: {x: 100, y: 200}
   spoilingFactor: {x: 0.98, y: 1}
   cargoHoldCapacity: 10
@@ -308,11 +308,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 522708720542660530, guid: bbf85af71020cc148970f89cabf63d0d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 522708720542660530, guid: bbf85af71020cc148970f89cabf63d0d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 522708720542660530, guid: bbf85af71020cc148970f89cabf63d0d, type: 3}
       propertyPath: m_LocalRotation.y
@@ -320,7 +320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 522708720542660530, guid: bbf85af71020cc148970f89cabf63d0d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 522708720542660530, guid: bbf85af71020cc148970f89cabf63d0d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
