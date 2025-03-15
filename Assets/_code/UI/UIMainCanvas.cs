@@ -6,6 +6,10 @@ public class UIMainCanvas : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI currentDayText;
     [SerializeField] Image clockFill;
+    
+    [SerializeField] RectTransform windArrow;
+    [SerializeField] Image windStrengthFillLeft;
+    [SerializeField] Image windStrengthFillRight;
 
     int currentDay = 0;
 
@@ -26,6 +30,8 @@ public class UIMainCanvas : MonoBehaviour
         }
 
         clockFill.fillAmount = globalTime.currentTime / globalTime.dayLenght;
+        windArrow.rotation = Quaternion.Euler(0, 0, -WindController.Instance.currentRotation.eulerAngles.y);
+        windStrengthFillLeft.fillAmount = windStrengthFillRight.fillAmount = WindController.Instance.GetNormalizedCurrentStrength() / 2;
     }
 
     public void GoToCamera(bool isNext)

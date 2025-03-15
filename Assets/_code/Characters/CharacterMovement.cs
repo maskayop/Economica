@@ -5,6 +5,8 @@ public class CharacterMovement : MonoBehaviour
 	public WaypointCluster currentCluster = null;
 
 	public float speed;
+	public float minSpeedMultiplier;
+	public float currentSpeed;
 	public float rotationTime = 0.5f;
 
 	[HideInInspector] public Character character;
@@ -14,6 +16,7 @@ public class CharacterMovement : MonoBehaviour
 
 	float currentPosition = 0;
 	int pointIndex = 0;
+	public float cos;
 
 	Vector3 prevEndPoint;
 	Quaternion prevRotation = Quaternion.identity;
@@ -44,8 +47,8 @@ public class CharacterMovement : MonoBehaviour
 
 	void Update()
 	{
-		MoveFromPointToPoint();
-	}
+        MoveFromPointToPoint();
+    }
 
 	void Move()
 	{
@@ -56,7 +59,16 @@ public class CharacterMovement : MonoBehaviour
 			endPoint = endWaypoint.transform.position;
 
         transform.position = Vector3.Lerp(startPoint, endPoint, currentPosition);
-		currentPosition += speed * Time.deltaTime / Vector3.Distance(startPoint, endPoint);
+        cos = WindController.Instance.currentRotation.eulerAngles.y - transform.rotation.eulerAngles.y;
+        cos = Mathf.Cos(Mathf.Deg2Rad * cos);
+        cos = (cos + 1) / 2;
+
+		if (cos <= minSpeedMultiplier)
+			cos = minSpeedMultiplier;
+
+        currentSpeed = speed * cos;
+		currentSpeed *= WindController.Instance.currentStrength;
+        currentPosition += currentSpeed * Time.deltaTime / Vector3.Distance(startPoint, endPoint);
     }
 
 	void Rotate()

@@ -52,7 +52,7 @@ MonoBehaviour:
   money: 1000000
   maintenance: 1000
   scaleSpread: {x: 0.8, y: 1.2}
-  speedSpread: {x: 60, y: 80}
+  speedSpread: {x: 80, y: 100}
   cargoHoldCapacitySpread: {x: 100, y: 200}
   spoilingFactor: {x: 0.98, y: 1}
   cargoHoldCapacity: 10
@@ -87,9 +87,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCluster: {fileID: 0}
-  speed: 80
+  speed: 100
+  minSpeedMultiplier: 0.4
+  currentSpeed: 0
   rotationTime: 0.4
   character: {fileID: 0}
+  cos: 0
 --- !u!114 &6806978784441238533
 MonoBehaviour:
   m_ObjectHideFlags: 0
