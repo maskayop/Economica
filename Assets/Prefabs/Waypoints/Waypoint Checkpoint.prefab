@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 1927469433693985721}
   - component: {fileID: 8057537883745887782}
   m_Layer: 0
-  m_Name: Waypoint Waypoint Checkpoint
+  m_Name: Waypoint Checkpoint
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

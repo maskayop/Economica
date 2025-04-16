@@ -181,6 +181,6 @@ MonoBehaviour:
   windZone: {fileID: 508626965502481313}
   angleChangingSpread: {x: -60, y: 60}
   strengthSpread: {x: 0.5, y: 1.5}
-  changingTime: 1
+  changingTime: 1000
   currentRotation: {x: 0, y: 0, z: 0, w: 0}
   currentStrength: 0

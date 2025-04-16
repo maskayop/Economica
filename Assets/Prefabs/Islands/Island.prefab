@@ -185,9 +185,8 @@ MonoBehaviour:
   directions: []
   waypointPrefab: {fileID: 7015756965715916888, guid: 1a14be29d05adfe40bec32e9b7890938, type: 3}
   createdWaypointsSpacing: 10
-  islandCorrectionRadius: 60
-  islandRadiusCorrectionMultiplier: 0.8
-  smoothIterations: 2
+  islandCorrectionRadius: 80
+  smoothIterations: 0
 --- !u!114 &3473447236678922743
 MonoBehaviour:
   m_ObjectHideFlags: 0
