@@ -84,7 +84,7 @@ public class WaypointCluster : MonoBehaviour
         for (int i = 0; i < waypoints.Count; i++)
             waypoints[i].name = waypoints[i].name + " - Waypoint " + i;
 
-        SmoothWay(nextIsland);
+        SmoothWay(nextIsland, parent);
     }
 
     void CreateWaypoint(Transform parent, Island nextIsland, float currentPosition)
@@ -97,18 +97,19 @@ public class WaypointCluster : MonoBehaviour
 
             if (distanceFromIsland <= islandCorrectionRadius)
             {
-                GameObject waypointGO = Instantiate(waypointPrefab, parent);
+                GameObject waypointGO = Instantiate(waypointPrefab);
                 waypointGO.transform.position = position;
                 waypointGO.transform.localRotation = Quaternion.identity;
-                waypointGO.transform.localScale = Vector3.one;
                 waypointGO.name = islandsManager.allIslands[i].name;
+                waypointGO.transform.parent = parent;
+                waypointGO.transform.localScale = Vector3.one;
 
                 waypoints.Add(waypointGO);
             }
         }
     }
 
-    void SmoothWay(Island nextIsland)
+    void SmoothWay(Island nextIsland, Transform parent)
 	{
         if (waypoints.Count >= 2)
         {
@@ -138,30 +139,41 @@ public class WaypointCluster : MonoBehaviour
                     waypointsForCorrection.Add(waypoints[w]);
             }
 
-            CorrectWaypointPosition(islandsManager.allIslands[i]);
+            CorrectWaypointPosition(islandsManager.allIslands[i], parent);
             waypointsForCorrection.Clear();
         }
     }
 
     //коррекция позиции, чтобы быть вне островов
-    void CorrectWaypointPosition(Island island)
+    void CorrectWaypointPosition(Island island, Transform parent)
     {
-        return;
+        //return;
 
         if (waypointsForCorrection.Count == 0)
             return;
 
         Vector3 directionStart = Vector3.Normalize(island.transform.position - waypointsForCorrection[0].transform.position);
-        Vector3 directionFinish = Vector3.Normalize(island.transform.position - waypointsForCorrection[waypointsForCorrection.Count - 1].transform.position);
+        Vector3 directionFinish = Vector3.Normalize(waypointsForCorrection[waypointsForCorrection.Count - 1].transform.position - island.transform.position);
 
-        float angle = Vector3.Angle(directionStart, directionFinish) / waypointsForCorrection.Count;
+        float angleStart = Vector3.Angle(directionStart, new Vector3(0,0,1));
+        float angleFinish = Vector3.Angle(directionFinish, new Vector3(0,0,1));
+        float angle = (angleFinish - angleStart) / waypointsForCorrection.Count;
 
         for (int i = 0; i < waypointsForCorrection.Count; i++)
         {
+            waypointsForCorrection[i].transform.parent = null;
+
+            waypointsForCorrection[i].transform.Rotate(0, angleStart, 0);
+            waypointsForCorrection[i].transform.Rotate(0, angle * i, 0);
+
+            waypointsForCorrection[i].transform.parent = parent;
+
+            /*
             waypointsForCorrection[i].transform.Rotate(0, angle * i + 180, 0);
 
             waypointsForCorrection[i].transform.position = island.transform.position;
             waypointsForCorrection[i].transform.Translate(waypointsForCorrection[i].transform.forward * islandCorrectionRadius, Space.World);
+            */
         }
     }
 }
