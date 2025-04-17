@@ -20,7 +20,7 @@ public class WaypointCluster : MonoBehaviour
 	public float createdWaypointsSpacing = 10;
 	public float islandCorrectionRadius = 100;
 
-	[Range(0, 3)]
+	[Range(0, 5)]
 	public int smoothIterations = 1;
 
     float distance;
@@ -111,22 +111,6 @@ public class WaypointCluster : MonoBehaviour
 
     void SmoothWay(Island nextIsland, Transform parent)
 	{
-        if (waypoints.Count >= 2)
-        {
-            for (int s = 0; s < smoothIterations; s++)
-            {
-                for (int i = 0; i < waypoints.Count; i++)
-                {
-                    if (i == 0)
-                        waypoints[i].transform.position = (island.islandWaypoint.transform.position + waypoints[i + 1].transform.position) / 2;
-                    else if (i == waypoints.Count - 1)
-                        waypoints[i].transform.position = (waypoints[i - 1].transform.position + nextIsland.islandWaypoint.transform.position) / 2;
-                    else
-                        waypoints[i].transform.position = (waypoints[i - 1].transform.position + waypoints[i + 1].transform.position) / 2;
-                }
-            }
-        }
-
         for (int i = 0; i < islandsManager.allIslands.Count; i++)
         {
             waypointsForCorrection.Clear();
@@ -141,6 +125,22 @@ public class WaypointCluster : MonoBehaviour
 
             CorrectWaypointPosition(islandsManager.allIslands[i], parent);
             waypointsForCorrection.Clear();
+        }
+
+        if (waypoints.Count >= 2)
+        {
+            for (int s = 0; s < smoothIterations; s++)
+            {
+                for (int i = 0; i < waypoints.Count; i++)
+                {
+                    if (i == 0)
+                        waypoints[i].transform.position = (island.islandWaypoint.transform.position + waypoints[i + 1].transform.position) / 2;
+                    else if (i == waypoints.Count - 1)
+                        waypoints[i].transform.position = (waypoints[i - 1].transform.position + nextIsland.islandWaypoint.transform.position) / 2;
+                    else
+                        waypoints[i].transform.position = (waypoints[i - 1].transform.position + waypoints[i + 1].transform.position) / 2;
+                }
+            }
         }
     }
 
@@ -157,23 +157,15 @@ public class WaypointCluster : MonoBehaviour
 
         float angleStart = Vector3.Angle(directionStart, new Vector3(0,0,1));
         float angleFinish = Vector3.Angle(directionFinish, new Vector3(0,0,1));
-        float angle = (angleFinish - angleStart) / waypointsForCorrection.Count;
+        float angleDelta = (angleFinish - angleStart + 180) / waypointsForCorrection.Count;
 
         for (int i = 0; i < waypointsForCorrection.Count; i++)
         {
             waypointsForCorrection[i].transform.parent = null;
-
-            waypointsForCorrection[i].transform.Rotate(0, angleStart, 0);
-            waypointsForCorrection[i].transform.Rotate(0, angle * i, 0);
-
+            waypointsForCorrection[i].transform.Rotate(0, angleStart + 180 + angleDelta * i, 0);
             waypointsForCorrection[i].transform.parent = parent;
-
-            /*
-            waypointsForCorrection[i].transform.Rotate(0, angle * i + 180, 0);
-
             waypointsForCorrection[i].transform.position = island.transform.position;
             waypointsForCorrection[i].transform.Translate(waypointsForCorrection[i].transform.forward * islandCorrectionRadius, Space.World);
-            */
         }
     }
 }

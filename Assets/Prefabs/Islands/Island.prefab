@@ -185,7 +185,7 @@ MonoBehaviour:
   directions: []
   waypointPrefab: {fileID: 7015756965715916888, guid: 1a14be29d05adfe40bec32e9b7890938, type: 3}
   createdWaypointsSpacing: 10
-  islandCorrectionRadius: 80
+  islandCorrectionRadius: 70
   smoothIterations: 0
 --- !u!114 &3473447236678922743
 MonoBehaviour:
@@ -510,7 +510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1927469433693985721, guid: 7aede720d89992b438abbd73cb528f0d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -37
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 1927469433693985721, guid: 7aede720d89992b438abbd73cb528f0d, type: 3}
       propertyPath: m_LocalRotation.w
