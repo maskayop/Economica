@@ -16,7 +16,7 @@ public class CharacterMovement : MonoBehaviour
 
 	float currentPosition = 0;
 	int pointIndex = 0;
-	public float cos;
+	float cos;
 
 	Vector3 prevEndPoint;
 	Quaternion prevRotation = Quaternion.identity;

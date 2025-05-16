@@ -609,11 +609,11 @@ MonoBehaviour:
   - {fileID: 4619795358637074642}
   - {fileID: 1314448342882149303}
   movementSpeed: 0.25
-  positionLimits: {x: 450, y: 450}
+  positionLimits: {x: 500, y: 500}
   scrollSpeed: 0.1
-  maxTranslationY: 600
+  maxTranslationY: 1000
   minTranslationY: 100
-  currentZoom: 0.25
+  currentZoom: 0.2
 --- !u!1 &6508347908896022664
 GameObject:
   m_ObjectHideFlags: 0

@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCluster: {fileID: 0}
-  speed: 100
+  speed: 120
   minSpeedMultiplier: 0.4
   currentSpeed: 0
   rotationTime: 0.4
