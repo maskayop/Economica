@@ -16,7 +16,7 @@ Material:
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
@@ -109,7 +109,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 1
-    - _Normal_Intensity: 1
+    - _Normal_Intensity: 0.7
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -130,9 +130,9 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Waves: {r: 1, g: 0.1, b: 1, a: -0.1}
-    - _Waves_1: {r: 19.87425, g: 16.60725, b: 0.031, a: -0.013}
-    - _Waves_2: {r: 31.85325, g: 34.57575, b: -0.037, a: -0.007}
-    - _Waves_3: {r: 6.17771, g: 10.908568, b: -0.021, a: 0.017}
+    - _Waves_1: {r: 29.811375, g: 24.910875, b: 0.031, a: -0.013}
+    - _Waves_2: {r: 47.779877, g: 51.863625, b: -0.037, a: -0.007}
+    - _Waves_3: {r: 9.266565, g: 16.362856, b: -0.021, a: 0.017}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &1155619548809909393

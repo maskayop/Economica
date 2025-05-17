@@ -14,8 +14,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] Vector2 positionLimits = new Vector2(100f, 100f);
 
     [SerializeField] float scrollSpeed = 1;
-    [SerializeField] float maxTranslationY = 50;
-    [SerializeField] float minTranslationY = 10;
+    [SerializeField] float maxTranslationZ = 500;
+    [SerializeField] float minTranslationZ = 100;
     [SerializeField] float currentZoom = 0.5f;
 
     int currentCamera;
@@ -64,7 +64,7 @@ public class CameraController : MonoBehaviour
 			cos = Mathf.Cos(currentCameraRotation.y * Mathf.PI / 180);
 			sin = Mathf.Sin(currentCameraRotation.y * Mathf.PI / 180);
 
-			mousePositionOffset = (startMousePosition - currentMousePosition) * movementSpeed;
+			mousePositionOffset = (startMousePosition - currentMousePosition) * movementSpeed * Mathf.Clamp(currentZoom, 0.2f, 1);
 
 			float positionX = mousePositionOffset.x * cos + mousePositionOffset.y * sin;
 			float positionZ = mousePositionOffset.y * cos - mousePositionOffset.x * sin;
@@ -120,7 +120,10 @@ public class CameraController : MonoBehaviour
             currentZoom += scrollSpeed;
 
         currentZoom = Mathf.Clamp01(currentZoom);
-        transform.localPosition = Vector3.Lerp(new Vector3(transform.localPosition.x, minTranslationY, transform.localPosition.z),
-                                               new Vector3(transform.localPosition.x, maxTranslationY, transform.localPosition.z), currentZoom);
+
+		for (int i = 0; i < virtualCameras.Count; i++)
+		{
+            virtualCameras[i].transform.localPosition = Vector3.Lerp(new Vector3(0, 0, -minTranslationZ), new Vector3(0, 0, -maxTranslationZ), currentZoom);
+		}
     }
 }

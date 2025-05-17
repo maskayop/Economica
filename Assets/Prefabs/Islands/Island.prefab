@@ -136,7 +136,7 @@ MonoBehaviour:
   maintenance: 0
   pricesSpread: 0
   pricesSpreadRandomFactor: 0
-  industriesAmountRange: {x: 4, y: 6}
+  industriesAmountRange: {x: 0, y: 0}
   industriesCount: 0
   producingResources: []
   storage: []

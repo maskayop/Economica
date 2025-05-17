@@ -24,14 +24,13 @@ public class Island : MonoBehaviour
     int currentDay = 0;
 
     IslandsManager islandsManager;
-
-    void Start()
-	{
-		Init();
-    }
+	bool isInitialized = false;
 
 	void Update()
 	{
+		if (!isInitialized)
+			return;
+
         if (GlobalTimeController.Instance.currentDay != currentDay)
         {
             AddPeople();
@@ -69,6 +68,8 @@ public class Island : MonoBehaviour
 		ResourcesManager.Instance.totalIndustries += resCont.industriesCount;
         islandsManager.UpdatePopulation();
         waypointCluster.island = this;
+
+		isInitialized = true;
     }
 
 	void AddPeople()
