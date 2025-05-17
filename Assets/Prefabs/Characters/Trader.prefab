@@ -92,7 +92,6 @@ MonoBehaviour:
   currentSpeed: 0
   rotationTime: 0.4
   character: {fileID: 0}
-  cos: 0
 --- !u!114 &6806978784441238533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +185,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 3
+  m_Time: 5
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -303,7 +302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 522708720542660530, guid: bbf85af71020cc148970f89cabf63d0d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 522708720542660530, guid: bbf85af71020cc148970f89cabf63d0d, type: 3}
       propertyPath: m_LocalPosition.z

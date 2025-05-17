@@ -4249,7 +4249,7 @@
     "m_RefNameGeneratedByDisplayName": "Alpha",
     "m_DefaultReferenceName": "_Alpha",
     "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
+    "m_GeneratePropertyBlock": false,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
     "m_DismissedVersion": 0,
@@ -4790,8 +4790,8 @@
     "m_ObjectId": "fdd4acda8c6640d092538ecd19093434",
     "m_Title": "Normal",
     "m_Position": {
-        "x": 532.9999389648438,
-        "y": 382.9999694824219
+        "x": 533.0,
+        "y": 383.0
     }
 }
 

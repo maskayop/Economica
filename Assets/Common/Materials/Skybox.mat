@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sky
-  m_Shader: {fileID: 103, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: Skybox
+  m_Shader: {fileID: -6465566751694194690, guid: 86bbf4e55b1b3d643892af7f1cc7c00d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -72,6 +72,10 @@ Material:
         m_Texture: {fileID: 8900000, guid: 31d1391193fbd454dbf9351a764f8f82, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Tex_2:
+        m_Texture: {fileID: 8900000, guid: 9e7ed850fa9b73742b1e0793dd963391, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -120,7 +124,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _Tint: {r: 0.56, g: 0.56, b: 0.56, a: 1}
+    - _Tint: {r: 0.603, g: 0.603, b: 0.603, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &8196785706840862086

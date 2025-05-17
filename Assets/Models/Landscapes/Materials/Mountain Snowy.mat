@@ -87,7 +87,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AddPrecomputedVelocity: 0
-    - _Alpha: 0.271
+    - _Alpha: 0.5
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Blend: 0
@@ -113,8 +113,8 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Sand_Add: -0.14
-    - _Sand_Level: 1
-    - _Sand_Power: 6
+    - _Sand_Level: 0.8
+    - _Sand_Power: 3
     - _Smoothness: 0.7
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
